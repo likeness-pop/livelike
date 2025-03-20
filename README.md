@@ -8,8 +8,6 @@
 
 ***Other***
 
-# LiveLike: Vivid Synthetic Populations
-
 This package provides a high-level wrapper for generating synthetic populations via Census APIs based on the American Community Survey (ACS) 5-Year Estimates. Synthetic populations are virtual representations of people and households produced for small census areas (block groups, tracts) and can be attributed by a variety of demographic, economic, social, worker, student, mobility, housing, health, and communication characteristics found in the ACS. 
 
 ## Specifying a P-MEDM Problem
