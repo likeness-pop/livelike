@@ -1,7 +1,8 @@
 temp/*
 acs_cache/*
 acs_cache/temp.txt
-acs_cahce/.ipynb_checkpoints/*
+acs_cache/.ipynb_checkpoints/*
+notebooks/livelike_acs_cache/*
 
 .coverage*
 
