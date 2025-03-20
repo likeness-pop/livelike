@@ -109,7 +109,7 @@ custom_constraints_selection = {
 
 #### The Constraints File
 
-The constraints file (`livelike/data/constraints.csv`) describes relationships between PUMS variables, P-MEDM constraints, and ACS Summary File (SF) variables, as well as year of availability for constraints. It is used to generate individual-level representations of ACS SF tables/variables based on PUMS data.  
+The constraints file (`livelike/data/constraints.csv`) underlies the constraint selection process, describing relationships between available PUMS variables, P-MEDM constraints, and ACS Summary File (SF) variables, as well as year of availability for constraints. It is used to generate individual-level representations of ACS SF tables/variables based on PUMS data.  
 
 - `level`: PUMS file level (`person` or `household`).
 - `geo_base_level`: Baseline geography for which the constraint is available (`bg`: block group; `trt`: tract).
