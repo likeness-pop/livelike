@@ -3,6 +3,7 @@ acs_cache/*
 acs_cache/temp.txt
 acs_cache/.ipynb_checkpoints/*
 notebooks/livelike_acs_cache/*
+notebooks/replicate_demo_cache/*
 
 .coverage*
 
