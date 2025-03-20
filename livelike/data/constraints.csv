@@ -1,0 +1,508 @@
+level,geo_base_level,theme,subject,constraint,pums1,pums2,pums3,pums4,pums5,pums6,pums7,pums8,pums9,code,desc,begin_year,end_year,legacy_header,legacy_constraint
+household-person,bg,universe,population,population,PWGTP,,,,,,,,,B01001001,Population,2012,2023,,
+person,bg,universe,group_quarters_pop,group_quarters_pop,RELP,,,,,,,,,B09019038,Group quarters population,2012,2018,,
+person,bg,universe,group_quarters_pop,group_quarters_pop,RELSHIPP,,,,,,,,,B09019026,Group quarters population,2019,2023,,
+household-person,bg,universe,civ_noninst_pop,civ_noninst_pop,TYPEHUGQ,,,,,,,,,B27010001,Civilian noninstitutionalized population,2020,2023,,
+household-person,bg,universe,civ_noninst_pop,civ_noninst_pop,TYPE,,,,,,,,,B27010001,Civilian noninstitutionalized population,2012,2019,,
+household,bg,universe,housing_units,housing_units,WGTP,,,,,,,,,B25001001,Housing units,2012,2023,housing_unit,housing_unit
+household,bg,universe,occhu,occhu,TYPE,,,,,,,,,B25003001,Occupied housing units,2012,2019,house_unit,house_unit
+household,bg,universe,occhu,occhu,TYPEHUGQ,,,,,,,,,B25003001,Occupied housing units,2020,2023,house_unit,house_unit
+person,bg,worker,emp_stat,emp_stat_employed,ESR,,,,,,,,,B23025004,Employed,2012,2023,,
+person,bg,worker,emp_stat,emp_stat_unemp,ESR,,,,,,,,,B23025005,Unemployed,2012,2023,,
+person,bg,worker,emp_stat,emp_stat_mil,ESR,,,,,,,,,B23025006,In armed forces,2012,2023,,
+person,bg,worker,emp_stat,emp_stat_not.in.force,ESR,,,,,,,,,B23025007,Not in labor force,2012,2023,,
+person,bg,worker,sexcw,sexcw_male_private,COW,SEX,ESR,,,,,,,B24080004,Males working for private companies,2012,2023,c,c
+person,bg,worker,sexcw,sexcw_male_self.emp_inc,COW,SEX,ESR,,,,,,,B24080005,Males self-employed in incorporated business,2012,2023,c,c
+person,bg,worker,sexcw,sexcw_male_non.prof,COW,SEX,ESR,,,,,,,B24080006,Males working for not-for-profit companies,2012,2023,c,c
+person,bg,worker,sexcw,sexcw_male_local.gov,COW,SEX,ESR,,,,,,,B24080007,Males working for local government,2012,2023,c,c
+person,bg,worker,sexcw,sexcw_male_st.gov,COW,SEX,ESR,,,,,,,B24080008,Males working for state government,2012,2023,c,c
+person,bg,worker,sexcw,sexcw_male_fed.gov,COW,SEX,ESR,,,,,,,B24080009,Males working for federal government,2012,2023,c,c
+person,bg,worker,sexcw,sexcw_male_self.emp_non.inc,COW,SEX,ESR,,,,,,,B24080010,Males self-employed in unincorporated business,2012,2023,c,c
+person,bg,worker,sexcw,sexcw_male_wo.pay,COW,SEX,ESR,,,,,,,B24080011,Males working in family business without pay,2012,2023,c,c
+person,bg,worker,sexcw,sexcw_female_private,COW,SEX,ESR,,,,,,,B24080014,Females working for private companies,2012,2023,c,c
+person,bg,worker,sexcw,sexcw_female_self.emp_inc,COW,SEX,ESR,,,,,,,B24080015,Females self-employed in incorporated business,2012,2023,c,c
+person,bg,worker,sexcw,sexcw_female_non.prof,COW,SEX,ESR,,,,,,,B24080016,Females working for not-for-profit companies,2012,2023,c,c
+person,bg,worker,sexcw,sexcw_female_local.gov,COW,SEX,ESR,,,,,,,B24080017,Females working for local government,2012,2023,c,c
+person,bg,worker,sexcw,sexcw_female_st.gov,COW,SEX,ESR,,,,,,,B24080018,Females working for state government,2012,2023,c,c
+person,bg,worker,sexcw,sexcw_female_fed.gov,COW,SEX,ESR,,,,,,,B24080019,Females working for federal government,2012,2023,c,c
+person,bg,worker,sexcw,sexcw_female_self.emp_non.inc,COW,SEX,ESR,,,,,,,B24080020,Females self-employed in unincorporated business,2012,2023,c,c
+person,bg,worker,sexcw,sexcw_female_wo.pay,COW,SEX,ESR,,,,,,,B24080021,Females working in family business without pay,2012,2023,c,c
+person,bg,worker,sexocc,sexocc_male_mgmt,OCCP,SEX,ESR,,,,,,,C24010005,Males in management occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_male_bus.fin,OCCP,SEX,ESR,,,,,,,C24010006,Males in business and financial occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_male_cmp,OCCP,SEX,ESR,,,,,,,C24010008,Males in computer and mathematical occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_male_eng,OCCP,SEX,ESR,,,,,,,C24010009,Males in architecture and engineering occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_male_sci,OCCP,SEX,ESR,,,,,,,C24010010,"Males in life, physical, and social science occupations",2012,2023,f,f
+person,bg,worker,sexocc,sexocc_male_cms,OCCP,SEX,ESR,,,,,,,C24010012,Males in community and social service occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_male_lgl,OCCP,SEX,ESR,,,,,,,C24010013,Males in legal occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_male_edu,OCCP,SEX,ESR,,,,,,,C24010014,"Males in education, training, and library occupations",2012,2023,f,f
+person,bg,worker,sexocc,sexocc_male_ent,OCCP,SEX,ESR,,,,,,,C24010015,"Males in arts, design, entertainment, sports, and media occupations",2012,2023,f,f
+person,bg,worker,sexocc,sexocc_male_med,OCCP,SEX,ESR,,,,,,,C24010017,Males in health diagnosing and treating practitioner occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_male_med.tech,OCCP,SEX,ESR,,,,,,,C24010018,Males in health technology and technician occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_male_hls,OCCP,SEX,ESR,,,,,,,C24010020,Males in healthcare support occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_male_prt,OCCP,SEX,ESR,,,,,,,C24010022,"Males in fire fighting and prevention, and other protective service occupations",2012,2023,f,f
+person,bg,worker,sexocc,sexocc_male_law.enf,OCCP,SEX,ESR,,,,,,,C24010023,Males in law enforcement occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_male_eat,OCCP,SEX,ESR,,,,,,,C24010024,Males in food preparation and serving related occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_male_cln,OCCP,SEX,ESR,,,,,,,C24010025,Males in building and grounds cleaning and maintenance occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_male_prs,OCCP,SEX,ESR,,,,,,,C24010026,Males in personal care and service occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_male_sal,OCCP,SEX,ESR,,,,,,,C24010028,Males in sales and related occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_male_off,OCCP,SEX,ESR,,,,,,,C24010029,Males in office and administrative support occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_male_fff,OCCP,SEX,ESR,,,,,,,C24010031,"Males in farming, fishing, and forestry occupations",2012,2023,f,f
+person,bg,worker,sexocc,sexocc_male_con.ext,OCCP,SEX,ESR,,,,,,,C24010032,Males in construction and extraction occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_male_rpr,OCCP,SEX,ESR,,,,,,,C24010033,"Males in installation, maintenance, and repair occupations",2012,2023,f,f
+person,bg,worker,sexocc,sexocc_male_prd,OCCP,SEX,ESR,,,,,,,C24010035,Males in production occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_male_trn,OCCP,SEX,ESR,,,,,,,C24010036,Males in transportation occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_male_trn.mat,OCCP,SEX,ESR,,,,,,,C24010037,Males in material moving occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_female_mgmt,OCCP,SEX,ESR,,,,,,,C24010041,Females in management occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_female_bus.fin,OCCP,SEX,ESR,,,,,,,C24010042,Females in business and financial occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_female_cmp,OCCP,SEX,ESR,,,,,,,C24010044,Females in computer and mathematical occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_female_eng,OCCP,SEX,ESR,,,,,,,C24010045,Females in architecture and engineering occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_female_sci,OCCP,SEX,ESR,,,,,,,C24010046,"Females in life, physical, and social science occupations",2012,2023,f,f
+person,bg,worker,sexocc,sexocc_female_cms,OCCP,SEX,ESR,,,,,,,C24010048,Females in community and social service occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_female_lgl,OCCP,SEX,ESR,,,,,,,C24010049,Females in legal occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_female_edu,OCCP,SEX,ESR,,,,,,,C24010050,"Females in education, training, and library occupations",2012,2023,f,f
+person,bg,worker,sexocc,sexocc_female_ent,OCCP,SEX,ESR,,,,,,,C24010051,"Females in arts, design, entertainment, sports, and media occupations",2012,2023,f,f
+person,bg,worker,sexocc,sexocc_female_med,OCCP,SEX,ESR,,,,,,,C24010053,Females in health diagnosing and treating practitioner occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_female_med.tech,OCCP,SEX,ESR,,,,,,,C24010054,Females in health technology and technician occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_female_hls,OCCP,SEX,ESR,,,,,,,C24010056,Females in healthcare support occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_female_prt,OCCP,SEX,ESR,,,,,,,C24010058,"Females in fire fighting and prevention, and other protective service occupations",2012,2023,f,f
+person,bg,worker,sexocc,sexocc_female_law.enf,OCCP,SEX,ESR,,,,,,,C24010059,Females in law enforcement occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_female_eat,OCCP,SEX,ESR,,,,,,,C24010060,Females in food preparation and serving related occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_female_cln,OCCP,SEX,ESR,,,,,,,C24010061,Females in building and grounds cleaning and maintenance occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_female_prs,OCCP,SEX,ESR,,,,,,,C24010062,Females in personal care and service occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_female_sal,OCCP,SEX,ESR,,,,,,,C24010064,Females in sales and related occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_female_off,OCCP,SEX,ESR,,,,,,,C24010065,Females in office and administrative support occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_female_fff,OCCP,SEX,ESR,,,,,,,C24010067,"Females in farming, fishing, and forestry occupations",2012,2023,f,f
+person,bg,worker,sexocc,sexocc_female_con.ext,OCCP,SEX,ESR,,,,,,,C24010068,Females in construction and extraction occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_female_rpr,OCCP,SEX,ESR,,,,,,,C24010069,"Females in installation, maintenance, and repair occupations",2012,2023,f,f
+person,bg,worker,sexocc,sexocc_female_prd,OCCP,SEX,ESR,,,,,,,C24010071,Females in production occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_female_trn,OCCP,SEX,ESR,,,,,,,C24010072,Females in transportation occupations,2012,2023,f,f
+person,bg,worker,sexocc,sexocc_female_trn.mat,OCCP,SEX,ESR,,,,,,,C24010073,Females in material moving occupations,2012,2023,f,f
+person,bg,worker,sexnaics,sexnaics_male_agr_ext,NAICSP,SEX,ESR,,,,,,,C24030003,"Males employed in agriculture, forestry, fishing and hunting, and mining industry",2012,2023,b,b
+person,bg,worker,sexnaics,sexnaics_male_con,NAICSP,SEX,ESR,,,,,,,C24030006,Males employed in construction industry,2012,2023,b,b
+person,bg,worker,sexnaics,sexnaics_male_mfg,NAICSP,SEX,ESR,,,,,,,C24030007,Males employed in manufacturing industry,2012,2023,b,b
+person,bg,worker,sexnaics,sexnaics_male_whl,NAICSP,SEX,ESR,,,,,,,C24030008,Males employed in wholesale trade industry,2012,2023,b,b
+person,bg,worker,sexnaics,sexnaics_male_ret,NAICSP,SEX,ESR,,,,,,,C24030009,Males employed in retail trade industry,2012,2023,b,b
+person,bg,worker,sexnaics,sexnaics_male_utl_trn,NAICSP,SEX,ESR,,,,,,,C24030010,"Males employed in transportation and warehousing, and utilities industry",2012,2023,b,b
+person,bg,worker,sexnaics,sexnaics_male_inf,NAICSP,SEX,ESR,,,,,,,C24030013,Males employed in information industry,2012,2023,b,b
+person,bg,worker,sexnaics,sexnaics_male_fin,NAICSP,SEX,ESR,,,,,,,C24030014,"Males employed in finance and insurance, and real estate and rental and leasing industry",2012,2023,b,b
+person,bg,worker,sexnaics,sexnaics_male_prf,NAICSP,SEX,ESR,,,,,,,C24030017,"Males employed in professional, scientific, and management, and administrative and waste management services industry",2012,2023,b,b
+person,bg,worker,sexnaics,sexnaics_male_edu_med_sca,NAICSP,SEX,ESR,,,,,,,C24030021,"Males employed in educational services, and health care and social assistance industry",2012,2023,b,b
+person,bg,worker,sexnaics,sexnaics_male_ent,NAICSP,SEX,ESR,,,,,,,C24030024,"Males employed in arts, entertainment, and recreation, and accommodation and food services industry",2012,2023,b,b
+person,bg,worker,sexnaics,sexnaics_male_srv,NAICSP,SEX,ESR,,,,,,,C24030027,Males employed in other services (except public administration) industry,2012,2023,b,b
+person,bg,worker,sexnaics,sexnaics_male_adm,NAICSP,SEX,ESR,,,,,,,C24030028,Males employed in public administration industry,2012,2023,b,b
+person,bg,worker,sexnaics,sexnaics_female_agr_ext,NAICSP,SEX,ESR,,,,,,,C24030030,"Females employed in agriculture, forestry, fishing and hunting, and mining industry",2012,2023,b,b
+person,bg,worker,sexnaics,sexnaics_female_con,NAICSP,SEX,ESR,,,,,,,C24030033,Females employed in construction industry,2012,2023,b,b
+person,bg,worker,sexnaics,sexnaics_female_mfg,NAICSP,SEX,ESR,,,,,,,C24030034,Females employed in manufacturing industry,2012,2023,b,b
+person,bg,worker,sexnaics,sexnaics_female_whl,NAICSP,SEX,ESR,,,,,,,C24030035,Females employed in wholesale trade industry,2012,2023,b,b
+person,bg,worker,sexnaics,sexnaics_female_ret,NAICSP,SEX,ESR,,,,,,,C24030036,Females employed in retail trade industry,2012,2023,b,b
+person,bg,worker,sexnaics,sexnaics_female_utl_trn,NAICSP,SEX,ESR,,,,,,,C24030037,"Females employed in transportation and warehousing, and utilities industry",2012,2023,b,b
+person,bg,worker,sexnaics,sexnaics_female_inf,NAICSP,SEX,ESR,,,,,,,C24030040,Females employed in information industry,2012,2023,b,b
+person,bg,worker,sexnaics,sexnaics_female_fin,NAICSP,SEX,ESR,,,,,,,C24030041,"Females employed in finance and insurance, and real estate and rental and leasing industry",2012,2023,b,b
+person,bg,worker,sexnaics,sexnaics_female_prf,NAICSP,SEX,ESR,,,,,,,C24030044,"Females employed in professional, scientific, and management, and administrative and waste management services industry",2012,2023,b,b
+person,bg,worker,sexnaics,sexnaics_female_edu_med_sca,NAICSP,SEX,ESR,,,,,,,C24030048,"Females employed in educational services, and health care and social assistance industry",2012,2023,b,b
+person,bg,worker,sexnaics,sexnaics_female_ent,NAICSP,SEX,ESR,,,,,,,C24030051,"Females employed in arts, entertainment, and recreation, and accommodation and food services industry",2012,2023,b,b
+person,bg,worker,sexnaics,sexnaics_female_srv,NAICSP,SEX,ESR,,,,,,,C24030054,Females employed in other services (except public administration) industry,2012,2023,b,b
+person,bg,worker,sexnaics,sexnaics_female_adm,NAICSP,SEX,ESR,,,,,,,C24030055,Females employed in public administration industry,2012,2023,b,b
+person,bg,worker,worked,male_hours_1.14,WKHP,SEX,,,,,,,,B23022018,"Male, worked 1-4 hours per week",2012,2023,,
+person,bg,worker,worked,male_hours_15.34,WKHP,SEX,,,,,,,,B23022011,"Male, worked 15-34 hours per week",2012,2023,,
+person,bg,worker,worked,male_hours_GE35,WKHP,SEX,,,,,,,,B23022004,"Male, worked 35 or more hours per week",2012,2023,,
+person,bg,worker,worked,female_hours_1.14,WKHP,SEX,,,,,,,,B23022042,"Female, worked 1-4 hours per week",2012,2023,,
+person,bg,worker,worked,female_hours_15.34,WKHP,SEX,,,,,,,,B23022035,"Female, worked 15-34 hours per week",2012,2023,,
+person,bg,worker,worked,female_hours_GE35,WKHP,SEX,,,,,,,,B23022028,"Female, worked 35 or more hours per week",2012,2023,,
+person,bg,student,grade,grade_preschl,SCHG,,,,,,,,,B14007003,Attending nursery or preschool,2012,2023,,
+person,bg,student,grade,grade_kind,SCHG,,,,,,,,,B14007004,Attending kindergarten,2012,2023,,
+person,bg,student,grade,grade_1st,SCHG,,,,,,,,,B14007005,Attending first grade,2012,2023,,
+person,bg,student,grade,grade_2nd,SCHG,,,,,,,,,B14007006,Attending second grade,2012,2023,,
+person,bg,student,grade,grade_3rd,SCHG,,,,,,,,,B14007007,Attending third grade,2012,2023,,
+person,bg,student,grade,grade_4th,SCHG,,,,,,,,,B14007008,Attending fourth grade,2012,2023,,
+person,bg,student,grade,grade_5th,SCHG,,,,,,,,,B14007009,Attending fifth grade,2012,2023,,
+person,bg,student,grade,grade_6th,SCHG,,,,,,,,,B14007010,Attending sixth grade,2012,2023,,
+person,bg,student,grade,grade_7th,SCHG,,,,,,,,,B14007011,Attending seventh grade,2012,2023,,
+person,bg,student,grade,grade_8th,SCHG,,,,,,,,,B14007012,Attending eigth grade,2012,2023,,
+person,bg,student,grade,grade_9th,SCHG,,,,,,,,,B14007013,Attending ninth grade,2012,2023,,
+person,bg,student,grade,grade_10th,SCHG,,,,,,,,,B14007014,Attending tenth grade,2012,2023,,
+person,bg,student,grade,grade_11th,SCHG,,,,,,,,,B14007015,Attending eleventh grade,2012,2023,,
+person,bg,student,grade,grade_12th,SCHG,,,,,,,,,B14007016,Attending twelfth grade,2012,2023,,
+person,bg,student,grade,grade_undergrad,SCHG,,,,,,,,,B14007017,Attending undergraduate years,2012,2023,,
+person,bg,student,grade,grade_grad,SCHG,,,,,,,,,B14007018,Attending graduate or professional school,2012,2023,,
+person,bg,student,school,sch_male_pre_public,SCH,SCHG,,,,,,,,B14002005,"Male, nursery or preschool, public",2012,2023,,
+person,bg,student,school,sch_male_pre_private,SCH,SCHG,,,,,,,,B14002006,"Male, nursery or preschool, private",2012,2023,,
+person,bg,student,school,sch_male_kind_public,SCH,SCHG,,,,,,,,B14002008,"Male, kindergarten, public",2012,2023,,
+person,bg,student,school,sch_male_kind_private,SCH,SCHG,,,,,,,,B14002009,"Male, kindergarten, private",2012,2023,,
+person,bg,student,school,sch_male_01.04_public,SCH,SCHG,,,,,,,,B14002011,"Male, 1st - 4th grade, public",2012,2023,,
+person,bg,student,school,sch_male_01.04_private,SCH,SCHG,,,,,,,,B14002012,"Male, 1st - 4th grade, private",2012,2023,,
+person,bg,student,school,sch_male_05.08_public,SCH,SCHG,,,,,,,,B14002014,"Male, 5th - 8th grade, public",2012,2023,,
+person,bg,student,school,sch_male_05.08_private,SCH,SCHG,,,,,,,,B14002015,"Male, 5th - 8th grade, private",2012,2023,,
+person,bg,student,school,sch_male_09.12_public,SCH,SCHG,,,,,,,,B14002017,"Male, 9th - 12th grade, public",2012,2023,,
+person,bg,student,school,sch_male_09.12_private,SCH,SCHG,,,,,,,,B14002018,"Male, 9th -12th, private",2012,2023,,
+person,bg,student,school,sch_male_undergrad_public,SCH,SCHG,,,,,,,,B14002020,"Male, undergraduate, public",2012,2023,,
+person,bg,student,school,sch_male_undergrad_private,SCH,SCHG,,,,,,,,B14002021,"Male, undergraduate, private",2012,2023,,
+person,bg,student,school,sch_male_grad.prof_public,SCH,SCHG,,,,,,,,B14002023,"Male, graduate/professional, public",2012,2023,,
+person,bg,student,school,sch_male_grad.prof_private,SCH,SCHG,,,,,,,,B14002024,"Male, graduate/professional, private",2012,2023,,
+person,bg,student,school,sch_female_pre_public,SCH,SCHG,,,,,,,,B14002029,"Female, nursery or preschool, public",2012,2023,,
+person,bg,student,school,sch_female_pre_private,SCH,SCHG,,,,,,,,B14002030,"Female, nursery or preschool, private",2012,2023,,
+person,bg,student,school,sch_female_kind_public,SCH,SCHG,,,,,,,,B14002032,"Female, kindergarten, public",2012,2023,,
+person,bg,student,school,sch_female_kind_private,SCH,SCHG,,,,,,,,B14002033,"Female, kindergarten, private",2012,2023,,
+person,bg,student,school,sch_female_01.04_public,SCH,SCHG,,,,,,,,B14002035,"Female, 1st - 4th grade, public",2012,2023,,
+person,bg,student,school,sch_female_01.04_private,SCH,SCHG,,,,,,,,B14002036,"Female, 1st - 4th grade, private",2012,2023,,
+person,bg,student,school,sch_female_05.08_public,SCH,SCHG,,,,,,,,B14002038,"Female, 5th - 8th grade, public",2012,2023,,
+person,bg,student,school,sch_female_05.08_private,SCH,SCHG,,,,,,,,B14002039,"Female, 5th - 8th grade, private",2012,2023,,
+person,bg,student,school,sch_female_09.12_public,SCH,SCHG,,,,,,,,B14002041,"Female, 9th - 12th grade, public",2012,2023,,
+person,bg,student,school,sch_female_09.12_private,SCH,SCHG,,,,,,,,B14002042,"Female, 9th -12th, private",2012,2023,,
+person,bg,student,school,sch_female_undergrad_public,SCH,SCHG,,,,,,,,B14002044,"Female, undergraduate, public",2012,2023,,
+person,bg,student,school,sch_female_undergrad_private,SCH,SCHG,,,,,,,,B14002045,"Female, undergraduate, private",2012,2023,,
+person,bg,student,school,sch_female_grad.prof_public,SCH,SCHG,,,,,,,,B14002047,"Female, graduate/professional, public",2012,2023,,
+person,bg,student,school,sch_female_grad.prof_private,SCH,SCHG,,,,,,,,B14002048,"Female, graduate/professional, private",2012,2023,,
+person,bg,mobility,commute,cmt_mins_L10,JWMNP,,,,,,,,,B08134002,Less than 10 minutes,2012,2023,,
+person,bg,mobility,commute,cmt_mins_10.14,JWMNP,,,,,,,,,B08134003,10 - 14 minutes,2012,2023,,
+person,bg,mobility,commute,cmt_mins_15.19,JWMNP,,,,,,,,,B08134004,15 - 19 minutes,2012,2023,,
+person,bg,mobility,commute,cmt_mins_20.24,JWMNP,,,,,,,,,B08134005,20 - 24 minutes,2012,2023,,
+person,bg,mobility,commute,cmt_mins_25.29,JWMNP,,,,,,,,,B08134006,25 - 29 minutes,2012,2023,,
+person,bg,mobility,commute,cmt_mins_30.34,JWMNP,,,,,,,,,B08134007,30 - 34 minutes,2012,2023,,
+person,bg,mobility,commute,cmt_mins_35.44,JWMNP,,,,,,,,,B08134008,35 - 44 minutes,2012,2023,,
+person,bg,mobility,commute,cmt_mins_45.59,JWMNP,,,,,,,,,B08134009,45 - 59 minutes,2012,2023,,
+person,bg,mobility,commute,cmt_mins_GE60,JWMNP,,,,,,,,,B08134010,60 or more minutes,2012,2023,,
+person,bg,mobility,travel,travel_car_truck_van,JWTRNS,,,,,,,,,B08301002,"Car, truck, or van",2019,2023,,
+person,bg,mobility,travel,travel_public_transportation,JWTRNS,,,,,,,,,B08301010,Public transportation,2019,2023,,
+person,bg,mobility,travel,travel_taxicab,JWTRNS,,,,,,,,,B08301016,Taxicab,2019,2023,,
+person,bg,mobility,travel,travel_motorcycle,JWTRNS,,,,,,,,,B08301017,Motorcycle,2019,2023,,
+person,bg,mobility,travel,travel_bicycle,JWTRNS,,,,,,,,,B08301018,Bicycle,2019,2023,,
+person,bg,mobility,travel,travel_walked,JWTRNS,,,,,,,,,B08301019,Walked,2019,2023,,
+person,bg,mobility,travel,travel_wfh,JWTRNS,,,,,,,,,B08301021,Worked from home,2019,2023,,
+person,bg,mobility,travel,travel_other,JWTRNS,,,,,,,,,B08301020,Other means,2019,2023,,
+person,bg,mobility,veh_occ,veh_occ_drove_alone,JWRIP,,,,,,,,,B08301003,Drove alone,2019,2023,,
+person,bg,mobility,veh_occ,veh_occ_carpooled,JWRIP,,,,,,,,,B08301004,Carpooled,2019,2023,,
+household,bg,mobility,tenure_vehicles,txv_own_no_vehicle,TEN,VEH,,,,,,,,B25044003,"Owner-occupied, no vehicle available",2012,2023,,
+household,bg,mobility,tenure_vehicles,txv_own_01_vehicle,TEN,VEH,,,,,,,,B25044004,"Owner-occupied, 1 vehicle available",2012,2023,,
+household,bg,mobility,tenure_vehicles,txv_own_02_vehicle,TEN,VEH,,,,,,,,B25044005,"Owner-occupied, 2 vehicles available",2012,2023,,
+household,bg,mobility,tenure_vehicles,txv_own_03_vehicle,TEN,VEH,,,,,,,,B25044006,"Owner-occupied, 3 vehicles available",2012,2023,,
+household,bg,mobility,tenure_vehicles,txv_own_04_vehicle,TEN,VEH,,,,,,,,B25044007,"Owner-occupied, 4 vehicles available",2012,2023,,
+household,bg,mobility,tenure_vehicles,txv_own_GE05_vehicle,TEN,VEH,,,,,,,,B25044008,"Owner-occupied, 5 or more vehicles available",2012,2023,,
+household,bg,mobility,tenure_vehicles,txv_rent_no_vehicle,TEN,VEH,,,,,,,,B25044010,"Renter-occupied, no vehicle available",2012,2023,,
+household,bg,mobility,tenure_vehicles,txv_rent_01_vehicle,TEN,VEH,,,,,,,,B25044011,"Renter-occupied, 1 vehicle available",2012,2023,,
+household,bg,mobility,tenure_vehicles,txv_rent_02_vehicle,TEN,VEH,,,,,,,,B25044012,"Renter-occupied, 2 vehicles available",2012,2023,,
+household,bg,mobility,tenure_vehicles,txv_rent_03_vehicle,TEN,VEH,,,,,,,,B25044013,"Renter-occupied, 3 vehicles available",2012,2023,,
+household,bg,mobility,tenure_vehicles,txv_rent_04_vehicle,TEN,VEH,,,,,,,,B25044014,"Renter-occupied, 4 vehicles available",2012,2023,,
+household,bg,mobility,tenure_vehicles,txv_rent_GE05_vehicle,TEN,VEH,,,,,,,,B25044015,"Renter-occupied, 5 or more vehicles available",2012,2023,,
+person,bg,demographic,sex_age,male_a05u,SEX,AGEP,,,,,,,,B01001003,"Male, Age Under 5 years",2012,2023,,
+person,bg,demographic,sex_age,male_a05_09,SEX,AGEP,,,,,,,,B01001004,"Male, Age 5-9 years",2012,2023,,
+person,bg,demographic,sex_age,male_a10_14,SEX,AGEP,,,,,,,,B01001005,"Male, Age 10-14 years",2012,2023,,
+person,bg,demographic,sex_age,male_a15_17,SEX,AGEP,,,,,,,,B01001006,"Male, Age 15-17 years",2012,2023,,
+person,bg,demographic,sex_age,male_a18_19,SEX,AGEP,,,,,,,,B01001007,"Male, Age 18-19 years",2012,2023,,
+person,bg,demographic,sex_age,male_a20,SEX,AGEP,,,,,,,,B01001008,"Male, Age 20 years",2012,2023,,
+person,bg,demographic,sex_age,male_a21,SEX,AGEP,,,,,,,,B01001009,"Male, Age 21 years",2012,2023,,
+person,bg,demographic,sex_age,male_a22_24,SEX,AGEP,,,,,,,,B01001010,"Male, Age 22-24 years",2012,2023,,
+person,bg,demographic,sex_age,male_a25_29,SEX,AGEP,,,,,,,,B01001011,"Male, Age 25-29 years",2012,2023,,
+person,bg,demographic,sex_age,male_a30_34,SEX,AGEP,,,,,,,,B01001012,"Male, Age 30-34 years",2012,2023,,
+person,bg,demographic,sex_age,male_a35_39,SEX,AGEP,,,,,,,,B01001013,"Male, Age 35-39 years",2012,2023,,
+person,bg,demographic,sex_age,male_a40_44,SEX,AGEP,,,,,,,,B01001014,"Male, Age 40-44 years",2012,2023,,
+person,bg,demographic,sex_age,male_a45_49,SEX,AGEP,,,,,,,,B01001015,"Male, Age 45-49 years",2012,2023,,
+person,bg,demographic,sex_age,male_a50_54,SEX,AGEP,,,,,,,,B01001016,"Male, Age 50-54 years",2012,2023,,
+person,bg,demographic,sex_age,male_a55_59,SEX,AGEP,,,,,,,,B01001017,"Male, Age 55-59 years",2012,2023,,
+person,bg,demographic,sex_age,male_a60_61,SEX,AGEP,,,,,,,,B01001018,"Male, Age 60-61 years",2012,2023,,
+person,bg,demographic,sex_age,male_a62_64,SEX,AGEP,,,,,,,,B01001019,"Male, Age 62-64 years",2012,2023,,
+person,bg,demographic,sex_age,male_a65_66,SEX,AGEP,,,,,,,,B01001020,"Male, Age 65-66 years",2012,2023,,
+person,bg,demographic,sex_age,male_a67_69,SEX,AGEP,,,,,,,,B01001021,"Male, Age 67-69 years",2012,2023,,
+person,bg,demographic,sex_age,male_a70_74,SEX,AGEP,,,,,,,,B01001022,"Male, Age 70-74 years",2012,2023,,
+person,bg,demographic,sex_age,male_a75_79,SEX,AGEP,,,,,,,,B01001023,"Male, Age 75-79 years",2012,2023,,
+person,bg,demographic,sex_age,male_a80_84,SEX,AGEP,,,,,,,,B01001024,"Male, Age 80-84 years",2012,2023,,
+person,bg,demographic,sex_age,male_a85o,SEX,AGEP,,,,,,,,B01001025,"Male,  85 years and over",2012,2023,,
+person,bg,demographic,sex_age,female_a05u,SEX,AGEP,,,,,,,,B01001027,"Female, Age Under 5 years",2012,2023,,
+person,bg,demographic,sex_age,female_a05_09,SEX,AGEP,,,,,,,,B01001028,"Female, Age 5-9 years",2012,2023,,
+person,bg,demographic,sex_age,female_a10_14,SEX,AGEP,,,,,,,,B01001029,"Female, Age 10-14 years",2012,2023,,
+person,bg,demographic,sex_age,female_a15_17,SEX,AGEP,,,,,,,,B01001030,"Female, Age 15-17 years",2012,2023,,
+person,bg,demographic,sex_age,female_a18_19,SEX,AGEP,,,,,,,,B01001031,"Female, Age 18-19 years",2012,2023,,
+person,bg,demographic,sex_age,female_a20,SEX,AGEP,,,,,,,,B01001032,"Female, Age 20 years",2012,2023,,
+person,bg,demographic,sex_age,female_a21,SEX,AGEP,,,,,,,,B01001033,"Female, Age 21 years",2012,2023,,
+person,bg,demographic,sex_age,female_a22_24,SEX,AGEP,,,,,,,,B01001034,"Female, Age 22-24 years",2012,2023,,
+person,bg,demographic,sex_age,female_a25_29,SEX,AGEP,,,,,,,,B01001035,"Female, Age 25-29 years",2012,2023,,
+person,bg,demographic,sex_age,female_a30_34,SEX,AGEP,,,,,,,,B01001036,"Female, Age 30-34 years",2012,2023,,
+person,bg,demographic,sex_age,female_a35_39,SEX,AGEP,,,,,,,,B01001037,"Female, Age 35-39 years",2012,2023,,
+person,bg,demographic,sex_age,female_a40_44,SEX,AGEP,,,,,,,,B01001038,"Female, Age 40-44 years",2012,2023,,
+person,bg,demographic,sex_age,female_a45_49,SEX,AGEP,,,,,,,,B01001039,"Female, Age 45-49 years",2012,2023,,
+person,bg,demographic,sex_age,female_a50_54,SEX,AGEP,,,,,,,,B01001040,"Female, Age 50-54 years",2012,2023,,
+person,bg,demographic,sex_age,female_a55_59,SEX,AGEP,,,,,,,,B01001041,"Female, Age 55-59 years",2012,2023,,
+person,bg,demographic,sex_age,female_a60_61,SEX,AGEP,,,,,,,,B01001042,"Female, Age 60-61 years",2012,2023,,
+person,bg,demographic,sex_age,female_a62_64,SEX,AGEP,,,,,,,,B01001043,"Female, Age 62-64 years",2012,2023,,
+person,bg,demographic,sex_age,female_a65_66,SEX,AGEP,,,,,,,,B01001044,"Female, Age 65-66 years",2012,2023,,
+person,bg,demographic,sex_age,female_a67_69,SEX,AGEP,,,,,,,,B01001045,"Female, Age 67-69 years",2012,2023,,
+person,bg,demographic,sex_age,female_a70_74,SEX,AGEP,,,,,,,,B01001046,"Female, Age 70-74 years",2012,2023,,
+person,bg,demographic,sex_age,female_a75_79,SEX,AGEP,,,,,,,,B01001047,"Female, Age 75-79 years",2012,2023,,
+person,bg,demographic,sex_age,female_a80_84,SEX,AGEP,,,,,,,,B01001048,"Female, Age 80-84 years",2012,2023,,
+person,bg,demographic,sex_age,female_a85o,SEX,AGEP,,,,,,,,B01001049,"Female,  85 years and over",2012,2023,,
+person,bg,demographic,age_simple,age_16_19,AGEP,,,,,,,,,B23027002,Age 16 - 19,2014,2023,,
+person,bg,demographic,age_simple,age_20_24,AGEP,,,,,,,,,B23027007,Age 20 - 24,2014,2023,,
+person,bg,demographic,age_simple,age_25_44,AGEP,,,,,,,,,B23027012,Age 25 - 44,2014,2023,,
+person,bg,demographic,age_simple,age_45_54,AGEP,,,,,,,,,B23027017,Age 45 - 54,2014,2023,,
+person,bg,demographic,age_simple,age_55_64,AGEP,,,,,,,,,B23027022,Age 55 - 64,2014,2023,,
+person,bg,demographic,age_simple,age_65_69,AGEP,,,,,,,,,B23027027,Age 65 - 69,2014,2023,,
+person,bg,demographic,age_simple,age_GE70,AGEP,,,,,,,,,B23027032,Age 70 and over,2014,2023,,
+household,bg,demographic,hhtype,hht_married,HHT,,,,,,,,,B11001003,Married couple families,2012,2023,,
+household,bg,demographic,hhtype,hht_male_no_spouse,HHT,,,,,,,,,B11001005,Male householders without spouse present,2012,2023,,
+household,bg,demographic,hhtype,hht_female_no_spouse,HHT,,,,,,,,,B11001006,Female householders without spouse present,2012,2023,,
+household,bg,demographic,hhtype,hht_alone,HHT,,,,,,,,,B11001008,Householders living alone,2012,2023,,
+household,bg,demographic,hhtype,hht_not_alone,HHT,,,,,,,,,B11001009,Householders living with nonfamily members,2012,2023,,
+household,bg,demographic,hhtype_hhsize,hht_fam_hhsize_2p,HHT,NP,,,,,,,,B11016003,"Family household, 2-person",2012,2023,,
+household,bg,demographic,hhtype_hhsize,hht_fam_hhsize_3p,HHT,NP,,,,,,,,B11016004,"Family household, 3-person",2012,2023,,
+household,bg,demographic,hhtype_hhsize,hht_fam_hhsize_4p,HHT,NP,,,,,,,,B11016005,"Family household, 4-person",2012,2023,,
+household,bg,demographic,hhtype_hhsize,hht_fam_hhsize_5p,HHT,NP,,,,,,,,B11016006,"Family household, 5-person",2012,2023,,
+household,bg,demographic,hhtype_hhsize,hht_fam_hhsize_6p,HHT,NP,,,,,,,,B11016007,"Family household, 6-person",2012,2023,,
+household,bg,demographic,hhtype_hhsize,hht_fam_hhsize_7pm,HHT,NP,,,,,,,,B11016008,"Family household, 7 people or more",2012,2023,,
+household,bg,demographic,hhtype_hhsize,hht_nonfam_hhsize_1p,HHT,NP,,,,,,,,B11016010,"Nonfamily household, 1-person",2012,2023,,
+household,bg,demographic,hhtype_hhsize,hht_nonfam_hhsize_2p,HHT,NP,,,,,,,,B11016011,"Nonfamily household, 2-person",2012,2023,,
+household,bg,demographic,hhtype_hhsize,hht_nonfam_hhsize_3p,HHT,NP,,,,,,,,B11016012,"Nonfamily household, 3-person",2012,2023,,
+household,bg,demographic,hhtype_hhsize,hht_nonfam_hhsize_4p,HHT,NP,,,,,,,,B11016013,"Nonfamily household, 4-person",2012,2023,,
+household,bg,demographic,hhtype_hhsize,hht_nonfam_hhsize_5p,HHT,NP,,,,,,,,B11016014,"Nonfamily household, 5-person",2012,2023,,
+household,bg,demographic,hhtype_hhsize,hht_nonfam_hhsize_6p,HHT,NP,,,,,,,,B11016015,"Nonfamily household, 6-person",2012,2023,,
+household,bg,demographic,hhtype_hhsize,hht_nonfam_hhsize_7pm,HHT,NP,,,,,,,,B11016016,"Nonfamily household, 7 people or more",2012,2023,,
+household,bg,demographic,minors,minors_yes,R18,,,,,,,,,B11005002,Households with one or more people under 18 years,2012,2023,,
+household,bg,demographic,minors,minors_no,R18,,,,,,,,,B11005011,Households with no people under 18 years,2012,2023,,
+household,bg,demographic,seniors,seniors_yes,R60,,,,,,,,,B11006002,Households with one or more people 60 years and over,2012,2023,,
+household,bg,demographic,seniors,seniors_no,R60,,,,,,,,,B11006009,Households with no people 60 years and over,2012,2023,,
+person,bg,social,race,race_white,RAC1P,,,,,,,,,B02001002,White,2012,2023,,
+person,bg,social,race,race_blk_af_amer,RAC1P,,,,,,,,,B02001003,Black or African American,2012,2023,,
+person,bg,social,race,race_native_amer,RAC1P,,,,,,,,,B02001004,American Indian and Alaska Native,2012,2023,,
+person,bg,social,race,race_asian,RAC1P,,,,,,,,,B02001005,Asian,2012,2023,,
+person,bg,social,race,race_pac_island,RAC1P,,,,,,,,,B02001006,Native Hawaiian and other Pacific Islander,2012,2023,,
+person,bg,social,race,race_other,RAC1P,,,,,,,,,B02001007,Other race,2012,2023,,
+person,bg,social,race,race_mult,RAC1P,,,,,,,,,B02001008,Two or more races,2012,2023,,
+person,bg,social,hsplat,hsplat_no,HISP,,,,,,,,,B03003002,Not Hispanic or Latino,2012,2023,,
+person,bg,social,hsplat,hsplat_yes,HISP,,,,,,,,,B03003003,Hispanic or Latino,2012,2023,,
+household,trt,social,language,language_english,HHL,,,,,,,,,C16002002,English only,2012,2023,,
+household,trt,social,language,language_spanish,HHL,,,,,,,,,C16002003,Spanish,2012,2023,,
+household,trt,social,language,language_oth_indo_euro,HHL,,,,,,,,,C16002006,Other Indo-European Languages,2012,2023,,
+household,trt,social,language,language_asian_pac_isl,HHL,,,,,,,,,C16002009,Asian and Pacific Island Languages,2012,2023,,
+household,trt,social,language,language_other,HHL,,,,,,,,,C16002012,Other languages,2012,2023,,
+person,trt,social,foreign_born,foreign_born,POBP,,,,,,,,,B06007033,Foreign born,2012,2023,,
+household,bg,economic,hhinc,hhinc_L10k,HINCP,,,,,,,,,B19001002,"Household income less than $10,000 annually",2012,2023,,
+household,bg,economic,hhinc,hhinc_10_15k,HINCP,,,,,,,,,B19001003,"Household income between $10,000 and $14,999 annually",2012,2023,,
+household,bg,economic,hhinc,hhinc_15_20k,HINCP,,,,,,,,,B19001004,"Household income between $15,000 and $19,999 annually",2012,2023,,
+household,bg,economic,hhinc,hhinc_20_25k,HINCP,,,,,,,,,B19001005,"Household income between $20,000 and $24,999 annually",2012,2023,,
+household,bg,economic,hhinc,hhinc_25_30k,HINCP,,,,,,,,,B19001006,"Household income between $25,000 and $29,999 annually",2012,2023,,
+household,bg,economic,hhinc,hhinc_30_35k,HINCP,,,,,,,,,B19001007,"Household income between $30,000 and $34,999 annually",2012,2023,,
+household,bg,economic,hhinc,hhinc_35_40k,HINCP,,,,,,,,,B19001008,"Household income between $35,000 and $39,999 annually",2012,2023,,
+household,bg,economic,hhinc,hhinc_40_45k,HINCP,,,,,,,,,B19001009,"Household income between $40,000 and $44,999 annually",2012,2023,,
+household,bg,economic,hhinc,hhinc_45_50k,HINCP,,,,,,,,,B19001010,"Household income between $45,000 and $49,999 annually",2012,2023,,
+household,bg,economic,hhinc,hhinc_50_60k,HINCP,,,,,,,,,B19001011,"Household income between $50,000 and $59,999 annually",2012,2023,,
+household,bg,economic,hhinc,hhinc_60_75k,HINCP,,,,,,,,,B19001012,"Household income between $60,000 and $74,999 annually",2012,2023,,
+household,bg,economic,hhinc,hhinc_75_100k,HINCP,,,,,,,,,B19001013,"Household income between $75,000 and $99,999 annually",2012,2023,,
+household,bg,economic,hhinc,hhinc_100_125k,HINCP,,,,,,,,,B19001014,"Household income between $100,000 and $124,999 annually",2012,2023,,
+household,bg,economic,hhinc,hhinc_125_150k,HINCP,,,,,,,,,B19001015,"Household income between $125,000 and $149,999 annually",2012,2023,,
+household,bg,economic,hhinc,hhinc_150_200k,HINCP,,,,,,,,,B19001016,"Household income between $150,000 and $199,999 annually",2012,2023,,
+household,bg,economic,hhinc,hhinc_GE200k,HINCP,,,,,,,,,B19001017,"Household income $200,000 or more annually",2012,2023,,
+person,bg,economic,ipr,ipr_L050,POVPIP,,,,,,,,,C17002002,Income to Poverty Ratio less than 0.5,2012,2023,,
+person,bg,economic,ipr,ipr_050_099,POVPIP,,,,,,,,,C17002003,Income to Poverty Ratio 0.5 - 0.99,2012,2023,,
+person,bg,economic,ipr,ipr_100_124,POVPIP,,,,,,,,,C17002004,Income to Poverty Ratio 1.0 - 1.24,2012,2023,,
+person,bg,economic,ipr,ipr_125_149,POVPIP,,,,,,,,,C17002005,Income to Poverty Ratio 1.25 - 1.49,2012,2023,,
+person,bg,economic,ipr,ipr_150_184,POVPIP,,,,,,,,,C17002006,Income to Poverty Ratio 1.5 - 1.84,2012,2023,,
+person,bg,economic,ipr,ipr_185_199,POVPIP,,,,,,,,,C17002007,Income to Poverty Ratio 1.85 - 1.99,2012,2023,,
+person,bg,economic,ipr,ipr_GE200,POVPIP,,,,,,,,,C17002008,Income to Poverty Ratio greater than or equal to 2.00,2012,2023,,
+person,bg,economic,poverty,poverty_yes,POVPIP,,,,,,,,,B17021002,Income in the past 12 months below poverty level,2012,2023,,
+person,bg,economic,poverty,poverty_no,POVPIP,,,,,,,,,B17021019,Income in the past 12 months at or above poverty level,2012,2023,,
+household,bg,housing,tenure,tenure_own,TEN,,,,,,,,,B25003002,Owned housing units,2012,2023,,
+household,bg,housing,tenure,tenure_rent,TEN,,,,,,,,,B25003003,Rented housing units,2012,2023,,
+household,bg,housing,units,dwg_single_fam_detach,BLD,,,,,,,,,B25024002,Single unit detached housing units,2012,2023,,
+household,bg,housing,units,dwg_single_fam_attach,BLD,,,,,,,,,B25024003,Single unit attached housing units,2012,2023,,
+household,bg,housing,units,dwg_2_unit,BLD,,,,,,,,,B25024004,Housing units with 2 units,2012,2023,,
+household,bg,housing,units,dwg_3_4_unit,BLD,,,,,,,,,B25024005,Housing units with 3 or 4 units,2012,2023,,
+household,bg,housing,units,dwg_5_9_unit,BLD,,,,,,,,,B25024006,Housing units with 5 to 9 units,2012,2023,,
+household,bg,housing,units,dwg_10_19_unit,BLD,,,,,,,,,B25024007,Housing units with 10 to 19 units,2012,2023,,
+household,bg,housing,units,dwg_20_49_unit,BLD,,,,,,,,,B25024008,Housing units with 20 to 49 units,2012,2023,,
+household,bg,housing,units,dwg_GE50_unit,BLD,,,,,,,,,B25024009,Housing units with 50 or more units,2012,2023,,
+household,bg,housing,units,dwg_mob_home,BLD,,,,,,,,,B25024010,Mobile home housing units,2012,2023,,
+household,bg,housing,units,dwg_other,BLD,,,,,,,,,B25024011,"Boat, RV, van, etc.",2012,2023,,
+household,bg,housing,year_built,year_built_10_13,YBL,,,,,,,,,B25034002,Housing units built 2010 or later,2012,2014,,
+household,bg,housing,year_built,year_built_00_09,YBL,,,,,,,,,B25034003,Housing units built 2000 to 2009,2012,2014,,
+household,bg,housing,year_built,year_built_90_99,YBL,,,,,,,,,B25034004,Housing units built 1990 to 1999,2012,2014,,
+household,bg,housing,year_built,year_built_80_89,YBL,,,,,,,,,B25034005,Housing units built 1980 to 1989,2012,2014,,
+household,bg,housing,year_built,year_built_70_79,YBL,,,,,,,,,B25034006,Housing units built 1970 to 1979,2012,2014,,
+household,bg,housing,year_built,year_built_60_69,YBL,,,,,,,,,B25034007,Housing units built 1960 to 1969,2012,2014,,
+household,bg,housing,year_built,year_built_50_59,YBL,,,,,,,,,B25034008,Housing units built 1950 to 1959,2012,2014,,
+household,bg,housing,year_built,year_built_40_49,YBL,,,,,,,,,B25034009,Housing units built 1940 to 1949,2012,2014,,
+household,bg,housing,year_built,year_built_L1939,YBL,,,,,,,,,B25034010,Housing units built 1939 or earlier,2012,2014,,
+household,bg,housing,year_built,year_built_GE2014,YBL,,,,,,,,,B25034002,Housing units built 2014 or later,2015,2020,,
+household,bg,housing,year_built,year_built_10_13,YBL,,,,,,,,,B25034003,Housing units built 2010 to 2013,2015,2020,,
+household,bg,housing,year_built,year_built_00_09,YBL,,,,,,,,,B25034004,Housing units built 2000 to 2009,2015,2020,,
+household,bg,housing,year_built,year_built_90_99,YBL,,,,,,,,,B25034005,Housing units built 1990 to 1999,2015,2020,,
+household,bg,housing,year_built,year_built_80_89,YBL,,,,,,,,,B25034006,Housing units built 1980 to 1989,2015,2020,,
+household,bg,housing,year_built,year_built_70_79,YBL,,,,,,,,,B25034007,Housing units built 1970 to 1979,2015,2020,,
+household,bg,housing,year_built,year_built_60_69,YBL,,,,,,,,,B25034008,Housing units built 1960 to 1969,2015,2020,,
+household,bg,housing,year_built,year_built_50_59,YBL,,,,,,,,,B25034009,Housing units built 1950 to 1959,2015,2020,,
+household,bg,housing,year_built,year_built_40_49,YBL,,,,,,,,,B25034010,Housing units built 1940 to 1949,2015,2020,,
+household,bg,housing,year_built,year_built_L1939,YBL,,,,,,,,,B25034011,Housing units built 1939 or earlier,2015,2020,,
+household,bg,housing,year_built,year_built_GE2020,YRBLT,,,,,,,,,B25034002,Housing units built 2020 or later,2022,2023,,
+household,bg,housing,year_built,year_built_10_19,YRBLT,,,,,,,,,B25034003,Housing units built 2010 - 2019,2022,2023,,
+household,bg,housing,year_built,year_built_00_09,YRBLT,,,,,,,,,B25034004,Housing units built 2000 to 2009,2022,2023,,
+household,bg,housing,year_built,year_built_90_99,YRBLT,,,,,,,,,B25034005,Housing units built 1990 to 1999,2022,2023,,
+household,bg,housing,year_built,year_built_80_89,YRBLT,,,,,,,,,B25034006,Housing units built 1980 to 1989,2022,2023,,
+household,bg,housing,year_built,year_built_70_79,YRBLT,,,,,,,,,B25034007,Housing units built 1970 to 1979,2022,2023,,
+household,bg,housing,year_built,year_built_60_69,YRBLT,,,,,,,,,B25034008,Housing units built 1960 to 1969,2022,2023,,
+household,bg,housing,year_built,year_built_50_59,YRBLT,,,,,,,,,B25034009,Housing units built 1950 to 1959,2022,2023,,
+household,bg,housing,year_built,year_built_40_49,YRBLT,,,,,,,,,B25034010,Housing units built 1940 to 1949,2022,2023,,
+household,bg,housing,year_built,year_built_L1939,YRBLT,,,,,,,,,B25034011,Housing units built 1939 or earlier,2022,2023,,
+person,bg,social,veteran,vet,VPS,MIL,AGEP,,,,,,,B21001002,Veteran,2012,2023,,
+person,bg,social,veteran,nonvet,VPS,MIL,AGEP,,,,,,,B21001003,Nonveteran,2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_male_agr_ffh,NAICSP,SEX,ESR,,,,,,,C24030004,"Males employed in agriculture, forestry, fishing and hunting industry",2012,2023,,b
+person,bg,worker_supp,sexnaics_det,sexnaics_det_male_ext,NAICSP,SEX,ESR,,,,,,,C24030005,"Males employed in mining, quarrying, and oil and gas extraction industry",2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_male_con,NAICSP,SEX,ESR,,,,,,,C24030006,Males employed in construction industry,2012,2023,b,b
+person,bg,worker_supp,sexnaics_det,sexnaics_det_male_mfg,NAICSP,SEX,ESR,,,,,,,C24030007,Males employed in manufacturing industry,2012,2023,b,b
+person,bg,worker_supp,sexnaics_det,sexnaics_det_male_whl,NAICSP,SEX,ESR,,,,,,,C24030008,Males employed in wholesale trade industry,2012,2023,b,b
+person,bg,worker_supp,sexnaics_det,sexnaics_det_male_ret,NAICSP,SEX,ESR,,,,,,,C24030009,Males employed in retail trade industry,2012,2023,b,b
+person,bg,worker_supp,sexnaics_det,sexnaics_det_male_trn_whs,NAICSP,SEX,ESR,,,,,,,C24030011,Males employed in transportation and warehousing industry,2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_male_utl,NAICSP,SEX,ESR,,,,,,,C24030012,Males employed in utilities industry,2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_male_inf,NAICSP,SEX,ESR,,,,,,,C24030013,Males employed in information industry,2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_male_fin_ins,NAICSP,SEX,ESR,,,,,,,C24030015,Males employed in finance and insurance industry,2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_male_rrl,NAICSP,SEX,ESR,,,,,,,C24030016,"Males employed in real estate, rental, and leasing industry",2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_male_prf,NAICSP,SEX,ESR,,,,,,,C24030018,"Males employed in professional, scientific, and technical services industry",2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_male_mgt,NAICSP,SEX,ESR,,,,,,,C24030019,Males employed in management of companies and enterprises industry,2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_male_adm_wmr,NAICSP,SEX,ESR,,,,,,,C24030020,Males employed in administrative and support and waste management and remediation services industry,2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_male_edu,NAICSP,SEX,ESR,,,,,,,C24030022,Males employed in educational services industry,2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_male_med_sca,NAICSP,SEX,ESR,,,,,,,C24030023,Males employed in health care and social assistance industry,2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_male_ent,NAICSP,SEX,ESR,,,,,,,C24030025,"Males employed in arts, entertainment, and recreation industry",2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_male_afs,NAICSP,SEX,ESR,,,,,,,C24030026,Males employed in accomodation and food services industry,2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_male_srv,NAICSP,SEX,ESR,,,,,,,C24030027,Males employed in other services (except public administration) industry,2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_male_pad,NAICSP,SEX,ESR,,,,,,,C24030028,Males employed in public administration industry,2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_female_agr_ffh,NAICSP,SEX,ESR,,,,,,,C24030031,"Females employed in agriculture, forestry, fishing and hunting industry",2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_female_ext,NAICSP,SEX,ESR,,,,,,,C24030032,"Females employed in mining, quarrying, and oil and gas extraction industry",2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_female_con,NAICSP,SEX,ESR,,,,,,,C24030033,Females employed in construction industry,2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_female_mfg,NAICSP,SEX,ESR,,,,,,,C24030034,Females employed in manufacturing industry,2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_female_whl,NAICSP,SEX,ESR,,,,,,,C24030035,Females employed in wholesale trade industry,2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_female_ret,NAICSP,SEX,ESR,,,,,,,C24030036,Females employed in retail trade industry,2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_female_trn_whs,NAICSP,SEX,ESR,,,,,,,C24030038,Females employed in transportation and warehousing industry,2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_female_utl,NAICSP,SEX,ESR,,,,,,,C24030039,Females employed in utilities industry,2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_female_inf,NAICSP,SEX,ESR,,,,,,,C24030040,Females employed in information industry,2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_female_fin_ins,NAICSP,SEX,ESR,,,,,,,C24030042,Females employed in finance and insurance industry,2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_female_rrl,NAICSP,SEX,ESR,,,,,,,C24030043,"Females employed in real estate, rental, and leasing industry",2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_female_prf,NAICSP,SEX,ESR,,,,,,,C24030045,"Females employed in professional, scientific, and technical services industry",2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_female_mgt,NAICSP,SEX,ESR,,,,,,,C24030046,Females employed in management of companies and enterprises industry,2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_female_adm_wmr,NAICSP,SEX,ESR,,,,,,,C24030047,Females employed in administrative and support and waste management and remediation services industry,2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_female_edu,NAICSP,SEX,ESR,,,,,,,C24030049,Females employed in educational services industry,2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_female_med_sca,NAICSP,SEX,ESR,,,,,,,C24030050,Females employed in health care and social assistance industry,2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_female_ent,NAICSP,SEX,ESR,,,,,,,C24030052,"Females employed in arts, entertainment, and recreation industry",2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_female_afs,NAICSP,SEX,ESR,,,,,,,C24030053,Females employed in accomodation and food services industry,2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_female_srv,NAICSP,SEX,ESR,,,,,,,C24030054,Females employed in other services (except public administration) industry,2012,2023,,
+person,bg,worker_supp,sexnaics_det,sexnaics_det_female_pad,NAICSP,SEX,ESR,,,,,,,C24030055,Females employed in public administration industry,2012,2023,,
+household,bg,housing,hhf,hhf_utility_gas,HFL,,,,,,,,,B25040002,House heating fuel Utility Gas,2012,2023,,
+household,bg,housing,hhf,hhf_bottled_tank_LP,HFL,,,,,,,,,B25040003,"House heating fuel Bottled, tank, or LP gas",2012,2023,,
+household,bg,housing,hhf,hhf_electricity,HFL,,,,,,,,,B25040004,House heating fuel Electricity,2012,2023,,
+household,bg,housing,hhf,hhf_oil_kerosene_etc,HFL,,,,,,,,,B25040005,"House heating fuel Fuel Oil, Kerosene, Etc.",2012,2023,,
+household,bg,housing,hhf,hhf_coal_coke,HFL,,,,,,,,,B25040006,House heating fuel Coal Or Coke,2012,2023,,
+household,bg,housing,hhf,hhf_wood,HFL,,,,,,,,,B25040007,House heating fuel Wood,2012,2023,,
+household,bg,housing,hhf,hhf_solar,HFL,,,,,,,,,B25040008,House heating fuel Solar Energy,2012,2023,,
+household,bg,housing,hhf,hhf_other,HFL,,,,,,,,,B25040009,House heating fuel Other Fuel,2012,2023,,
+household,bg,housing,hhf,hhf_no_fuel,HFL,,,,,,,,,B25040010,House heating fuel No Fuel Used,2012,2023,,
+person,bg,social,edu_attainment,schl_male_noschool,SCHL,AGEP,,,,,,,,B15002003,Male 25+ no schooling completed,2012,2023,,
+person,bg,social,edu_attainment,schl_male_nurseryto4thgrade,SCHL,AGEP,,,,,,,,B15002004,Male 25+ nuersery to 4th grade completed,2012,2023,,
+person,bg,social,edu_attainment,schl_male_5thand6th,SCHL,AGEP,,,,,,,,B15002005,Male 25+ 5th and 6th grade completed,2012,2023,,
+person,bg,social,edu_attainment,schl_male_7thand8th,SCHL,AGEP,,,,,,,,B15002006,Male 25+ 7th and 8th grade completed,2012,2023,,
+person,bg,social,edu_attainment,schl_male_9th,SCHL,AGEP,,,,,,,,B15002007,Male 25+ 9th grade completed,2012,2023,,
+person,bg,social,edu_attainment,schl_male_10th,SCHL,AGEP,,,,,,,,B15002008,Male 25+ 10th grade completed,2012,2023,,
+person,bg,social,edu_attainment,schl_male_11th,SCHL,AGEP,,,,,,,,B15002009,Male 25+ 11th grade completed,2012,2023,,
+person,bg,social,edu_attainment,schl_male_12th,SCHL,AGEP,,,,,,,,B15002010,Male 25+ 12th grade no diploma,2012,2023,,
+person,bg,social,edu_attainment,schl_male_highschoolgrad,SCHL,AGEP,,,,,,,,B15002011,Male 25+ high school graduate (includes equivalency),2012,2023,,
+person,bg,social,edu_attainment,schl_male_less1yearcollege,SCHL,AGEP,,,,,,,,B15002012,"Male 25+ some college, less than 1 year",2012,2023,,
+person,bg,social,edu_attainment,schl_male_collegenodeg,SCHL,AGEP,,,,,,,,B15002013,"Male 25+ some college, 1 or more years, no degree",2012,2023,,
+person,bg,social,edu_attainment,schl_male_assoc,SCHL,AGEP,,,,,,,,B15002014,Male 25+ associates degree,2012,2023,,
+person,bg,social,edu_attainment,schl_male_bach,SCHL,AGEP,,,,,,,,B15002015,Male 25+ bachelors degree,2012,2023,,
+person,bg,social,edu_attainment,schl_male_masters,SCHL,AGEP,,,,,,,,B15002016,Male 25+ masters degree,2012,2023,,
+person,bg,social,edu_attainment,schl_male_prof,SCHL,AGEP,,,,,,,,B15002017,Male 25+ professional school degree,2012,2023,,
+person,bg,social,edu_attainment,schl_male_doc,SCHL,AGEP,,,,,,,,B15002018,Male 25+ doctorate degree,2012,2023,,
+person,bg,social,edu_attainment,schl_female_noschool,SCHL,AGEP,,,,,,,,B15002020,Female 25+ no schooling completed,2012,2023,,
+person,bg,social,edu_attainment,schl_female_nurseryto4thgrade,SCHL,AGEP,,,,,,,,B15002021,Female 25+ nuersery to 4th grade completed,2012,2023,,
+person,bg,social,edu_attainment,schl_female_5thand6th,SCHL,AGEP,,,,,,,,B15002022,Female 25+ 5th and 6th grade completed,2012,2023,,
+person,bg,social,edu_attainment,schl_female_7thand8th,SCHL,AGEP,,,,,,,,B15002023,Female 25+ 7th and 8th grade completed,2012,2023,,
+person,bg,social,edu_attainment,schl_female_9th,SCHL,AGEP,,,,,,,,B15002024,Female 25+ 9th grade completed,2012,2023,,
+person,bg,social,edu_attainment,schl_female_10th,SCHL,AGEP,,,,,,,,B15002025,Female 25+ 10th grade completed,2012,2023,,
+person,bg,social,edu_attainment,schl_female_11th,SCHL,AGEP,,,,,,,,B15002026,Female 25+ 11th grade completed,2012,2023,,
+person,bg,social,edu_attainment,schl_female_12th,SCHL,AGEP,,,,,,,,B15002027,Female 25+ 12th grade no diploma,2012,2023,,
+person,bg,social,edu_attainment,schl_female_highschoolgrad,SCHL,AGEP,,,,,,,,B15002028,Female 25+ high school graduate (includes equivalency),2012,2023,,
+person,bg,social,edu_attainment,schl_female_less1yearcollege,SCHL,AGEP,,,,,,,,B15002029,"Female 25+ some college, less than 1 year",2012,2023,,
+person,bg,social,edu_attainment,schl_female_collegenodeg,SCHL,AGEP,,,,,,,,B15002030,"Female 25+ some college, 1 or more years, no degree",2012,2023,,
+person,bg,social,edu_attainment,schl_female_assoc,SCHL,AGEP,,,,,,,,B15002031,Female 25+ associates degree,2012,2023,,
+person,bg,social,edu_attainment,schl_female_bach,SCHL,AGEP,,,,,,,,B15002032,Female 25+ bachelors degree,2012,2023,,
+person,bg,social,edu_attainment,schl_female_masters,SCHL,AGEP,,,,,,,,B15002033,Female 25+ masters degree,2012,2023,,
+person,bg,social,edu_attainment,schl_female_prof,SCHL,AGEP,,,,,,,,B15002034,Female 25+ professional school degree,2012,2023,,
+person,bg,social,edu_attainment,schl_female_doc,SCHL,AGEP,,,,,,,,B15002035,Female 25+ doctorate degree,2012,2023,,
+household,bg,housing,owncost,owncost_mortgage_less10,TEN,OCPIP,,,,,,,,B25091003,"Housing units with a mortgage, less than 10 percent",2012,2023,,
+household,bg,housing,owncost,owncost_mortgage_10to14.9,TEN,OCPIP,,,,,,,,B25091004,"Housing units with a mortgage, 10 to 14.9 percent",2012,2023,,
+household,bg,housing,owncost,owncost_mortgage_15to19.9,TEN,OCPIP,,,,,,,,B25091005,"Housing units with a mortgage, 15 to 19.9 percent",2012,2023,,
+household,bg,housing,owncost,owncost_mortgage_20to24.9,TEN,OCPIP,,,,,,,,B25091006,"Housing units with a mortgage, 20 to 24.9 percent",2012,2023,,
+household,bg,housing,owncost,owncost_mortgage_25to29.9,TEN,OCPIP,,,,,,,,B25091007,"Housing units with a mortgage, 25 to 29.9 percent",2012,2023,,
+household,bg,housing,owncost,owncost_mortgage_30to34.9,TEN,OCPIP,,,,,,,,B25091008,"Housing units with a mortgage, 30 to 34.9 percent",2012,2023,,
+household,bg,housing,owncost,owncost_mortgage_35to39.9,TEN,OCPIP,,,,,,,,B25091009,"Housing units with a mortgage, 35 to 39.9 percent",2012,2023,,
+household,bg,housing,owncost,owncost_mortgage_40to49.9,TEN,OCPIP,,,,,,,,B25091010,"Housing units with a mortgage, 40 to 49.9 percent",2012,2023,,
+household,bg,housing,owncost,owncost_mortgage_more50,TEN,OCPIP,,,,,,,,B25091011,"Housing units with a mortgage, 50 percent or more",2012,2023,,
+household,bg,housing,owncost,owncost_nomortgage_less10,TEN,OCPIP,,,,,,,,B25091014,"Housing units without a mortgage, less than 10 percent",2012,2023,,
+household,bg,housing,owncost,owncost_nomortgage_10to14.9,TEN,OCPIP,,,,,,,,B25091015,"Housing units without a mortgage, 10 to 14.9 percent",2012,2023,,
+household,bg,housing,owncost,owncost_nomortgage_15to19.9,TEN,OCPIP,,,,,,,,B25091016,"Housing units without a mortgage, 15 to 19.9 percent",2012,2023,,
+household,bg,housing,owncost,owncost_nomortgage_20to24.9,TEN,OCPIP,,,,,,,,B25091017,"Housing units without a mortgage, 20 to 24.9 percent",2012,2023,,
+household,bg,housing,owncost,owncost_nomortgage_25to29.9,TEN,OCPIP,,,,,,,,B25091018,"Housing units without a mortgage, 25 to 29.9 percent",2012,2023,,
+household,bg,housing,owncost,owncost_nomortgage_30to34.9,TEN,OCPIP,,,,,,,,B25091019,"Housing units without a mortgage, 30 to 34.9 percent",2012,2023,,
+household,bg,housing,owncost,owncost_nomortgage_35to39.9,TEN,OCPIP,,,,,,,,B25091020,"Housing units without a mortgage, 35 to 39.9 percent",2012,2023,,
+household,bg,housing,owncost,owncost_nomortgage_40to49.9,TEN,OCPIP,,,,,,,,B25091021,"Housing units without a mortgage, 40 to 49.9 percent",2012,2023,,
+household,bg,housing,owncost,owncost_nomortgage_more50,TEN,OCPIP,,,,,,,,B25091022,"Housing units without a mortgage, 50 percent or more",2012,2023,,
+household,bg,housing,rentcost,rentcost_less10,GRPIP,,,,,,,,,B25070002,"Gross Rent as a percent of household income in the past 12 months, less 10",2012,2023,,
+household,bg,housing,rentcost,rentcost_10to14.9,GRPIP,,,,,,,,,B25070003,"Gross Rent as a percent of household income in the past 12 months, 10 to 14.9",2012,2023,,
+household,bg,housing,rentcost,rentcost_15to19.9,GRPIP,,,,,,,,,B25070004,"Gross Rent as a percent of household income in the past 12 months, 15 to 19.9",2012,2023,,
+household,bg,housing,rentcost,rentcost_20to24.9,GRPIP,,,,,,,,,B25070005,"Gross Rent as a percent of household income in the past 12 months, 20 to 24.9",2012,2023,,
+household,bg,housing,rentcost,rentcost_25to29.9,GRPIP,,,,,,,,,B25070006,"Gross Rent as a percent of household income in the past 12 months, 25 to 29.9",2012,2023,,
+household,bg,housing,rentcost,rentcost_30to34.9,GRPIP,,,,,,,,,B25070007,"Gross Rent as a percent of household income in the past 12 months, 30 to 34.9",2012,2023,,
+household,bg,housing,rentcost,rentcost_35to39.9,GRPIP,,,,,,,,,B25070008,"Gross Rent as a percent of household income in the past 12 months, 35 to 39.9",2012,2023,,
+household,bg,housing,rentcost,rentcost_40to49.9,GRPIP,,,,,,,,,B25070009,"Gross Rent as a percent of household income in the past 12 months, 40 to 49.9",2012,2023,,
+household,bg,housing,rentcost,rentcost_more50,GRPIP,,,,,,,,,B25070010,"Gross Rent as a percent of household income in the past 12 months, more than 50",2012,2023,,
+person,bg,health,health_ins,hicov_aL19_employer_only,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010004,"Age less than 19, employer-based health insurance only",2012,2023,,
+person,bg,health,health_ins,hicov_aL19_dpch_only,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010005,"Age less than 19, direct-purchase health insurance only",2012,2023,,
+person,bg,health,health_ins,hicov_aL19_medicare_only,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010006,"Age less than 19, Medicare coverage only",2012,2023,,
+person,bg,health,health_ins,hicov_aL19_mcdmeans_only,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010007,"Age less than 19, Medicaid/means-tested public coverage only",2012,2023,,
+person,bg,health,health_ins,hicov_aL19_trimil_only,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010008,"Age less than 19, TRICARE/military health coverage only",2012,2023,,
+person,bg,health,health_ins,hicov_aL19_va_only,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010009,"Age less than 19, VA Health Care only",2012,2023,,
+person,bg,health,health_ins,hicov_aL19_employer_dpch,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010011,"Age less than 19, employer-based and direct-purchase coverage",2012,2023,,
+person,bg,health,health_ins,hicov_aL19_employer_medicare,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010012,"Age less than 19, employer-based and Medicare coverage",2012,2023,,
+person,bg,health,health_ins,hicov_aL19_medicare_mcdmeans,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010013,"Age less than 19, Medicare and Medicaid/means-tested public coverage",2012,2023,,
+person,bg,health,health_ins,hicov_aL19_none,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010017,"Age less than 19, no health insurance coverage",2012,2023,,
+person,bg,health,health_ins,hicov_a19to34_employer_only,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010020,"Age 19 to 34, employer-based health insurance only",2012,2023,,
+person,bg,health,health_ins,hicov_a19to34_dpch_only,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010021,"Age 19 to 34, direct-purchase health insurance only",2012,2023,,
+person,bg,health,health_ins,hicov_a19to34_medicare_only,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010022,"Age 19 to 34, Medicare coverage only",2012,2023,,
+person,bg,health,health_ins,hicov_a19to34_mcdmeans_only,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010023,"Age 19 to 34, Medicaid/means-tested public coverage only",2012,2023,,
+person,bg,health,health_ins,hicov_a19to34_trimil_only,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010024,"Age 19 to 34, TRICARE/military health coverage only",2012,2023,,
+person,bg,health,health_ins,hicov_a19to34_va_only,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010025,"Age 19 to 34, VA Health Care only",2012,2023,,
+person,bg,health,health_ins,hicov_a19to34_employer_dpch,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010027,"Age 19 to 34, employer-based and direct-purchase coverage",2012,2023,,
+person,bg,health,health_ins,hicov_a19to34_employer_medicare,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010028,"Age 19 to 34, employer-based and Medicare coverage",2012,2023,,
+person,bg,health,health_ins,hicov_a19to34_medicare_mcdmeans,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010029,"Age 19 to 34, Medicare and Medicaid/means-tested public coverage",2012,2023,,
+person,bg,health,health_ins,hicov_a19to34_none,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010033,"Age 19 to 34, no health insurance coverage",2012,2023,,
+person,bg,health,health_ins,hicov_a35to64_employer_only,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010036,"Age 35 to 64, employer-based health insurance only",2012,2023,,
+person,bg,health,health_ins,hicov_a35to64_dpch_only,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010037,"Age 35 to 64, direct-purchase health insurance only",2012,2023,,
+person,bg,health,health_ins,hicov_a35to64_medicare_only,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010038,"Age 35 to 64, Medicare coverage only",2012,2023,,
+person,bg,health,health_ins,hicov_a35to64_mcdmeans_only,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010039,"Age 35 to 64, Medicaid/means-tested public coverage only",2012,2023,,
+person,bg,health,health_ins,hicov_a35to64_trimil_only,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010040,"Age 35 to 64, TRICARE/military health coverage only",2012,2023,,
+person,bg,health,health_ins,hicov_a35to64_va_only,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010041,"Age 35 to 64, VA Health Care only",2012,2023,,
+person,bg,health,health_ins,hicov_a35to64_employer_dpch,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010043,"Age 35 to 64, employer-based and direct-purchase coverage",2012,2023,,
+person,bg,health,health_ins,hicov_a35to64_employer_medicare,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010044,"Age 35 to 64, employer-based and Medicare coverage",2012,2023,,
+person,bg,health,health_ins,hicov_a35to64_dpch_medicare,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010045,"Age 35 to 64, direct-purchase and Medicare coverage",2012,2023,,
+person,bg,health,health_ins,hicov_a35to64_medicare_mcdmeans,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010046,"Age 35 to 64, Medicare and Medicaid/means-tested public coverage",2012,2023,,
+person,bg,health,health_ins,hicov_a35to64_none,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010050,"Age 35 to 64, no health insurance coverage",2012,2023,,
+person,bg,health,health_ins,hicov_aGE65_employer_only,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010053,"Age 65 years and over, employer-based health insurance only",2012,2023,,
+person,bg,health,health_ins,hicov_aGE65_dpch_only,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010054,"Age 65 years and over, direct-purchase health insurance only",2012,2023,,
+person,bg,health,health_ins,hicov_aGE65_medicare_only,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010055,"Age 65 years and over, Medicare coverage only",2012,2023,,
+person,bg,health,health_ins,hicov_aGE65_trimil_only,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010056,"Age 65 years and over, TRICARE/military health coverage only",2012,2023,,
+person,bg,health,health_ins,hicov_aGE65_va_only,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010057,"Age 65 years and over, VA Health Care only",2012,2023,,
+person,bg,health,health_ins,hicov_aGE65_employer_dpch,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010059,"Age 65 years and over, employer-based and direct-purchase coverage",2012,2023,,
+person,bg,health,health_ins,hicov_aGE65_employer_medicare,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010060,"Age 65 years and over, employer-based and Medicare coverage",2012,2023,,
+person,bg,health,health_ins,hicov_aGE65_dpch_medicare,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010061,"Age 65 years and over, direct-purchase and Medicare coverage",2012,2023,,
+person,bg,health,health_ins,hicov_aGE65_medicare_mcdmeans,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010062,"Age 65 years and over, Medicare and Medicaid/means-tested public coverage",2012,2023,,
+person,bg,health,health_ins,hicov_aGE65_none,AGEP,HINS1,HINS2,HINS3,HINS4,HINS5,HINS6,HINS7,HICOV,B27010066,"Age 65 years and over, no health insurance coverage",2012,2023,,
+household,bg,housing,rooms,rooms_01,RMSP,,,,,,,,,B25017002,1 Room,2012,2023,,
+household,bg,housing,rooms,rooms_02,RMSP,,,,,,,,,B25017003,2 Rooms,2012,2023,,
+household,bg,housing,rooms,rooms_03,RMSP,,,,,,,,,B25017004,3 Rooms,2012,2023,,
+household,bg,housing,rooms,rooms_04,RMSP,,,,,,,,,B25017005,4 Rooms,2012,2023,,
+household,bg,housing,rooms,rooms_05,RMSP,,,,,,,,,B25017006,5 Rooms,2012,2023,,
+household,bg,housing,rooms,rooms_06,RMSP,,,,,,,,,B25017007,6 Rooms,2012,2023,,
+household,bg,housing,rooms,rooms_07,RMSP,,,,,,,,,B25017008,7 Rooms,2012,2023,,
+household,bg,housing,rooms,rooms_08,RMSP,,,,,,,,,B25017009,8 Rooms,2012,2023,,
+household,bg,housing,rooms,rooms_GE09,RMSP,,,,,,,,,B25017010,9 or more Rooms,2012,2023,,
+household,bg,communications,internet,internet_subscription,ACCESS,,,,,,,,,B28002002,Internet access with a subscription,2012,2019,,
+household,bg,communications,internet,internet_no_subscription,ACCESS,,,,,,,,,B28002012,Internet access without a subscription,2012,2019,,
+household,bg,communications,internet,internet_none,ACCESS,,,,,,,,,B28002013,No internet access,2012,2019,,
+household,bg,communications,internet,internet_subscription,ACCESSINET,,,,,,,,,B28002002,Internet access with a subscription,2020,2023,,
+household,bg,communications,internet,internet_no_subscription,ACCESSINET,,,,,,,,,B28002012,Internet access without a subscription,2020,2023,,
+household,bg,communications,internet,internet_none,ACCESSINET,,,,,,,,,B28002013,No internet access,2020,2023,,

@@ -1,0 +1,40 @@
+#########################################################################
+# Install all versions from ** conda through micromamba where possible **
+#########################################################################
+
+name: py311_livelike_min
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - awkward=2.6.2
+  - deprecation
+  - dill
+  - geopandas=1.0.1
+  - git
+  - libpysal=4.12.1
+  - multiprocess>=0.70.15
+  - networkx=3.2.1
+  - numpy=1.26.4
+  - pandas=2.2.1
+  - pip
+  - pyarrow
+  - scipy=1.12.0
+  - shapely=2.0.1
+  # tests
+  - pre-commit
+  - pytest
+  - pytest-cov
+  - pytest-xdist
+  - ruff
+  - setuptools_scm
+  - watermark
+  # pip installations
+  - pip:
+    - pygris==0.1.6
+    ######################### see pymedm#69 & pymedm#70
+    # used in test_acs_cache.py
+    - jax==0.4.14
+    - jaxlib==0.4.14
+    - jaxopt==0.8.1
+    #########################

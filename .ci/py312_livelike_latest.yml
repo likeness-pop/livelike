@@ -1,0 +1,40 @@
+#########################################################################
+# Install all versions from ** conda through micromamba where possible **
+#########################################################################
+
+name: py312_livelike_latest
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - awkward
+  - deprecation
+  - dill
+  - geopandas
+  - git
+  - libpysal
+  - multiprocess
+  - networkx
+  - numpy
+  - pandas
+  - pip
+  - pyarrow
+  - scipy
+  - shapely
+  # tests
+  - pre-commit
+  - pytest
+  - pytest-cov
+  - pytest-xdist
+  - ruff
+  - setuptools_scm
+  - watermark
+  # pip installations
+  - pip:
+    - pygris
+    ######################### see pymedm#69 & pymedm#70
+    # used in test_acs_cache.py
+    - jax==0.4.31
+    - jaxlib==0.4.31
+    - jaxopt
+    #########################

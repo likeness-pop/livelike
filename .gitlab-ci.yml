@@ -1,0 +1,76 @@
+# Continuous Integration
+# -- for project-level CI variables see:
+#       https://code.ornl.gov/groups/likeness/-/settings/ci_cd
+
+stages:
+  - test_micromamba
+
+# variables to use in scripts ---------------------------------
+variables:
+  # package being tested
+  PACKAGE: "livelike"
+  # cores to use pwith `pytest-xdist`
+  CORES: "logical"
+  # runner tag
+  RUNNER: "LIKENESS-VM3-LC-HR"
+
+# template for rules ------------------------------------------
+.rules_template: &rules_definition
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_COMMIT_BRANCH == "main"
+    - when: manual
+
+# template for tagged runners & parallel matrix variables -----
+.pre_test_template: &pre_test_definition
+  tags:
+    - $RUNNER
+  parallel:
+    matrix:
+      - ENVIRONMENT: [
+            "py311_${PACKAGE}_min",
+            "py311_${PACKAGE}_latest",
+            "py312_${PACKAGE}_latest",
+            "py312_${PACKAGE}_dev",
+        ]
+  allow_failure: false
+
+# template for coverage & artifacts ---------------------------
+.post_test_template: &post_test_definition
+  coverage: '/TOTAL.*\s+(\d+%)$/'
+  artifacts:
+    # allow for this stuff to be downloaded after --> very useful for debugging
+    when: always
+    reports:
+      # this allows for a testing report available in the WebUI
+      junit: $TEST_XML
+      # visualized coverage report - see hits and misses in MR
+      coverage_report:
+        coverage_format: cobertura
+        path: $COV_XML
+    paths:
+      # this allows for a coverage report for download
+      - $COV_XML
+
+# testing from MicroMamba -------------------------------------
+test:micromamba:
+  stage: test_micromamba
+  image: mambaorg/micromamba:latest
+  variables:
+    PACKAGE_MANAGER: "$MM"
+    COV_XML: "./${MM}_coverage_out_report.xml"
+    TEST_XML: "./${MM}_test_out_report.xml"
+  <<: *rules_definition
+  <<: *pre_test_definition
+  script:
+    - eval "$ENV_MM"
+    - eval "$INSTALL_LIKENESS_VITALS"
+    - eval "$LIKENESS_VITALS_MIN_REQ"
+    - eval "$INSTALL_PYMEDM"  # used in test_acs_cache.py
+    - eval "$INSTALL"
+    - eval "$INFO_MICROMAMBA"
+    - eval "$RUFF"
+    - eval "$PYTEST_XDIST"
+    - cat pytest.log
+  <<: *post_test_definition
