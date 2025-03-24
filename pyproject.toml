@@ -55,15 +55,12 @@ ssh-deps = [
     "likeness_vitals @ git+ssh://git@code.ornl.gov/likeness/likeness-vitals.git@main",
     # -- OPTIONAL -- notebooks, development, etc. -- not used in codebase itself
     "pmedm_legacy @ git+ssh://git@code.ornl.gov/likeness/pmedm_legacy.git@main",  # needs special install - see `likeness/pmedm_legacy` documentation
-    "pymedm @ git+ssh://git@code.ornl.gov/likeness/pymedm.git@main", # needs special install - see `likeness/pymedm` documentation
+    "pymedm @ git+ssh://git@code.ornl.gov/likeness/pymedm.git@main",
 ]
 tests = [
-    ######################################################
-    # used in test_acs_cache.py
-    "jax>=0.4.14,<=0.4.31",  # see pymedm#69 & pymedm#70
-    "jaxlib>=0.4.14,<=0.4.31",
-    "jaxopt>=0.8.1",
-    ######################################################
+    "jax>=0.4.31", # [==0.4.31] for GPU/CUDA; [>=0.5.3] for CPU
+    "jaxlib>=0.4.31", # [==0.4.31] for GPU/CUDA; [>=0.5.3] for CPU
+    "jaxopt>=0.8.3",
     "pre-commit",
     "pytest",
     "pytest-cov",

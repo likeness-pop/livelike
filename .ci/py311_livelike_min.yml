@@ -32,9 +32,6 @@ dependencies:
   # pip installations
   - pip:
     - pygris==0.1.6
-    ######################### see pymedm#69 & pymedm#70
-    # used in test_acs_cache.py
-    - jax==0.4.14
-    - jaxlib==0.4.14
-    - jaxopt==0.8.1
-    #########################
+    - jax>=0.4.31
+    - jaxlib>=0.4.31
+    - jaxopt>=0.8.3

@@ -31,6 +31,9 @@ dependencies:
       --extra-index https://pypi.anaconda.org/scipy-wheels-nightly/simple \
       --extra-index-url https://pypi.org/simple
     - awkward
+    - jax>=0.5.3
+    - jaxlib>=0.5.3
+    - jaxopt>=0.8.3
     - matplotlib
     - networkx
     - numpy
@@ -41,9 +44,3 @@ dependencies:
     - git+https://github.com/geopandas/geopandas.git@main
     - git+https://github.com/pysal/libpysal.git@main
     - git+https://github.com/walkerke/pygris.git@main
-    ######################### see pymedm#69 & pymedm#70
-    # used in test_acs_cache.py
-    - jax==0.4.31
-    - jaxlib==0.4.31
-    - jaxopt
-    #########################
