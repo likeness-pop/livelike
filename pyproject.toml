@@ -54,8 +54,8 @@ Repository = "https://github.com/likeness-pop/livelike"
 ecosystem-deps = [
     "likeness_vitals @ git+https://github.com/likeness-pop/likeness-vitals.git@develop",
     # -- OPTIONAL -- notebooks, development, etc. -- not used in codebase itself
-    "pmedm_legacy @ git+https://github.com/likeness-pop/likeness/pmedm_legacy.git@develop",  # needs special install - see `likeness/pmedm_legacy` documentation
-    "pymedm @ git+https://github.com/likeness-pop/likeness/pymedm.git@develop",
+    "pmedm_legacy @ git+https://github.com/likeness-pop/pmedm_legacy.git@develop",  # needs special install - see `likeness/pmedm_legacy` documentation
+    "pymedm @ git+https://github.com/likeness-pop/pymedm.git@develop",
 ]
 tests = [
     "jax>=0.4.31", # [==0.4.31] for GPU/CUDA; [>=0.5.3] for CPU
