@@ -21,6 +21,8 @@ jobs:
     name: ${{ matrix.os }}, ${{ matrix.environment-file }}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 60
+    env:
+      CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }}
     strategy:
       matrix:
         os: [ubuntu-latest]
@@ -34,8 +36,7 @@ jobs:
           - environment-file: py312_livelike_latest
             os: macos-latest  # Apple Silicon
       fail-fast: false
-      env:
-        CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }}
+      
 
     defaults:
       run:
