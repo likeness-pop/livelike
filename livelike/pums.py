@@ -293,7 +293,7 @@ def edu_attainment(gpp: pd.DataFrame) -> pd.DataFrame:
 
     school = pd.cut(
         gpp["SCHL"],
-        bins=(1, 7, 9, 11, 12, 13, 14, 15, 17, 18, 19, 20, 21, 22, 23, 24, np.inf),
+        bins=(1, 2, 8, 10, 12, 13, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24, np.inf),
         labels=school_lv,
         right=False,
     )
