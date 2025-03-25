@@ -53,13 +53,13 @@ jobs:
           environment-file: .ci/${{ matrix.environment-file }}.yaml
           micromamba-version: "latest"
 
-      - name install ecosystem
+      - name: install ecosystem
         run: |
           pip install git+https://github.com/likeness-pop/likeness/likeness-vitals.git@develop
           pip install git+https://github.com/likeness-pop/likeness/pymedm.git@develop
 
       - name: install package
-        run: "pip install -e ."
+        run: "pip install -e . "
 
       - name: spatial versions
         run: 'python -c "import geopandas; geopandas.show_versions();"'
