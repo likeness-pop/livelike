@@ -44,18 +44,6 @@ def pytest_addoption(parser):
         type=str,
     )
 
-    # flag for determining package manager used in testing
-    parser.addoption(
-        "--package_manager",
-        action="store",
-        default="micromamba",
-        help=(
-            "Package manager label of dependencies for determining "
-            "whether certain tests should be run."
-        ),
-        type=str,
-    )
-
 
 # --------------------------------------------------------------
 # adding accessible attributes & methods to the configuration
@@ -77,11 +65,6 @@ def pytest_configure(config):
     valid_env_suffix = ["min", "latest", "dev"]
     assert pytest.ENV.split("_")[-1] in valid_env_suffix
     pytest.CI_ENV = "local_testing" if pytest.LOCAL else pytest.ENV
-
-    # ``package_manager`` from ``pytest_addoption()``
-    pytest.PACKAGE_MANAGER = config.getoption("package_manager")
-    valid_package_managers = ["conda", "micromamba"]
-    assert pytest.PACKAGE_MANAGER in valid_package_managers
 
     # ------------------------------------------------------
     # declaring custom attributes and methods
