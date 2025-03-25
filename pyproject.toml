@@ -47,15 +47,15 @@ dependencies = [
 ]
 
 [project.urls]
-Home = "https://code.ornl.gov/likeness"
-Repository = "https://code.ornl.gov/likeness/livelike"
+Home = "https://github.com/likeness-pop"
+Repository = "https://github.com/likeness-pop/livelike"
 
 [project.optional-dependencies]
-ssh-deps = [
-    "likeness_vitals @ git+ssh://git@code.ornl.gov/likeness/likeness-vitals.git@main",
+ecosystem-deps = [
+    "likeness_vitals @ git+https://github.com/likeness-pop/likeness-vitals.git@develop",
     # -- OPTIONAL -- notebooks, development, etc. -- not used in codebase itself
-    "pmedm_legacy @ git+ssh://git@code.ornl.gov/likeness/pmedm_legacy.git@main",  # needs special install - see `likeness/pmedm_legacy` documentation
-    "pymedm @ git+ssh://git@code.ornl.gov/likeness/pymedm.git@main",
+    "pmedm_legacy @ git+https://github.com/likeness-pop/pmedm_legacy.git@develop",  # needs special install - see `likeness/pmedm_legacy` documentation
+    "pymedm @ git+https://github.com/likeness-pop/pymedm.git@develop",
 ]
 tests = [
     "jax>=0.4.31", # [==0.4.31] for GPU/CUDA; [>=0.5.3] for CPU
@@ -69,7 +69,7 @@ tests = [
     "setuptools_scm",
     "watermark",
 ]
-all = ["livelike[ssh-deps,tests]"]
+all = ["livelike[ecosystem-deps,tests]"]
 
 [tool.setuptools.packages.find]
 include = [
