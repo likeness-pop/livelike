@@ -945,7 +945,7 @@ def hsplat(gpp: pd.DataFrame) -> pd.DataFrame:
 
 def internet(gph: pd.DataFrame, year: str) -> pd.DataFrame:
     """Generates a household-level representation of household internet access
-    that harmonizes ACS PUMS questionnaire item ACCESS/ACCESSINET 
+    that harmonizes ACS PUMS questionnaire item ACCESS/ACCESSINET
     with ACS SF table B28002.
 
     Parameters

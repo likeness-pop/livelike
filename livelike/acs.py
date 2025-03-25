@@ -654,7 +654,7 @@ class puma:  # noqa N801
 
             gq_est = gq_pop.loc[g]
             gq_rep_est = rp - rph
-            gq_se_est = np.sqrt(4/80 * np.sum((gq_rep_est - gq_est)**2))
+            gq_se_est = np.sqrt(4 / 80 * np.sum((gq_rep_est - gq_est) ** 2))
             gq_pop_se += [gq_se_est]
 
         gq_pop_se = pd.Series(gq_pop_se, index=geoids)
@@ -1844,16 +1844,16 @@ def get_vre_tables(
 ) -> pd.DataFrame:
     """
     Fetches Variance Replicate Estimate (VRE) tables
-    via Census FTP. 
+    via Census FTP.
 
-    Currently only block groups are supported. 
+    Currently only block groups are supported.
 
     Parameters
     ----------
     fips : str
         7-digit PUMA FIPS code (state + puma).
     year : int, str
-        Target year. 
+        Target year.
     table : str
         ACS SF table ID.
     cache : bool = False
@@ -1904,7 +1904,7 @@ def get_vre_tables(
         ext = ext[ext.TITLE == "Total:"]
         ext.GEOID = ext.GEOID.str.replace(geo_prefix, "")
         ext = ext.set_index("GEOID")
-        ext = ext.loc[:,ext.columns.str.contains("Var_Rep")]
+        ext = ext.loc[:, ext.columns.str.contains("Var_Rep")]
 
         if cache:
             if verbose:

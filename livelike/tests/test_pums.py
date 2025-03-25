@@ -113,19 +113,17 @@ def test_edu_attainment():
 
     known = pandas.read_csv(
         io.StringIO(
-
-                "schl_female_noschool,schl_female_nurseryto4thgrade,schl_female_5thand6th,schl_female_7thand8th,"
-                "schl_female_9th,schl_female_10th,schl_female_11th,schl_female_12th,schl_female_highschoolgrad,"
-                "schl_female_less1yearcollege,schl_female_collegenodeg,schl_female_assoc,schl_female_bach,"
-                "schl_female_masters,schl_female_prof,schl_female_doc,schl_male_noschool,schl_male_nurseryto4thgrade,"
-                "schl_male_5thand6th,schl_male_7thand8th,schl_male_9th,schl_male_10th,schl_male_11th,schl_male_12th,"
-                "schl_male_highschoolgrad,schl_male_less1yearcollege,schl_male_collegenodeg,schl_male_assoc,"
-                "schl_male_bach,schl_male_masters,schl_male_prof,schl_male_doc\n"
-                "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-                "0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-                "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0\n"
-                "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"
-
+            "schl_female_noschool,schl_female_nurseryto4thgrade,schl_female_5thand6th,schl_female_7thand8th,"
+            "schl_female_9th,schl_female_10th,schl_female_11th,schl_female_12th,schl_female_highschoolgrad,"
+            "schl_female_less1yearcollege,schl_female_collegenodeg,schl_female_assoc,schl_female_bach,"
+            "schl_female_masters,schl_female_prof,schl_female_doc,schl_male_noschool,schl_male_nurseryto4thgrade,"
+            "schl_male_5thand6th,schl_male_7thand8th,schl_male_9th,schl_male_10th,schl_male_11th,schl_male_12th,"
+            "schl_male_highschoolgrad,schl_male_less1yearcollege,schl_male_collegenodeg,schl_male_assoc,"
+            "schl_male_bach,schl_male_masters,schl_male_prof,schl_male_doc\n"
+            "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
+            "0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
+            "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0\n"
+            "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"
         )
     )
     observed = livelike.pums.edu_attainment(gpp)
@@ -287,7 +285,7 @@ def test_hsplat():
 
 
 def test_internet_2010s():
-    gph = pandas.DataFrame({"ACCESS" : [1, 2, 0, 1, 1, 3, 1]})
+    gph = pandas.DataFrame({"ACCESS": [1, 2, 0, 1, 1, 3, 1]})
     year = 2019
 
     known_ = (
@@ -300,15 +298,13 @@ def test_internet_2010s():
         "False,False,True\n"
         "True,False,False\n"
     )
-    known = pandas.read_csv(
-        io.StringIO(known_)
-    )
+    known = pandas.read_csv(io.StringIO(known_))
     observed = livelike.pums.internet(gph, year)
     pandas.testing.assert_frame_equal(observed, known)
 
 
 def test_internet_2020s():
-    gph = pandas.DataFrame({"ACCESSINET" : [1, 2, 0, 1, 1, 3, 1]})
+    gph = pandas.DataFrame({"ACCESSINET": [1, 2, 0, 1, 1, 3, 1]})
     year = 2023
 
     known_ = (
@@ -321,9 +317,7 @@ def test_internet_2020s():
         "False,False,True\n"
         "True,False,False\n"
     )
-    known = pandas.read_csv(
-        io.StringIO(known_)
-    )
+    known = pandas.read_csv(io.StringIO(known_))
     observed = livelike.pums.internet(gph, year)
     pandas.testing.assert_frame_equal(observed, known)
 

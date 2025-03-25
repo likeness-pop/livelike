@@ -343,8 +343,8 @@ pums_dtypes = dict(  # noqa C418
         "HINS7": "int",
         "HICOV": "int",
         "YRBLT": "int",
-        "ACCESS" : "int",
-        "ACCESSINET" : "int",
+        "ACCESS": "int",
+        "ACCESSINET": "int",
     }
 )
 
