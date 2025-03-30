@@ -1,12 +1,9 @@
 # Livelike: Vivid Synthetic Populations
 
-***CI Badge(s) here***
-
-***Codecov Badge Here***
-
-***Release Badge Here***
-
-***Other***
+![tag](https://img.shields.io/github/v/release/likeness-pop/livelike?include_prereleases&sort=semver)
+[![Continuous Integration](https://github.com/likeness-pop/livelike/actions/workflows/continuous_integration.yml/badge.svg)](https://github.com/likeness-pop/livelike/actions/workflows/continuous_integration.yml)
+[![codecov](https://codecov.io/gh/likeness-pop/livelike/branch/develop/graph/badge.svg)](https://codecov.io/gh/likeness-pop/livelike)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
 This package provides a high-level wrapper for generating synthetic populations via Census APIs based on the American Community Survey (ACS) 5-Year Estimates. Synthetic populations are virtual representations of people and households produced for small census areas (block groups, tracts) and can be attributed by a variety of demographic, economic, social, worker, student, mobility, housing, health, and communication characteristics found in the ACS. 
 

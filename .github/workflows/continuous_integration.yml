@@ -1,0 +1,86 @@
+---
+name: Continuous Integration
+
+on:
+  push:
+    branches: [develop]
+  pull_request:
+    branches:
+      - "*"
+  schedule:
+    - cron: "59 23 * * *"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Manual CI Run
+        default: test
+        required: false
+
+jobs:
+  tests:
+    name: ${{ matrix.os }}, ${{ matrix.environment-file }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 60
+    env:
+      CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        environment-file: [
+          py311_livelike_min,
+          py311_livelike_latest,
+          py312_livelike_latest,
+          py312_livelike_dev,
+        ]
+        include:
+          - environment-file: py312_livelike_latest
+            os: macos-latest  # Apple Silicon
+      fail-fast: false
+      
+
+    defaults:
+      run:
+        shell: bash -l {0}
+
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for all branches and tags.
+
+      - name: setup micromamba
+        uses: mamba-org/setup-micromamba@v2
+        with:
+          environment-file: .ci/${{ matrix.environment-file }}.yaml
+          micromamba-version: "latest"
+
+      - name: install ecosystem
+        run: |
+          pip install git+https://github.com/likeness-pop/likeness-vitals.git@develop
+          pip install git+https://github.com/likeness-pop/pymedm.git@develop
+
+      - name: install package
+        run: "pip install -e . "
+
+      - name: spatial versions
+        run: 'python -c "import geopandas; geopandas.show_versions();"'
+
+      - name: run tests
+        run: |
+          pytest \
+          livelike/ \
+          --verbose \
+          -r a \
+          --numprocesses logical \
+          --color yes \
+          --cov livelike \
+          --cov-append \
+          --cov-report term-missing \
+          --cov-report xml . \
+          --env ${{ matrix.environment-file }} \
+          --local False
+
+      - name: codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
