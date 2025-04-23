@@ -668,7 +668,7 @@ def health_ins(gpp: pd.DataFrame, year: str) -> pd.DataFrame:
     # drop cols not in b27010
     hxa = hxa.drop(
         [
-            'hicov_aL19_dpch_medicare', 
+            'hicov_aL19_dpch_medicare',
             'hicov_a19to34_dpch_medicare',
             'hicov_aGE65_mcdmeans_only'
         ],
