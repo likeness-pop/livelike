@@ -598,32 +598,32 @@ def health_ins(gpp: pd.DataFrame, year: str) -> pd.DataFrame:
     # Two or more: Employer and Direct-purchase #
     employer_dpch_cols = employer_hins_cols + dpch_hins_cols
     hins_employer_dpch = 1 * (
-        (hins.loc[:, employer_dpch_cols].sum(axis=1) == 2) &\
-        (hins.loc[:, ~hins.columns.isin(employer_dpch_cols)].sum(axis=1) == 0)
+        (hins.loc[:, employer_dpch_cols].sum(axis=1) == 2)
+        & (hins.loc[:, ~hins.columns.isin(employer_dpch_cols)].sum(axis=1) == 0)
     )
     hins_employer_dpch.name = "employer_dpch"
 
     # Two or more: Employer and Medicare #
     employer_medicare_cols = employer_hins_cols + medicare_hins_cols
     hins_employer_medicare = 1 * (
-        (hins.loc[:, employer_medicare_cols].sum(axis=1) == 2) &\
-        (hins.loc[:, ~hins.columns.isin(employer_medicare_cols)].sum(axis=1) == 0)
+        (hins.loc[:, employer_medicare_cols].sum(axis=1) == 2)
+        & (hins.loc[:, ~hins.columns.isin(employer_medicare_cols)].sum(axis=1) == 0)
     )
     hins_employer_medicare.name = "employer_medicare"
 
     # Two ore more: Direct-purchase and Medicare #
     dpch_medicare_cols = dpch_hins_cols + medicare_hins_cols
     hins_dpch_medicare = 1 * (
-        (hins.loc[:, dpch_medicare_cols].sum(axis=1) == 2) &\
-        (hins.loc[:, ~hins.columns.isin(dpch_medicare_cols)].sum(axis=1) == 0)
+        (hins.loc[:, dpch_medicare_cols].sum(axis=1) == 2)
+        & (hins.loc[:, ~hins.columns.isin(dpch_medicare_cols)].sum(axis=1) == 0)
     )
     hins_dpch_medicare.name = "dpch_medicare"
 
     # Two or more: Medicare and Medicaid/Means-Tested #
     medicare_mcdmeans_cols = medicare_hins_cols + mcdmeans_hins_cols
     hins_medicare_mcdmeans = 1 * (
-        (hins.loc[:, medicare_mcdmeans_cols].sum(axis=1) == 2) &\
-        (hins.loc[:, ~hins.columns.isin(medicare_mcdmeans_cols)].sum(axis=1) == 0)
+        (hins.loc[:, medicare_mcdmeans_cols].sum(axis=1) == 2)
+        & (hins.loc[:, ~hins.columns.isin(medicare_mcdmeans_cols)].sum(axis=1) == 0)
     )
     hins_medicare_mcdmeans.name = "medicare_mcdmeans"
 
@@ -668,17 +668,17 @@ def health_ins(gpp: pd.DataFrame, year: str) -> pd.DataFrame:
     # drop cols not in b27010
     hxa = hxa.drop(
         [
-            'hicov_aL19_dpch_medicare',
-            'hicov_a19to34_dpch_medicare',
-            'hicov_aGE65_mcdmeans_only'
+            "hicov_aL19_dpch_medicare",
+            "hicov_a19to34_dpch_medicare",
+            "hicov_aGE65_mcdmeans_only",
         ],
-        axis=1
+        axis=1,
     )
 
     # limit to civilian noninst pop
     # to match b27010 universe
     cnp = civ_noninst_pop(gpp, year)
-    hxa = hxa * cnp.values[:,None]
+    hxa = hxa * cnp.values[:, None]
 
     return hxa
 

@@ -183,7 +183,7 @@ def test_group_quarters_pop(column, year):
 def test_health_ins():
     gpp = pandas.DataFrame(
         {
-            "TYPE" : [2, 1, 1, 3],
+            "TYPE": [2, 1, 1, 3],
             "AGEP": [20, 30, 40, 50],
             "HICOV": [1, 1, 1, 1],
             "HINS1": [2, 2, 2, 1],
