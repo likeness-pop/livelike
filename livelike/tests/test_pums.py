@@ -183,24 +183,38 @@ def test_group_quarters_pop(column, year):
 def test_health_ins():
     gpp = pandas.DataFrame(
         {
+            "TYPE": [2, 1, 1, 3],
             "AGEP": [20, 30, 40, 50],
-            "HICOV": [1, 2, 1, 2],
-            "HINS1": [1, 0, 0, 0],
-            "HINS2": [0, 0, 0, 0],
-            "HINS3": [0, 1, 0, 0],
-            "HINS4": [0, 0, 0, 0],
-            "HINS5": [0, 0, 1, 0],
-            "HINS6": [0, 0, 0, 0],
-            "HINS7": [0, 0, 0, 1],
+            "HICOV": [1, 1, 1, 1],
+            "HINS1": [2, 2, 2, 1],
+            "HINS2": [2, 2, 2, 2],
+            "HINS3": [2, 1, 2, 2],
+            "HINS4": [1, 2, 2, 2],
+            "HINS5": [2, 2, 2, 2],
+            "HINS6": [2, 2, 2, 2],
+            "HINS7": [2, 2, 1, 2],
         }
     )
 
     known = pandas.read_csv(
         io.StringIO(
-            "hicov_aL19_employer_only,hicov_aL19_dpch_only,hicov_aL19_medicare_only,hicov_aL19_mcdmeans_only,hicov_aL19_trimil_only,hicov_aL19_va_only,hicov_aL19_employer_dpch,hicov_aL19_employer_medicare,hicov_aL19_dpch_medicare,hicov_aL19_medicare_mcdmeans,hicov_aL19_none,hicov_a19to34_employer_only,hicov_a19to34_dpch_only,hicov_a19to34_medicare_only,hicov_a19to34_mcdmeans_only,hicov_a19to34_trimil_only,hicov_a19to34_va_only,hicov_a19to34_employer_dpch,hicov_a19to34_employer_medicare,hicov_a19to34_dpch_medicare,hicov_a19to34_medicare_mcdmeans,hicov_a19to34_none,hicov_a35to64_employer_only,hicov_a35to64_dpch_only,hicov_a35to64_medicare_only,hicov_a35to64_mcdmeans_only,hicov_a35to64_trimil_only,hicov_a35to64_va_only,hicov_a35to64_employer_dpch,hicov_a35to64_employer_medicare,hicov_a35to64_dpch_medicare,hicov_a35to64_medicare_mcdmeans,hicov_a35to64_none,hicov_aGE65_employer_only,hicov_aGE65_dpch_only,hicov_aGE65_medicare_only,hicov_aGE65_mcdmeans_only,hicov_aGE65_trimil_only,hicov_aGE65_va_only,hicov_aGE65_employer_dpch,hicov_aGE65_employer_medicare,hicov_aGE65_dpch_medicare,hicov_aGE65_medicare_mcdmeans,hicov_aGE65_none\n0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\n0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\n0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\n0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0\n"  # noqa: E501
+            "hicov_aL19_employer_only,hicov_aL19_dpch_only,hicov_aL19_medicare_only,hicov_aL19_mcdmeans_only,hicov_aL19_trimil_only,"
+            "hicov_aL19_va_only,hicov_aL19_employer_dpch,hicov_aL19_employer_medicare,hicov_aL19_medicare_mcdmeans,hicov_aL19_none,"
+            "hicov_a19to34_employer_only,hicov_a19to34_dpch_only,hicov_a19to34_medicare_only,hicov_a19to34_mcdmeans_only,"
+            "hicov_a19to34_trimil_only,hicov_a19to34_va_only,hicov_a19to34_employer_dpch,hicov_a19to34_employer_medicare,"
+            "hicov_a19to34_medicare_mcdmeans,hicov_a19to34_none,hicov_a35to64_employer_only,hicov_a35to64_dpch_only,"
+            "hicov_a35to64_medicare_only,hicov_a35to64_mcdmeans_only,hicov_a35to64_trimil_only,hicov_a35to64_va_only,"
+            "hicov_a35to64_employer_dpch,hicov_a35to64_employer_medicare,hicov_a35to64_dpch_medicare,hicov_a35to64_medicare_mcdmeans,"
+            "hicov_a35to64_none,hicov_aGE65_employer_only,hicov_aGE65_dpch_only,hicov_aGE65_medicare_only,hicov_aGE65_trimil_only,"
+            "hicov_aGE65_va_only,hicov_aGE65_employer_dpch,hicov_aGE65_employer_medicare,hicov_aGE65_dpch_medicare,"
+            "hicov_aGE65_medicare_mcdmeans,hicov_aGE65_none\n"
+            "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
+            "0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
+            "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
+            "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"
         )
     )
-    observed = livelike.pums.health_ins(gpp)
+    observed = livelike.pums.health_ins(gpp, 2019)
     pandas.testing.assert_frame_equal(observed, known)
 
 

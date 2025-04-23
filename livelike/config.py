@@ -372,6 +372,7 @@ need_year = [
     "civ_noninst_pop",
     "year_built",
     "internet",
+    "health_ins",
 ]
 
 # P-MEDM constraints
