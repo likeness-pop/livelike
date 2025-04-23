@@ -345,6 +345,7 @@ pums_dtypes = dict(  # noqa C418
         "YRBLT": "int",
         "ACCESS": "int",
         "ACCESSINET": "int",
+        "MIL" : "int",
     }
 )
 
