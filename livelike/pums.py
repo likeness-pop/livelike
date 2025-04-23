@@ -596,15 +596,6 @@ def health_ins(gpp: pd.DataFrame, year: str) -> pd.DataFrame:
     hins_va_only = pd.Series(hins_va_only, name="va_only")
 
     # Two or more: Employer and Direct-purchase #
-    hins_employer_dpch = 1 * (
-        hins.loc[:, employer_hins_cols + dpch_hins_cols].sum(axis=1) == 2
-    )
-    hins_employer_dpch.name = "employer_dpch"
-
-    # Two or more: Employer and Direct-purchase #
-    # hins_employer_dpch = 1 * ( # OG
-    #     hins.loc[:, employer_hins_cols + dpch_hins_cols].sum(axis=1) == 2
-    # )
     employer_dpch_cols = employer_hins_cols + dpch_hins_cols
     hins_employer_dpch = 1 * (
         (hins.loc[:, employer_dpch_cols].sum(axis=1) == 2) &\
@@ -613,9 +604,6 @@ def health_ins(gpp: pd.DataFrame, year: str) -> pd.DataFrame:
     hins_employer_dpch.name = "employer_dpch"
 
     # Two or more: Employer and Medicare #
-    # hins_employer_medicare = 1 * ( # OG
-    #     hins.loc[:, employer_hins_cols + medicare_hins_cols].sum(axis=1) == 2
-    # )
     employer_medicare_cols = employer_hins_cols + medicare_hins_cols
     hins_employer_medicare = 1 * (
         (hins.loc[:, employer_medicare_cols].sum(axis=1) == 2) &\
@@ -624,9 +612,6 @@ def health_ins(gpp: pd.DataFrame, year: str) -> pd.DataFrame:
     hins_employer_medicare.name = "employer_medicare"
 
     # Two ore more: Direct-purchase and Medicare #
-    # hins_dpch_medicare = 1 * ( # OG
-    #     hins.loc[:, dpch_hins_cols + medicare_hins_cols].sum(axis=1) == 2
-    # )
     dpch_medicare_cols = dpch_hins_cols + medicare_hins_cols
     hins_dpch_medicare = 1 * (
         (hins.loc[:, dpch_medicare_cols].sum(axis=1) == 2) &\
@@ -635,9 +620,6 @@ def health_ins(gpp: pd.DataFrame, year: str) -> pd.DataFrame:
     hins_dpch_medicare.name = "dpch_medicare"
 
     # Two or more: Medicare and Medicaid/Means-Tested #
-    # hins_medicare_mcdmeans = 1 * (
-    #     hins.loc[:, medicare_hins_cols + mcdmeans_hins_cols].sum(axis=1) == 2
-    # )
     medicare_mcdmeans_cols = medicare_hins_cols + mcdmeans_hins_cols
     hins_medicare_mcdmeans = 1 * (
         (hins.loc[:, medicare_mcdmeans_cols].sum(axis=1) == 2) &\
