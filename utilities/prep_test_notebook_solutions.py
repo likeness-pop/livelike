@@ -159,7 +159,7 @@ pup_tract_supertract_2023 = acs.puma(
     year=2023,
     target_zone="trt",
     keep_geo=True,
-    censusapikey=key
+    censusapikey=key,
 )
 
 pmd_tract_supertract_2023 = PMEDM(
