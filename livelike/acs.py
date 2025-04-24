@@ -1899,7 +1899,7 @@ def get_vre_tables(
             "https://www2.census.gov/programs-surveys/acs/"
             f"replicate_estimates/{year}/data/5-year/150/{table}_{state}.csv.zip"
         )
-        ext = pd.read_csv(url)
+        ext = pd.read_csv(url, storage_options={"User-Agent": "Mozilla/5.0"})
 
         ext = ext[ext.TITLE == "Total:"]
         ext.GEOID = ext.GEOID.str.replace(geo_prefix, "")
