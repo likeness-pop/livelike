@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import re
 
-def columns_to_labels(df, col_prefix, scrub=None):
+def columns_to_labels(df, filter, scrub=None):
     """
     Converts dummy columns to labels. 
 
@@ -10,7 +10,7 @@ def columns_to_labels(df, col_prefix, scrub=None):
     ----------
     df : pandas.DataFrame
         Data frame containing dummy columns.
-    col_prefix : str
+    filter : str
         A regular expression for filtering the columns to 
         use for labeling.
     scrub : str
@@ -21,7 +21,7 @@ def columns_to_labels(df, col_prefix, scrub=None):
     labels : pandas.Series
         Converted labels.
     """
-    df = df.loc[:,df.columns.str.contains(col_prefix)]
+    df = df.loc[:,df.columns.str.contains(filter)]
 
     df_ = pd.DataFrame()
     for col in df.columns:
@@ -49,8 +49,8 @@ def class_of_worker(est_person):
     labels : pandas.Series
         Class of worker labels.
     """
-    prefix = "^sexcw_male_|^sexcw_female_"
-    labels = columns_to_labels(est_person, col_prefix=prefix, scrub=prefix)
+    filter = "^sexcw_male_|^sexcw_female_"
+    labels = columns_to_labels(est_person, filter=filter, scrub=filter)
     labels.name = "class_of_worker"
 
     return labels
@@ -70,8 +70,8 @@ def commute_time_m(est_person):
     labels : pandas.Series
         Commute time labels.
     """
-    prefix = "^cmt_mins_"
-    labels = columns_to_labels(est_person, col_prefix=prefix, scrub=prefix)
+    filter = "^cmt_mins_"
+    labels = columns_to_labels(est_person, filter=filter, scrub=filter)
     labels.name = "commute_time_m"
 
     return labels
@@ -91,8 +91,8 @@ def commute_mode(est_person):
     labels : pandas.Series
         Commute mode labels.
     """
-    prefix = "^travel_"
-    labels = columns_to_labels(est_person, col_prefix=prefix, scrub=prefix)
+    filter = "^travel_"
+    labels = columns_to_labels(est_person, filter=filter, scrub=filter)
     labels.name = "commute_mode"
 
     return labels
@@ -112,8 +112,8 @@ def commute_drive_type(est_person):
     labels : pandas.Series
         Commute drive type labels.
     """
-    prefix = "^veh_occ_"
-    labels = columns_to_labels(est_person, col_prefix=prefix, scrub=prefix)
+    filter = "^veh_occ_"
+    labels = columns_to_labels(est_person, filter=filter, scrub=filter)
     labels.name = "commute_drive_type"
 
     return labels
@@ -133,8 +133,8 @@ def employment_status(est_person):
     labels : pandas.Series
         Employment status labels.
     """
-    prefix = "emp_stat_"
-    labels = columns_to_labels(est_person, col_prefix=prefix, scrub=prefix)
+    filter = "emp_stat_"
+    labels = columns_to_labels(est_person, filter=filter, scrub=filter)
     labels.name = "employment_status"
 
     return labels
@@ -154,8 +154,8 @@ def grade(est_person):
     labels : pandas.Series
         Grade level labels.
     """
-    prefix = "^grade_"
-    labels = columns_to_labels(est_person, col_prefix=prefix, scrub=prefix)
+    filter = "^grade_"
+    labels = columns_to_labels(est_person, filter=filter, scrub=filter)
     labels.name = "grade"
 
     return labels   
@@ -175,8 +175,8 @@ def hours_worked(est_person):
     labels : pandas.Series
         Hours worked labels.
     """
-    prefix = "^male_hours_|^female_hours_"
-    labels = columns_to_labels(est_person, col_prefix=prefix, scrub=prefix)
+    filter = "^male_hours_|^female_hours_"
+    labels = columns_to_labels(est_person, filter=filter, scrub=filter)
     labels.name = "hours_worked"
 
     return labels
@@ -196,9 +196,9 @@ def household_size(est_household):
     labels : pandas.Series
         Household size labels.
     """
-    prefix = "^hht_fam_|^hht_nonfam_"
-    scrub = prefix + "|_hhsize_"
-    labels = columns_to_labels(est_household, col_prefix=prefix, scrub=scrub)
+    filter = "^hht_fam_|^hht_nonfam_"
+    scrub = filter + "|_hhsize_"
+    labels = columns_to_labels(est_household, filter=filter, scrub=scrub)
     labels.name = "household_size"
 
     return labels
@@ -218,9 +218,9 @@ def household_type(est_household):
     labels : pandas.Series
         Household type labels.
     """
-    prefix = "^hht_"
+    filter = "^hht_"
     scrub = "hht_|_hhsize_|_2p|_3p|_4p|_5p|_6p|_7pm|"
-    labels = columns_to_labels(est_household, col_prefix=prefix, scrub=scrub)
+    labels = columns_to_labels(est_household, filter=filter, scrub=scrub)
     labels.name = "household_type",
 
     return labels
@@ -240,8 +240,8 @@ def industry(est_person):
     labels : pandas.Series
         NAICS industry time labels.
     """
-    prefix = "^sexnaics_female_|^sexnaics_male_"
-    labels = columns_to_labels(est_person, col_prefix=prefix, scrub=prefix)
+    filter = "^sexnaics_female_|^sexnaics_male_"
+    labels = columns_to_labels(est_person, filter=filter, scrub=filter)
     labels.name = "industry"
 
     return labels
@@ -262,8 +262,8 @@ def occupation(est_person):
     labels : pandas.Series
         Occupation labels.
     """
-    prefix = "^sexocc_female_|^sexocc_male_"
-    labels = columns_to_labels(est_person, col_prefix=prefix, scrub=prefix)
+    filter = "^sexocc_female_|^sexocc_male_"
+    labels = columns_to_labels(est_person, filter=filter, scrub=filter)
     labels.name = "occupation"
 
     return labels
@@ -283,12 +283,12 @@ def school_type(est_person):
     labels : pandas.Series
        School type labels.
     """
-    prefix = "^sch_female_|^sch_male_"
+    filter = "^sch_female_|^sch_male_"
     scrub = (
         "sch_|female_|male_|pre_|kind_|01.04_|05.08_|09.12_"
         "undergrad_|grad.prof_"
     )
-    labels = columns_to_labels(est_person, col_prefix=prefix, scrub=scrub)
+    labels = columns_to_labels(est_person, filter=filter, scrub=scrub)
     labels.name = "school_type"
 
     return labels
@@ -308,9 +308,9 @@ def tenure(est_household):
     labels : pandas.Series
         Household size labels.
     """
-    prefix="^txv_"
+    filter="^txv_"
     scrub = "txv_|_01_|_02_|_03_|_04_|_GE05_|vehicle"
-    labels = columns_to_labels(est_household, col_prefix=prefix, scrub=scrub)
+    labels = columns_to_labels(est_household, filter=filter, scrub=scrub)
     labels.name = "tenure"
 
     return labels
@@ -330,9 +330,9 @@ def vehicles_available(est_household):
     labels : pandas.Series
         Vehicles available labels.
     """
-    prefix = "^txv_own_|^txv_rent_"
-    scrub = prefix + "|_vehicle"
-    labels = columns_to_labels(est_household, col_prefix=prefix, scrub=scrub)
+    filter = "^txv_own_|^txv_rent_"
+    scrub = filter + "|_vehicle"
+    labels = columns_to_labels(est_household, filter=filter, scrub=scrub)
     labels = labels.replace({"no" : "none"})
     labels.name = "vehicles_available"
 
