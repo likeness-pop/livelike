@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import re
 
-def columns_to_labels(df, filter, scrub=None):
+def columns_to_labels(df, filter, scrub=None, keep_index=True):
     """
     Converts dummy columns to labels. 
 
@@ -15,6 +15,9 @@ def columns_to_labels(df, filter, scrub=None):
         use for labeling.
     scrub : str
         A regular expression for label text to exclude.
+    keep_index : bool
+        Whether to keep the input data frame index for 
+        the output labels
 
     Returns
     -------
@@ -30,6 +33,9 @@ def columns_to_labels(df, filter, scrub=None):
     labels = df_.sum(axis=1)
     if scrub is not None:
         labels = labels.apply(lambda x: re.sub(scrub, "", x))
+
+    if keep_index:
+        labels.index = df.index
 
     return labels
 
