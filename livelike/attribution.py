@@ -1,6 +1,16 @@
+from livelike import attribution
 import numpy as np
 import pandas as pd
 import re
+
+def build_attributes(puma, level, variables):
+    pums = getattr(puma, f"est_{level}")
+
+    atts = pd.concat(
+        [getattr(attribution, v)(pums) for v in variables],
+        axis=1
+    )
+    return atts
 
 def columns_to_labels(df, filter, scrub=None, keep_index=True):
     """

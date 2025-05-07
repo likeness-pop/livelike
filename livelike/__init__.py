@@ -29,6 +29,7 @@ from .acs import (
     update_data_types,
 )
 from .attribution import (
+    build_attributes,
     class_of_worker,
     columns_to_labels,
     commute_time_m,
@@ -55,6 +56,8 @@ from .config import (
     rel,
     universe_codes,
     universe_constraints,
+    up_base_attributes_household,
+    up_base_attributes_person,
     up_base_constraints_selection,
     up_constraints_theme_order,
     up_expanded_constraints_selection,
