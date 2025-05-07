@@ -203,7 +203,7 @@ def household_size(est_household):
         Household size labels.
     """
     filter = "^hht_fam_|^hht_nonfam_"
-    scrub = filter + "|_hhsize_"
+    scrub = filter + "|hhsize_"
     labels = columns_to_labels(est_household, filter=filter, scrub=scrub)
     labels.name = "household_size"
 
@@ -225,9 +225,9 @@ def household_type(est_household):
         Household type labels.
     """
     filter = "^hht_"
-    scrub = "hht_|_hhsize_|_2p|_3p|_4p|_5p|_6p|_7pm|"
+    scrub = "hht_|_hhsize_|1p|2p|3p|4p|5p|6p|7pm|"
     labels = columns_to_labels(est_household, filter=filter, scrub=scrub)
-    labels.name = "household_type",
+    labels.name = "household_type"
 
     return labels
 
@@ -291,7 +291,7 @@ def school_type(est_person):
     """
     filter = "^sch_female_|^sch_male_"
     scrub = (
-        "sch_|female_|male_|pre_|kind_|01.04_|05.08_|09.12_"
+        "sch_|female_|male_|pre_|kind_|01.04_|05.08_|09.12_|"
         "undergrad_|grad.prof_"
     )
     labels = columns_to_labels(est_person, filter=filter, scrub=scrub)
@@ -315,7 +315,7 @@ def tenure(est_household):
         Household size labels.
     """
     filter="^txv_"
-    scrub = "txv_|_01_|_02_|_03_|_04_|_GE05_|vehicle"
+    scrub = "txv_|_no_|_01_|_02_|_03_|_04_|_GE05_|vehicle"
     labels = columns_to_labels(est_household, filter=filter, scrub=scrub)
     labels.name = "tenure"
 
