@@ -1,27 +1,29 @@
-import numpy as np
-import pandas as pd
 import re
 
+import numpy as np
+import pandas as pd
+
+
 def columns_to_labels(
-    df: pd.DataFrame, 
-    filter: str, 
-    scrub: None | str = None, 
+    df: pd.DataFrame,
+    filter: str,
+    scrub: None | str = None,
     keep_index: bool = True,
 ) -> pd.DataFrame:
     """
-    Converts dummy columns to labels. 
+    Converts dummy columns to labels.
 
     Parameters
     ----------
     df : pandas.DataFrame
         Data frame containing dummy columns.
     filter : str
-        A regular expression for filtering the columns to 
+        A regular expression for filtering the columns to
         use for labeling.
     scrub : str
         A regular expression for label text to exclude.
     keep_index : bool
-        Whether to keep the input data frame index for 
+        Whether to keep the input data frame index for
         the output labels
 
     Returns
@@ -29,7 +31,7 @@ def columns_to_labels(
     labels : pandas.Series
         Converted labels.
     """
-    df = df.loc[:,df.columns.str.contains(filter)]
+    df = df.loc[:, df.columns.str.contains(filter)]
 
     df_ = pd.DataFrame()
     for col in df.columns:
@@ -44,11 +46,13 @@ def columns_to_labels(
 
     return labels
 
+
 ## Labeling Functions ##
+
 
 def class_of_worker(est_person: pd.DataFrame):
     """
-    Produces person-level labels for class of worker. 
+    Produces person-level labels for class of worker.
 
     Parameters
     ----------
@@ -67,9 +71,9 @@ def class_of_worker(est_person: pd.DataFrame):
     return labels
 
 
-def commute_drive_type(est_person : pd.DataFrame) -> pd.Series:
+def commute_drive_type(est_person: pd.DataFrame) -> pd.Series:
     """
-    Produces person-level labels for commute drive type. 
+    Produces person-level labels for commute drive type.
 
     Parameters
     ----------
@@ -90,7 +94,7 @@ def commute_drive_type(est_person : pd.DataFrame) -> pd.Series:
 
 def commute_mode(est_person: pd.DataFrame):
     """
-    Produces person-level labels for commute mode. 
+    Produces person-level labels for commute mode.
 
     Parameters
     ----------
@@ -111,7 +115,7 @@ def commute_mode(est_person: pd.DataFrame):
 
 def commute_time_m(est_person: pd.DataFrame):
     """
-    Produces person-level labels for commute time in minutes. 
+    Produces person-level labels for commute time in minutes.
 
     Parameters
     ----------
@@ -130,9 +134,9 @@ def commute_time_m(est_person: pd.DataFrame):
     return labels
 
 
-def employment_status(est_person : pd.DataFrame) -> pd.Series:
+def employment_status(est_person: pd.DataFrame) -> pd.Series:
     """
-    Produces person-level labels for employment status. 
+    Produces person-level labels for employment status.
 
     Parameters
     ----------
@@ -151,9 +155,9 @@ def employment_status(est_person : pd.DataFrame) -> pd.Series:
     return labels
 
 
-def grade(est_person : pd.DataFrame) -> pd.Series:
+def grade(est_person: pd.DataFrame) -> pd.Series:
     """
-    Produces person-level labels for school grade lavel. 
+    Produces person-level labels for school grade lavel.
 
     Parameters
     ----------
@@ -169,12 +173,12 @@ def grade(est_person : pd.DataFrame) -> pd.Series:
     labels = columns_to_labels(est_person, filter=filter, scrub=filter)
     labels.name = "grade"
 
-    return labels   
+    return labels
 
 
-def hours_worked(est_person : pd.DataFrame) -> pd.Series:
+def hours_worked(est_person: pd.DataFrame) -> pd.Series:
     """
-    Produces person-level labels for hours worked. 
+    Produces person-level labels for hours worked.
 
     Parameters
     ----------
@@ -193,9 +197,9 @@ def hours_worked(est_person : pd.DataFrame) -> pd.Series:
     return labels
 
 
-def household_size(est_household : pd.DataFrame) -> pd.Series:
+def household_size(est_household: pd.DataFrame) -> pd.Series:
     """
-    Produces household-level labels for household size. 
+    Produces household-level labels for household size.
 
     Parameters
     ----------
@@ -215,9 +219,9 @@ def household_size(est_household : pd.DataFrame) -> pd.Series:
     return labels
 
 
-def household_type(est_household : pd.DataFrame) -> pd.Series:
+def household_type(est_household: pd.DataFrame) -> pd.Series:
     """
-    Produces household-level labels for household type. 
+    Produces household-level labels for household type.
 
     Parameters
     ----------
@@ -237,9 +241,9 @@ def household_type(est_household : pd.DataFrame) -> pd.Series:
     return labels
 
 
-def industry(est_person : pd.DataFrame) -> pd.Series:
+def industry(est_person: pd.DataFrame) -> pd.Series:
     """
-    Produces person-level labels for NAICS industry. 
+    Produces person-level labels for NAICS industry.
 
     Parameters
     ----------
@@ -258,10 +262,10 @@ def industry(est_person : pd.DataFrame) -> pd.Series:
     return labels
 
 
-def occupation(est_person : pd.DataFrame) -> pd.Series:
+def occupation(est_person: pd.DataFrame) -> pd.Series:
     """
-    Produces person-level labels for occupation 
-    based on Standard Occupation Classification. 
+    Produces person-level labels for occupation
+    based on Standard Occupation Classification.
 
     Parameters
     ----------
@@ -280,9 +284,9 @@ def occupation(est_person : pd.DataFrame) -> pd.Series:
     return labels
 
 
-def school_type(est_person : pd.DataFrame) -> pd.Series:
+def school_type(est_person: pd.DataFrame) -> pd.Series:
     """
-    Produces person-level labels for school type in minutes. 
+    Produces person-level labels for school type in minutes.
 
     Parameters
     ----------
@@ -295,19 +299,16 @@ def school_type(est_person : pd.DataFrame) -> pd.Series:
        School type labels.
     """
     filter = "^sch_female_|^sch_male_"
-    scrub = (
-        "sch_|female_|male_|pre_|kind_|01.04_|05.08_|09.12_|"
-        "undergrad_|grad.prof_"
-    )
+    scrub = "sch_|female_|male_|pre_|kind_|01.04_|05.08_|09.12_|undergrad_|grad.prof_"
     labels = columns_to_labels(est_person, filter=filter, scrub=scrub)
     labels.name = "school_type"
 
     return labels
 
 
-def tenure(est_household : pd.DataFrame) -> pd.Series:
+def tenure(est_household: pd.DataFrame) -> pd.Series:
     """
-    Produces household-level labels for tenure. 
+    Produces household-level labels for tenure.
 
     Parameters
     ----------
@@ -319,7 +320,7 @@ def tenure(est_household : pd.DataFrame) -> pd.Series:
     labels : pandas.Series
         Household size labels.
     """
-    filter="^txv_"
+    filter = "^txv_"
     scrub = "txv_|_no_|_01_|_02_|_03_|_04_|_GE05_|vehicle"
     labels = columns_to_labels(est_household, filter=filter, scrub=scrub)
     labels.name = "tenure"
@@ -327,9 +328,9 @@ def tenure(est_household : pd.DataFrame) -> pd.Series:
     return labels
 
 
-def vehicles_available(est_household : pd.DataFrame) -> pd.Series:
+def vehicles_available(est_household: pd.DataFrame) -> pd.Series:
     """
-    Produces household-level labels for number of vehicles available. 
+    Produces household-level labels for number of vehicles available.
 
     Parameters
     ----------
@@ -344,7 +345,7 @@ def vehicles_available(est_household : pd.DataFrame) -> pd.Series:
     filter = "^txv_own_|^txv_rent_"
     scrub = filter + "|_vehicle"
     labels = columns_to_labels(est_household, filter=filter, scrub=scrub)
-    labels = labels.replace({"no" : "none"})
+    labels = labels.replace({"no": "none"})
     labels.name = "vehicles_available"
 
     return labels

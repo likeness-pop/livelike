@@ -1,15 +1,17 @@
-import livelike
-from livelike import _attribution
 import pandas as pd
 
+import livelike
+from livelike import _attribution
+
+
 def build_attributes(
-    puma: livelike.acs.puma, 
-    level: str, 
+    puma: livelike.acs.puma,
+    level: str,
     variables: list,
 ) -> pd.DataFrame:
     """
-    Builds attributes for a PUMA at person or household level 
-    on a defined list of variables. 
+    Builds attributes for a PUMA at person or household level
+    on a defined list of variables.
 
     Parameters
     ----------
@@ -25,10 +27,9 @@ def build_attributes(
     atts : pandas.DataFrame
         PUMA attributes at the level of interest.
     """
-    if not level in ["person", "household"]:
+    if level not in ["person", "household"]:
         raise ValueError(
-            "Argument ``level`` must be one of "
-            "``'person'``, ``'household'``."
+            "Argument ``level`` must be one of ``'person'``, ``'household'``."
         )
 
     if getattr(puma, f"est_{level}") is None:
@@ -43,8 +44,5 @@ def build_attributes(
     if level == "person":
         pums = pums.reset_index().set_index(["SERIALNO", "SPORDER"])
 
-    atts = pd.concat(
-        [getattr(_attribution, v)(pums) for v in variables],
-        axis=1
-    )
+    atts = pd.concat([getattr(_attribution, v)(pums) for v in variables], axis=1)
     return atts
