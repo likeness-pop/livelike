@@ -3,7 +3,11 @@ import numpy as np
 import pandas as pd
 import re
 
-def build_attributes(puma, level, variables):
+def build_attributes(
+    puma: pd.DataFrame, 
+    level: str, 
+    variables: list,
+) -> pd.DataFrame:
     """
     Builds attributes for a PUMA at person or household level 
     on a defined list of variables. 
@@ -47,7 +51,12 @@ def build_attributes(puma, level, variables):
     return atts
 
 
-def columns_to_labels(df, filter, scrub=None, keep_index=True):
+def columns_to_labels(
+    df: pd.DataFrame, 
+    filter: str, 
+    scrub: None | str = None, 
+    keep_index: bool = True,
+) -> pd.DataFrame:
     """
     Converts dummy columns to labels. 
 
@@ -86,7 +95,7 @@ def columns_to_labels(df, filter, scrub=None, keep_index=True):
 
 ## Labeling Functions ##
 
-def class_of_worker(est_person):
+def class_of_worker(est_person: pd.DataFrame):
     """
     Produces person-level labels for class of worker. 
 
@@ -107,7 +116,7 @@ def class_of_worker(est_person):
     return labels
 
 
-def commute_time_m(est_person):
+def commute_time_m(est_person: pd.DataFrame):
     """
     Produces person-level labels for commute time in minutes. 
 
@@ -128,7 +137,7 @@ def commute_time_m(est_person):
     return labels
 
 
-def commute_mode(est_person):
+def commute_mode(est_person: pd.DataFrame):
     """
     Produces person-level labels for commute mode. 
 
@@ -149,7 +158,7 @@ def commute_mode(est_person):
     return labels
 
 
-def commute_drive_type(est_person):
+def commute_drive_type(est_person : pd.DataFrame) -> pd.Series:
     """
     Produces person-level labels for commute drive type. 
 
@@ -170,7 +179,7 @@ def commute_drive_type(est_person):
     return labels
 
 
-def employment_status(est_person):
+def employment_status(est_person : pd.DataFrame) -> pd.Series:
     """
     Produces person-level labels for employment status. 
 
@@ -191,7 +200,7 @@ def employment_status(est_person):
     return labels
 
 
-def grade(est_person):
+def grade(est_person : pd.DataFrame) -> pd.Series:
     """
     Produces person-level labels for school grade lavel. 
 
@@ -212,7 +221,7 @@ def grade(est_person):
     return labels   
 
 
-def hours_worked(est_person):
+def hours_worked(est_person : pd.DataFrame) -> pd.Series:
     """
     Produces person-level labels for hours worked. 
 
@@ -233,7 +242,7 @@ def hours_worked(est_person):
     return labels
 
 
-def household_size(est_household):
+def household_size(est_household : pd.DataFrame) -> pd.Series:
     """
     Produces household-level labels for household size. 
 
@@ -255,7 +264,7 @@ def household_size(est_household):
     return labels
 
 
-def household_type(est_household):
+def household_type(est_household : pd.DataFrame) -> pd.Series:
     """
     Produces household-level labels for household type. 
 
@@ -277,7 +286,7 @@ def household_type(est_household):
     return labels
 
 
-def industry(est_person):
+def industry(est_person : pd.DataFrame) -> pd.Series:
     """
     Produces person-level labels for NAICS industry. 
 
@@ -298,7 +307,7 @@ def industry(est_person):
     return labels
 
 
-def occupation(est_person):
+def occupation(est_person : pd.DataFrame) -> pd.Series:
     """
     Produces person-level labels for occupation 
     based on Standard Occupation Classification. 
@@ -320,7 +329,7 @@ def occupation(est_person):
     return labels
 
 
-def school_type(est_person):
+def school_type(est_person : pd.DataFrame) -> pd.Series:
     """
     Produces person-level labels for school type in minutes. 
 
@@ -345,7 +354,7 @@ def school_type(est_person):
     return labels
 
 
-def tenure(est_household):
+def tenure(est_household : pd.DataFrame) -> pd.Series:
     """
     Produces household-level labels for tenure. 
 
@@ -367,7 +376,7 @@ def tenure(est_household):
     return labels
 
 
-def vehicles_available(est_household):
+def vehicles_available(est_household : pd.DataFrame) -> pd.Series:
     """
     Produces household-level labels for number of vehicles available. 
 
