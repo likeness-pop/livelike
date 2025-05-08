@@ -1,8 +1,9 @@
+import livelike
 from livelike import _attribution
 import pandas as pd
 
 def build_attributes(
-    puma: pd.DataFrame, 
+    puma: livelike.acs.puma, 
     level: str, 
     variables: list,
 ) -> pd.DataFrame:

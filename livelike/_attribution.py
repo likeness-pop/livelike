@@ -67,9 +67,9 @@ def class_of_worker(est_person: pd.DataFrame):
     return labels
 
 
-def commute_time_m(est_person: pd.DataFrame):
+def commute_drive_type(est_person : pd.DataFrame) -> pd.Series:
     """
-    Produces person-level labels for commute time in minutes. 
+    Produces person-level labels for commute drive type. 
 
     Parameters
     ----------
@@ -79,11 +79,11 @@ def commute_time_m(est_person: pd.DataFrame):
     Returns
     -------
     labels : pandas.Series
-        Commute time labels.
+        Commute drive type labels.
     """
-    filter = "^cmt_mins_"
+    filter = "^veh_occ_"
     labels = columns_to_labels(est_person, filter=filter, scrub=filter)
-    labels.name = "commute_time_m"
+    labels.name = "commute_drive_type"
 
     return labels
 
@@ -109,9 +109,9 @@ def commute_mode(est_person: pd.DataFrame):
     return labels
 
 
-def commute_drive_type(est_person : pd.DataFrame) -> pd.Series:
+def commute_time_m(est_person: pd.DataFrame):
     """
-    Produces person-level labels for commute drive type. 
+    Produces person-level labels for commute time in minutes. 
 
     Parameters
     ----------
@@ -121,11 +121,11 @@ def commute_drive_type(est_person : pd.DataFrame) -> pd.Series:
     Returns
     -------
     labels : pandas.Series
-        Commute drive type labels.
+        Commute time labels.
     """
-    filter = "^veh_occ_"
+    filter = "^cmt_mins_"
     labels = columns_to_labels(est_person, filter=filter, scrub=filter)
-    labels.name = "commute_drive_type"
+    labels.name = "commute_time_m"
 
     return labels
 
