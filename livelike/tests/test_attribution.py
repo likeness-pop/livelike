@@ -6,7 +6,9 @@ import pandas
 from livelike import _attribution
 
 eval_data_person = pandas.read_parquet(
-    os.path.join("livelike", "tests", "attribution_eval_data", "eval_data_person.parquet")
+    os.path.join(
+        "livelike", "tests", "attribution_eval_data", "eval_data_person.parquet"
+    )
 )
 
 eval_data_household = pandas.read_parquet(
