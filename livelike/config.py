@@ -425,6 +425,27 @@ up_expanded_constraints_selection = {
     ],
 }
 
+# UrbanPop base attributes
+up_base_attributes_person = [
+    "class_of_worker",
+    "commute_time_m",
+    "commute_mode",
+    "commute_drive_type",
+    "employment_status",
+    "grade",
+    "hours_worked",
+    "industry",
+    "occupation",
+    "school_type",
+]
+
+up_base_attributes_household = [
+    "household_size",
+    "household_type",
+    "tenure",
+    "vehicles_available",
+]
+
 # geographic levels for constraint selection
 geo_levels = {
     "bg": ["bg"],

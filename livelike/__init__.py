@@ -28,6 +28,9 @@ from .acs import (
     select_constraints,
     update_data_types,
 )
+from .attribution import (
+    build_attributes,
+)
 from .config import (
     cmd_api_request_limit,
     constraints,
@@ -38,6 +41,8 @@ from .config import (
     rel,
     universe_codes,
     universe_constraints,
+    up_base_attributes_household,
+    up_base_attributes_person,
     up_base_constraints_selection,
     up_constraints_theme_order,
     up_expanded_constraints_selection,
