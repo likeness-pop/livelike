@@ -4,13 +4,40 @@ import pandas as pd
 import re
 
 def build_attributes(puma, level, variables):
+    """
+    Builds attributes for a PUMA at person or household level 
+    on a defined list of variables. 
+
+    Parameters
+    ----------
+    puma : livelike.acs.puma
+        Symbolic representation of PUMA.
+    level : str
+        PUMS level (``'person'`` or ``'household'``).
+    variables : list
+        Variables of interest.
+
+    Returns
+    -------
+    atts : pandas.DataFrame
+        PUMA attributes at the level of interest.
+    """
+    if not level in ["person", "household"]:
+        raise ValueError(
+            "Argument ``level`` must be one of "
+            "``'person'``, ``'household'``."
+        )
+
     pums = getattr(puma, f"est_{level}")
+    if level == "person":
+        pums = pums.reset_index().set_index(["SERIALNO", "SPORDER"])
 
     atts = pd.concat(
         [getattr(attribution, v)(pums) for v in variables],
         axis=1
     )
     return atts
+
 
 def columns_to_labels(df, filter, scrub=None, keep_index=True):
     """
