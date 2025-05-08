@@ -28,6 +28,14 @@ def build_attributes(puma, level, variables):
             "``'person'``, ``'household'``."
         )
 
+    if getattr(puma, f"est_{level}") is None:
+        raise ValueError(
+            f"PUMS attributes ``puma.est_{level}`` "
+            "cannot be ``None``. "
+            "Use ``livelike.acs.puma(keep_intermediates=True)`` "
+            "to retain these in ``puma``."
+        )
+
     pums = getattr(puma, f"est_{level}")
     if level == "person":
         pums = pums.reset_index().set_index(["SERIALNO", "SPORDER"])
