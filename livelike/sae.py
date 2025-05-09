@@ -1,17 +1,7 @@
-import geopandas as gpd
 import numpy as np
 import pandas as pd
-from likeness_vitals.vitals import get_censusapikey
 import livelike
-from livelike import attribution
-from livelike.config import (
-    up_base_attributes_person,
-    up_base_attributes_household
-)
 import pymedm
-
-from livelike import acs, est, homesim, multi
-from livelike.utils import clear_acs_cache
 
 def estimate(
         pumas : livelike.acs.puma | dict, 
