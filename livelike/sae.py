@@ -6,7 +6,7 @@ import pymedm
 def estimate(
         pumas : livelike.acs.puma | dict, 
         pmedms : pymedm.pmedm.PMEDM | dict, 
-        serial : pd.core.indexes.base.index |\
+        serial : pd.core.indexes.base.Index |\
               pd.core.indexes.multi.MultiIndex, 
         normalize : bool = False,
     ) -> dict:
@@ -22,7 +22,7 @@ def estimate(
     pmedms : pymedm.pmedm.PMEDM | dict
         P-MEDM problems. Must have a solution including 
         an allocation matrix.
-    serial : pandas.core.indexes.base.index | pandas.core.indexes.multi.MultiIndex
+    serial : pandas.core.indexes.base.Index | pandas.core.indexes.multi.MultiIndex
         Index of person or residence IDs defining the population segment within 
         the PUMA. Person or residence (``'household'``) level is inferred internally 
         based on whether a single index described by PUMS serial number 
@@ -86,8 +86,8 @@ def estimate(
             sum(axis=0) 
         for r in range(len(pmedms))
     ])
-    # count ndims (1: base only, 2: ensemble)
-    nd_seg_est_ = seg_est_.ndim
+    # count number of ests (1: base only, 2+: ensemble)
+    n_ests = seg_est_.shape[0]
 
     # normalize counts if specified
     if normalize:
@@ -107,18 +107,18 @@ def estimate(
 
     # collate point estimates, standard errors, coeffs of variation
     est = {}
-    if nd_seg_est_ == 2:
+    if n_ests > 1:
         est["est"] = np.apply_along_axis(func1d=np.mean, axis=0, arr=seg_est_)
         est["se"] = np.apply_along_axis(func1d=np.std, axis=0, arr=seg_est_)
         est["cv"] = est["se"] / est["est"]
-    elif nd_seg_est_ == 1:
-        est["est"] = seg_est_
+    elif n_ests == 1:
+        est["est"] = seg_est_.flatten()
         est["se"] = np.nan
         est["cv"] = np.nan
     else:
         raise RuntimeError(
             "Something went wrong. Estimates should be 1d or 2d but got" \
-            f"{nd_seg_est_}d."
+            f"{n_ests}d."
         )
 
     return est
