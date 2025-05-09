@@ -1,54 +1,52 @@
 import numpy as np
 import pandas as pd
-import livelike
 import pymedm
 
+import livelike
+
+
 def estimate(
-        pumas : livelike.acs.puma | dict, 
-        pmedms : pymedm.pmedm.PMEDM | dict, 
-        serial : pd.core.indexes.base.Index |\
-              pd.core.indexes.multi.MultiIndex, 
-        normalize : bool = False,
-    ) -> dict:
+    pumas: livelike.acs.puma | dict,
+    pmedms: pymedm.pmedm.PMEDM | dict,
+    serial: pd.core.indexes.base.Index | pd.core.indexes.multi.MultiIndex,
+    normalize: bool = False,
+) -> dict:
     """
-    Estimates counts, and optionally proportions, of a population 
-    segment matching some condition of interest using a solved P-MEDM 
-    problem and input PUMA data, or an ensemble of these. 
+    Estimates counts, and optionally proportions, of a population
+    segment matching some condition of interest using a solved P-MEDM
+    problem and input PUMA data, or an ensemble of these.
 
     Parameters
     ----------
     pumas : livelike.acs.puma | dict
-        Input PUMA data. 
+        Input PUMA data.
     pmedms : pymedm.pmedm.PMEDM | dict
-        P-MEDM problems. Must have a solution including 
+        P-MEDM problems. Must have a solution including
         an allocation matrix.
     serial : pandas.core.indexes.base.Index | pandas.core.indexes.multi.MultiIndex
-        Index of person or residence IDs defining the population segment within 
-        the PUMA. Person or residence (``'household'``) level is inferred internally 
-        based on whether a single index described by PUMS serial number 
-        (``SERIALNO``) is given (residence-level) vs. a multi-index (person) 
-        described by ``SERIALNO`` and household membership order (``SPORDER``). 
+        Index of person or residence IDs defining the population segment within
+        the PUMA. Person or residence (``'household'``) level is inferred internally
+        based on whether a single index described by PUMS serial number
+        (``SERIALNO``) is given (residence-level) vs. a multi-index (person)
+        described by ``SERIALNO`` and household membership order (``SPORDER``).
         In the latter case, the number of household members by ``SERIALNO:SPODER``
         is tabulated to produce the person level estimates.
     normalize : bool=False
-        Whether to normalize the estimate by total population 
+        Whether to normalize the estimate by total population
         (``'population'``) or total residences (``'household'``).
     """
     # If only the base PUMA/P-MEDM is passed
     # convert to dict to mimic replicates structure
     if isinstance(pumas, livelike.acs.puma):
-        pumas = {f"{pumas.fips}_0" : pumas}
+        pumas = {f"{pumas.fips}_0": pumas}
     fips = list(pumas.items())[0][1].fips
 
     if isinstance(pmedms, pymedm.pmedm.PMEDM):
-        pmedms = {f"{fips}_0" : pmedms}
+        pmedms = {f"{fips}_0": pmedms}
 
     if len(pumas) != len(pmedms):
-        raise ValueError(
-            "Inputs ``pumas`` and ``pmedms`` must "
-            "have the same length."
-        )
-    
+        raise ValueError("Inputs ``pumas`` and ``pmedms`` must have the same length.")
+
     # infer level from index type
     if isinstance(serial, pd.core.indexes.multi.MultiIndex):
         level = "person"
@@ -59,18 +57,16 @@ def estimate(
     elif isinstance(serial, pd.core.indexes.base.Index):
         level = "household"
         if serial.name != "SERIALNO":
-            raise ValueError(
-                "Input ``serial`` must be named as ``'SERIALNO'``."
-            )
+            raise ValueError("Input ``serial`` must be named as ``'SERIALNO'``.")
     else:
         raise ValueError(
             "Input ``serial`` must be a pandas.DataFrame Index or MultiIndex."
         )
-    
+
     if level == "person":
         # count household members associated with target IDs
         seg_ct = serial.get_level_values(0).value_counts(sort=False).values
-    else: # household
+    else:  # household
         # one count per residence
         seg_ct = np.array([1] * len(serial))
 
@@ -78,32 +74,35 @@ def estimate(
     pmd = pmedms[f"{fips}_0"]
     if level == "person":
         is_seg = np.where(pmd.serial.isin(serial.get_level_values(0)))
-    else: # household
+    else:  # household
         is_seg = np.where(pmd.serial.isin(serial))
 
-    seg_est_ = np.array([
-        (pmedms[f"{fips}_{r}"].almat[is_seg] * seg_ct[:,None]).\
-            sum(axis=0) 
-        for r in range(len(pmedms))
-    ])
+    seg_est_ = np.array(
+        [
+            (pmedms[f"{fips}_{r}"].almat[is_seg] * seg_ct[:, None]).sum(axis=0)
+            for r in range(len(pmedms))
+        ]
+    )
     # count number of ests (1: base only, 2+: ensemble)
     n_ests = seg_est_.shape[0]
 
     # normalize counts if specified
     if normalize:
         if level == "person":
-            totals_ = np.array([
-                (pmedms[f"{fips}_{r}"].almat * pumas[f"{fips}_{r}"].\
-                est_ind.population.values[:,None]).\
-                    sum(axis=0) 
-                for r in range(len(pmedms))
-            ])
-        else: # household
-            totals_ = np.array([
-                pmedms[f"{fips}_{r}"].almat.sum(axis=0)
-                for r in range(len(pmedms))
-            ])
-        seg_est_ = seg_est_ / totals_    
+            totals_ = np.array(
+                [
+                    (
+                        pmedms[f"{fips}_{r}"].almat
+                        * pumas[f"{fips}_{r}"].est_ind.population.values[:, None]
+                    ).sum(axis=0)
+                    for r in range(len(pmedms))
+                ]
+            )
+        else:  # household
+            totals_ = np.array(
+                [pmedms[f"{fips}_{r}"].almat.sum(axis=0) for r in range(len(pmedms))]
+            )
+        seg_est_ = seg_est_ / totals_
 
     # collate point estimates, standard errors, coeffs of variation
     est = {}
@@ -117,8 +116,7 @@ def estimate(
         est["cv"] = np.nan
     else:
         raise RuntimeError(
-            "Something went wrong. Estimates should be 1d or 2d but got" \
-            f"{n_ests}d."
+            f"Something went wrong. Estimates should be 1d or 2d but got{n_ests}d."
         )
 
     return est
