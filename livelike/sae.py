@@ -13,7 +13,13 @@ import pymedm
 from livelike import acs, est, homesim, multi
 from livelike.utils import clear_acs_cache
 
-def estimate(pumas, pmedms, atts, condition, level, normalize=False) -> dict:
+def estimate(
+        pumas : livelike.acs.puma | dict, 
+        pmedms : pymedm.pmedm.PMEDM | dict, 
+        serial : pd.core.indexes.base.index |\
+              pd.core.indexes.multi.MultiIndex, 
+        normalize : bool = False,
+    ) -> dict:
     """
     Estimates counts, and optionally proportions, of a population 
     segment matching some condition of interest using a solved P-MEDM 
@@ -26,25 +32,26 @@ def estimate(pumas, pmedms, atts, condition, level, normalize=False) -> dict:
     pmedms : pymedm.pmedm.PMEDM | dict
         P-MEDM problems. Must have a solution including 
         an allocation matrix.
-    atts : pandas.DataFarme
-        Population attributes 
-        (see ``livelike.attribution.build_attributes()``).
-    condition : str
-        Condition for querying attributes to define the 
-        population segment of interest. 
-    level : str
-        Level of interest (``'person'`` or ``'household'``).
+    serial : pandas.core.indexes.base.index | pandas.core.indexes.multi.MultiIndex
+        Index of person or residence IDs defining the population segment within 
+        the PUMA. Person or residence (``'household'``) level is inferred internally 
+        based on whether a single index described by PUMS serial number 
+        (``SERIALNO``) is given (residence-level) vs. a multi-index (person) 
+        described by ``SERIALNO`` and household membership order (``SPORDER``). 
+        In the latter case, the number of household members by ``SERIALNO:SPODER``
+        is tabulated to produce the person level estimates.
     normalize : bool=False
         Whether to normalize the estimate by total population 
         (``'population'``) or total residences (``'household'``).
     """
-    # If only the based PUMA/P-MEDM is passed
+    # If only the base PUMA/P-MEDM is passed
     # convert to dict to mimic replicates structure
     if isinstance(pumas, livelike.acs.puma):
         pumas = {f"{pumas.fips}_0" : pumas}
+    fips = list(pumas.items())[0][1].fips
 
     if isinstance(pmedms, pymedm.pmedm.PMEDM):
-        pmedms = {f"{pmedms.fips}_0" : pumas}
+        pmedms = {f"{fips}_0" : pmedms}
 
     if len(pumas) != len(pmedms):
         raise ValueError(
@@ -52,67 +59,72 @@ def estimate(pumas, pmedms, atts, condition, level, normalize=False) -> dict:
             "have the same length."
         )
     
-    # Get segment by condition
-    if level == "person" and not isinstance(
-        atts.index, "pd.core.indexes.multi.MultiIndex"):
+    # infer level from index type
+    if isinstance(serial, pd.core.indexes.multi.MultiIndex):
+        level = "person"
+        if serial.names != ["SERIALNO", "SPORDER"]:
+            raise ValueError(
+                "Input ``serial`` must be named as ``['SERIALNO', 'SPORDER']``."
+            )
+    elif isinstance(serial, pd.core.indexes.base.Index):
+        level = "household"
+        if serial.name != "SERIALNO":
+            raise ValueError(
+                "Input ``serial`` must be named as ``'SERIALNO'``."
+            )
+    else:
         raise ValueError(
-            "Attributes (``atts``) must be indexed by " \
-            "both ``SERIALNO`` and ``SPORDER``."
+            "Input ``serial`` must be a pandas.DataFrame Index or MultiIndex."
         )
-    seg = atts.loc[eval(condition)]
-    if len(seg) == 0:
-        raise RuntimeError(
-            "No cases found matching the condition."
-        )
-
-    # 
-    if level == "person":
-        serials = seg.index.get_level_values(0)
-        seg_ct = serials.value_counts(sort=False).values
-    else: # household
-        serials = seg.index
-        seg_ct = None
     
-    fips = list(pumas.items())[0][1].fips
+    if level == "person":
+        # count household members associated with target IDs
+        seg_ct = serial.get_level_values(0).value_counts(sort=False).values
+    else: # household
+        # one count per residence
+        seg_ct = np.array([1] * len(serial))
+
+    # flag segments within full PUMS index for PUMA
     pmd = pmedms[f"{fips}_0"]
-    is_seg = np.where(pmd.serial.isin(serials))
+    if level == "person":
+        is_seg = np.where(pmd.serial.isin(serial.get_level_values(0)))
+    else: # household
+        is_seg = np.where(pmd.serial.isin(serial))
 
     seg_est_ = np.array([
-        (pmedms[f"{pumas}_{r}"].almat[is_seg] * seg_ct[:,None]).\
+        (pmedms[f"{fips}_{r}"].almat[is_seg] * seg_ct[:,None]).\
             sum(axis=0) 
         for r in range(len(pmedms))
     ])
-    nd_seg_est_ = seg_est_.ndims
+    # count ndims (1: base only, 2: ensemble)
+    nd_seg_est_ = seg_est_.ndim
 
+    # normalize counts if specified
     if normalize:
         if level == "person":
-            pop_totals_ = np.array([
+            totals_ = np.array([
                 (pmedms[f"{fips}_{r}"].almat * pumas[f"{fips}_{r}"].\
                 est_ind.population.values[:,None]).\
                     sum(axis=0) 
                 for r in range(len(pmedms))
             ])
         else: # household
-            pop_totals_ = np.array([
+            totals_ = np.array([
                 pmedms[f"{fips}_{r}"].almat.sum(axis=0)
                 for r in range(len(pmedms))
             ])
-        seg_prop_ = seg_est_ / pop_totals_        
+        seg_est_ = seg_est_ / totals_    
 
+    # collate point estimates, standard errors, coeffs of variation
     est = {}
     if nd_seg_est_ == 2:
-        est["count"] = np.apply_along_axis(func1d=np.mean, axis=0, arr=seg_est_)
-        if normalize:
-            est["prop"] = np.apply_along_axis(func1d=np.mean, axis=0, arr=seg_prop_)
+        est["est"] = np.apply_along_axis(func1d=np.mean, axis=0, arr=seg_est_)
         est["se"] = np.apply_along_axis(func1d=np.std, axis=0, arr=seg_est_)
         est["cv"] = est["se"] / est["est"]
-
     elif nd_seg_est_ == 1:
-        est["count"] = seg_est_
-        est["prop"] = seg_prop_
+        est["est"] = seg_est_
         est["se"] = np.nan
         est["cv"] = np.nan
-
     else:
         raise RuntimeError(
             "Something went wrong. Estimates should be 1d or 2d but got" \
