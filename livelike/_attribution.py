@@ -378,6 +378,20 @@ def household_type(est_household: pd.DataFrame) -> pd.Series:
     labels : pandas.Series
         Household type labels.
     """
+    # manually remove cols associated with fam type
+    # (unintentionally same prefix)
+    est_household = est_household.loc[
+        :,
+        ~est_household.columns.isin(
+            [
+                "hht_married",
+                "hht_male_no_spouse",
+                "hht_female_no_spouse",
+                "hht_alone",
+                "hht_not_alone",
+            ]
+        ),
+    ]
     filter_regex = "^hht_"
     scrub = "hht_|_hhsize_|1p|2p|3p|4p|5p|6p|7pm|"
     labels = columns_to_labels(est_household, filter_regex=filter_regex, scrub=scrub)
