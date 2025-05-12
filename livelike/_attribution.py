@@ -49,6 +49,7 @@ def columns_to_labels(
 
 ## Labeling Functions ##
 
+
 def age(est_person: pd.DataFrame):
     """
     Produces person-level labels for age cohort.
@@ -69,23 +70,23 @@ def age(est_person: pd.DataFrame):
     )
     labels.name = "age"
 
-    # consolidate labels as needed 
+    # consolidate labels as needed
     # for consistent 5-year intervals
     labels = labels.replace(
         {
-            "15_17" : "15_19",
-            "18_19" : "15_19",
-            "20" : "20_24",
-            "21" : "20_24",
-            "22_24" : "20_24",
-            "60_61" : "60_64",
-            "62_64" : "60_64",
-            "65_66" : "65_69",
-            "67_69" : "65_69"
+            "15_17": "15_19",
+            "18_19": "15_19",
+            "20": "20_24",
+            "21": "20_24",
+            "22_24": "20_24",
+            "60_61": "60_64",
+            "62_64": "60_64",
+            "65_66": "65_69",
+            "67_69": "65_69",
         }
     )
 
-    return labels        
+    return labels
 
 
 def class_of_worker(est_person: pd.DataFrame):
@@ -195,7 +196,9 @@ def dwelling_type(est_household: pd.DataFrame) -> pd.Series:
         Dwelling type labels.
     """
     filter_regex = "^dwg_"
-    labels = columns_to_labels(est_household, filter_regex=filter_regex, scrub=filter_regex)
+    labels = columns_to_labels(
+        est_household, filter_regex=filter_regex, scrub=filter_regex
+    )
     labels.name = "dwelling_type"
 
     return labels
@@ -218,12 +221,10 @@ def edu_attainment(est_person: pd.DataFrame):
     """
     filter_regex = "^schl_"
     scrub = "schl_|female_|male_"
-    labels = columns_to_labels(
-        est_person, filter_regex=filter_regex, scrub=scrub
-    )
+    labels = columns_to_labels(est_person, filter_regex=filter_regex, scrub=scrub)
     labels.name = "edu_attainment"
 
-    return labels        
+    return labels
 
 
 def employment_status(est_person: pd.DataFrame) -> pd.Series:
@@ -272,7 +273,7 @@ def grade(est_person: pd.DataFrame) -> pd.Series:
     return labels
 
 
-def hh_income(est_household: pd.DataFrame) -> pd.Series:
+def household_income(est_household: pd.DataFrame) -> pd.Series:
     """
     Produces household-level labels for household income.
 
@@ -287,7 +288,9 @@ def hh_income(est_household: pd.DataFrame) -> pd.Series:
         Household income labels.
     """
     filter_regex = "^hhinc_"
-    labels = columns_to_labels(est_household, filter_regex=filter_regex, scrub=filter_regex)
+    labels = columns_to_labels(
+        est_household, filter_regex=filter_regex, scrub=filter_regex
+    )
     labels.name = "hh_income"
 
     return labels
@@ -331,7 +334,9 @@ def house_heating_fuel(est_household: pd.DataFrame) -> pd.Series:
        House heating fuel labels.
     """
     filter_regex = "^hhf_"
-    labels = columns_to_labels(est_household, filter_regex=filter_regex, scrub=filter_regex)
+    labels = columns_to_labels(
+        est_household, filter_regex=filter_regex, scrub=filter_regex
+    )
     labels.name = "house_heating_fuel"
 
     return labels
@@ -424,7 +429,7 @@ def hispanic_latino(est_person: pd.DataFrame):
     )
     labels.name = "hispanic_latino"
 
-    return labels        
+    return labels
 
 
 def income_to_poverty_ratio(est_person: pd.DataFrame):
@@ -447,7 +452,7 @@ def income_to_poverty_ratio(est_person: pd.DataFrame):
     )
     labels.name = "income_to_poverty_ratio"
 
-    return labels        
+    return labels
 
 
 def industry(est_person: pd.DataFrame) -> pd.Series:
@@ -489,13 +494,13 @@ def living_arrangement(est_household: pd.DataFrame):
     """
     filter_regex = "^hht_"
     # manually exclude ``hhsize`` cols
-    est_household = est_household.loc[:,~est_household.columns.str.contains("hhsize")]
+    est_household = est_household.loc[:, ~est_household.columns.str.contains("hhsize")]
     labels = columns_to_labels(
         est_household, filter_regex=filter_regex, scrub=filter_regex
     )
     labels.name = "living_arrangement"
 
-    return labels        
+    return labels
 
 
 def mortgage(est_household: pd.DataFrame) -> pd.Series:
@@ -570,7 +575,7 @@ def race(est_person: pd.DataFrame):
     )
     labels.name = "race"
 
-    return labels        
+    return labels
 
 
 def residence_type__person(est_person):
@@ -590,10 +595,10 @@ def residence_type__person(est_person):
     labels = pd.Series(
         np.where(est_person.group_quarters_pop == 1, "gq", "hu"),
         index=est_person.index,
-        name="residence_type"
+        name="residence_type",
     )
 
-    return labels    
+    return labels
 
 
 def residence_type__household(est_household):
@@ -614,18 +619,13 @@ def residence_type__household(est_household):
         np.where(
             est_household.housing_units == 0,
             "gq",
-            np.where(
-                est_household.occhu > 0,
-                "hu_occ",
-                "hu_vac"
-            )
+            np.where(est_household.occhu > 0, "hu_occ", "hu_vac"),
         ),
         index=est_household.index,
-        name="residence_type"
+        name="residence_type",
     )
 
-    return labels    
-
+    return labels
 
 
 def school_type(est_person: pd.DataFrame) -> pd.Series:
@@ -672,12 +672,10 @@ def sex(est_person: pd.DataFrame):
         "62_64|65_66|67_69|70_74|75_79|"
         "80_84|85o"
     )
-    labels = columns_to_labels(
-        est_person, filter_regex=filter_regex, scrub=scrub
-    )
+    labels = columns_to_labels(est_person, filter_regex=filter_regex, scrub=scrub)
     labels.name = "age_cohort"
 
-    return labels        
+    return labels
 
 
 def tenure(est_household: pd.DataFrame) -> pd.Series:
@@ -740,7 +738,9 @@ def year_dwelling_built(est_household: pd.DataFrame) -> pd.Series:
         year dwelling built labels.
     """
     filter_regex = "^year_built_"
-    labels = columns_to_labels(est_household, filter_regex=filter_regex, scrub=filter_regex)
+    labels = columns_to_labels(
+        est_household, filter_regex=filter_regex, scrub=filter_regex
+    )
     labels.name = "year_dwelling_built"
 
     return labels

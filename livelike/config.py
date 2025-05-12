@@ -440,8 +440,7 @@ up_base_attributes_person = [
     "school_type",
 ]
 
-up_expanded_attributes_person = up_base_attributes_person +\
-[
+up_expanded_attributes_person = up_base_attributes_person + [
     "age",
     "edu_attainment",
     "hispanic_latino",
@@ -458,12 +457,11 @@ up_base_attributes_household = [
     "vehicles_available",
 ]
 
-up_expanded_attributes_household = up_base_attributes_household +\
-[
+up_expanded_attributes_household = up_base_attributes_household + [
     "dwelling_type",
     "household_income",
     "living_arrangement",
-    "year_built",
+    "year_dwelling_built",
 ]
 
 # geographic levels for constraint selection
