@@ -251,7 +251,7 @@ def employment_status(est_person: pd.DataFrame) -> pd.Series:
 
 def grade(est_person: pd.DataFrame) -> pd.Series:
     """
-    Produces person-level labels for school grade lavel.
+    Produces person-level labels for school grade level.
 
     Parameters
     ----------
@@ -571,6 +571,61 @@ def race(est_person: pd.DataFrame):
     labels.name = "race"
 
     return labels        
+
+
+def residence_type__person(est_person):
+    """
+    Produces person-level labels for residence type.
+
+    Parameters
+    ----------
+    est_person: pandas.DataFrame
+        Person-level PUMS constraints.
+
+    Returns
+    -------
+    labels : pandas.Series
+        Residence type labels.
+    """
+    labels = pd.Series(
+        np.where(est_person.group_quarters_pop == 1, "gq", "hu"),
+        index=est_person.index,
+        name="residence_type"
+    )
+
+    return labels    
+
+
+def residence_type__household(est_household):
+    """
+    Produces household-level labels for residence type.
+
+    Parameters
+    ----------
+    est_household: pandas.DataFrame
+        Person-level PUMS constraints.
+
+    Returns
+    -------
+    labels : pandas.Series
+        Residence type labels.
+    """
+    labels = pd.Series(
+        np.where(
+            est_household.housing_units == 0,
+            "gq",
+            np.where(
+                est_household.occhu > 0,
+                "hu_occ",
+                "hu_vac"
+            )
+        ),
+        index=est_household.index,
+        name="residence_type"
+    )
+
+    return labels    
+
 
 
 def school_type(est_person: pd.DataFrame) -> pd.Series:
