@@ -49,6 +49,44 @@ def columns_to_labels(
 
 ## Labeling Functions ##
 
+def age(est_person: pd.DataFrame):
+    """
+    Produces person-level labels for age cohort.
+
+    Parameters
+    ----------
+    est_person: pandas.DataFrame
+        Person-level PUMS constraints.
+
+    Returns
+    -------
+    labels : pandas.Series
+        Sex by age labels.
+    """
+    filter_regex = "^female_a|^male_a"
+    labels = columns_to_labels(
+        est_person, filter_regex=filter_regex, scrub=filter_regex
+    )
+    labels.name = "age"
+
+    # consolidate labels as needed 
+    # for consistent 5-year intervals
+    labels = labels.replace(
+        {
+            "15_17" : "15_19",
+            "18_19" : "15_19",
+            "20" : "20_24",
+            "21" : "20_24",
+            "22_24" : "20_24",
+            "60_61" : "60_64",
+            "62_64" : "60_64",
+            "65_66" : "65_69",
+            "67_69" : "65_69"
+        }
+    )
+
+    return labels        
+
 
 def class_of_worker(est_person: pd.DataFrame):
     """
@@ -142,6 +180,52 @@ def commute_time_m(est_person: pd.DataFrame):
     return labels
 
 
+def dwelling_type(est_household: pd.DataFrame) -> pd.Series:
+    """
+    Produces household-level labels for dwelling type.
+
+    Parameters
+    ----------
+    est_household: pandas.DataFrame
+        Household-level PUMS constraints.
+
+    Returns
+    -------
+    labels : pandas.Series
+        Dwelling type labels.
+    """
+    filter_regex = "^dwg_"
+    labels = columns_to_labels(est_household, filter_regex=filter_regex, scrub=filter_regex)
+    labels.name = "dwelling_type"
+
+    return labels
+
+
+def edu_attainment(est_person: pd.DataFrame):
+    """
+    Produces person-level labels for educational
+    attainment for adults 25+.
+
+    Parameters
+    ----------
+    est_person: pandas.DataFrame
+        Person-level PUMS constraints.
+
+    Returns
+    -------
+    labels : pandas.Series
+        Educational attainment labels.
+    """
+    filter_regex = "^schl_"
+    scrub = "schl_|female_|male_"
+    labels = columns_to_labels(
+        est_person, filter_regex=filter_regex, scrub=scrub
+    )
+    labels.name = "edu_attainment"
+
+    return labels        
+
+
 def employment_status(est_person: pd.DataFrame) -> pd.Series:
     """
     Produces person-level labels for employment status.
@@ -188,6 +272,27 @@ def grade(est_person: pd.DataFrame) -> pd.Series:
     return labels
 
 
+def hh_income(est_household: pd.DataFrame) -> pd.Series:
+    """
+    Produces household-level labels for household income.
+
+    Parameters
+    ----------
+    est_household: pandas.DataFrame
+        Household-level PUMS constraints.
+
+    Returns
+    -------
+    labels : pandas.Series
+        Household income labels.
+    """
+    filter_regex = "^hhinc_"
+    labels = columns_to_labels(est_household, filter_regex=filter_regex, scrub=filter_regex)
+    labels.name = "hh_income"
+
+    return labels
+
+
 def hours_worked(est_person: pd.DataFrame) -> pd.Series:
     """
     Produces person-level labels for hours worked.
@@ -207,6 +312,27 @@ def hours_worked(est_person: pd.DataFrame) -> pd.Series:
         est_person, filter_regex=filter_regex, scrub=filter_regex
     )
     labels.name = "hours_worked"
+
+    return labels
+
+
+def house_heating_fuel(est_household: pd.DataFrame) -> pd.Series:
+    """
+    Produces household-level labels for house heating fuel.
+
+    Parameters
+    ----------
+    est_household: pandas.DataFrame
+        Household-level PUMS constraints.
+
+    Returns
+    -------
+    labels : pandas.Series
+       House heating fuel labels.
+    """
+    filter_regex = "^hhf_"
+    labels = columns_to_labels(est_household, filter_regex=filter_regex, scrub=filter_regex)
+    labels.name = "house_heating_fuel"
 
     return labels
 
@@ -255,6 +381,75 @@ def household_type(est_household: pd.DataFrame) -> pd.Series:
     return labels
 
 
+def housing_costs_pct_income(est_household: pd.DataFrame) -> pd.Series:
+    """
+    Produces household-level labels for monthly housing
+    costs as a percentage of income.
+
+    Parameters
+    ----------
+    est_household: pandas.DataFrame
+        Household-level PUMS constraints.
+
+    Returns
+    -------
+    labels : pandas.Series
+        Housing costs labels.
+    """
+    filter_regex = "^owncost_|^rentcost_"
+    scrub = filter_regex + "|mortgage_|nomortgage_"
+    labels = columns_to_labels(est_household, filter_regex=filter_regex, scrub=scrub)
+    labels.name = "housing_costs_pct_income"
+
+    return labels
+
+
+def hispanic_latino(est_person: pd.DataFrame):
+    """
+    Produces person-level labels for Hispanic/Latino ethnicity.
+
+    Parameters
+    ----------
+    est_person: pandas.DataFrame
+        Person-level PUMS constraints.
+
+    Returns
+    -------
+    labels : pandas.Series
+        Hispanic/Latino ethnicity labels.
+    """
+    filter_regex = "^hsplat_"
+    labels = columns_to_labels(
+        est_person, filter_regex=filter_regex, scrub=filter_regex
+    )
+    labels.name = "hispanic_latino"
+
+    return labels        
+
+
+def income_to_poverty_ratio(est_person: pd.DataFrame):
+    """
+    Produces person-level labels for income to poverty ratio.
+
+    Parameters
+    ----------
+    est_person: pandas.DataFrame
+        Person-level PUMS constraints.
+
+    Returns
+    -------
+    labels : pandas.Series
+        Income to poverty ratio labels.
+    """
+    filter_regex = "^ipr_"
+    labels = columns_to_labels(
+        est_person, filter_regex=filter_regex, scrub=filter_regex
+    )
+    labels.name = "income_to_poverty_ratio"
+
+    return labels        
+
+
 def industry(est_person: pd.DataFrame) -> pd.Series:
     """
     Produces person-level labels for NAICS industry.
@@ -274,6 +469,59 @@ def industry(est_person: pd.DataFrame) -> pd.Series:
         est_person, filter_regex=filter_regex, scrub=filter_regex
     )
     labels.name = "industry"
+
+    return labels
+
+
+def living_arrangement(est_household: pd.DataFrame):
+    """
+    Produces household-level labels for living arrangement.
+
+    Parameters
+    ----------
+    est_household: pandas.DataFrame
+        Household-level PUMS constraints.
+
+    Returns
+    -------
+    labels : pandas.Series
+        Sex labels.
+    """
+    filter_regex = "^hht_"
+    # manually exclude ``hhsize`` cols
+    est_household = est_household.loc[:,~est_household.columns.str.contains("hhsize")]
+    labels = columns_to_labels(
+        est_household, filter_regex=filter_regex, scrub=filter_regex
+    )
+    labels.name = "living_arrangement"
+
+    return labels        
+
+
+def mortgage(est_household: pd.DataFrame) -> pd.Series:
+    """
+    Produces household-level labels for home mortgage
+    for owner-occupied households.
+
+    Parameters
+    ----------
+    est_household: pandas.DataFrame
+        Household-level PUMS constraints.
+
+    Returns
+    -------
+    labels : pandas.Series
+        Home mortgage labels.
+    """
+    filter_regex = "^owncost_"
+    scrub = (
+        "^owncost_|_less10|_10to14.9|_15to19.9|"
+        "_20to24.9|_25to29.9|_30to34.9|_35to39.9|"
+        "_40to49.9|_more50"
+    )
+
+    labels = columns_to_labels(est_household, filter_regex=filter_regex, scrub=scrub)
+    labels.name = "mortgage"
 
     return labels
 
@@ -302,6 +550,29 @@ def occupation(est_person: pd.DataFrame) -> pd.Series:
     return labels
 
 
+def race(est_person: pd.DataFrame):
+    """
+    Produces person-level labels for race.
+
+    Parameters
+    ----------
+    est_person: pandas.DataFrame
+        Person-level PUMS constraints.
+
+    Returns
+    -------
+    labels : pandas.Series
+        Race labels.
+    """
+    filter_regex = "^race_"
+    labels = columns_to_labels(
+        est_person, filter_regex=filter_regex, scrub=filter_regex
+    )
+    labels.name = "race"
+
+    return labels        
+
+
 def school_type(est_person: pd.DataFrame) -> pd.Series:
     """
     Produces person-level labels for school type in minutes.
@@ -324,6 +595,36 @@ def school_type(est_person: pd.DataFrame) -> pd.Series:
     return labels
 
 
+def sex(est_person: pd.DataFrame):
+    """
+    Produces person-level labels for sex.
+
+    Parameters
+    ----------
+    est_person: pandas.DataFrame
+        Person-level PUMS constraints.
+
+    Returns
+    -------
+    labels : pandas.Series
+        Sex labels.
+    """
+    filter_regex = "^female_a|^male_a"
+    scrub = (
+        "_a|05u|05_09|10_14|15_17|18_19|"
+        "20|21|22_24|25_29|30_34|35_39|"
+        "40_44|45_49|50_54|55_59|60_61|"
+        "62_64|65_66|67_69|70_74|75_79|"
+        "80_84|85o"
+    )
+    labels = columns_to_labels(
+        est_person, filter_regex=filter_regex, scrub=scrub
+    )
+    labels.name = "age_cohort"
+
+    return labels        
+
+
 def tenure(est_household: pd.DataFrame) -> pd.Series:
     """
     Produces household-level labels for tenure.
@@ -336,7 +637,7 @@ def tenure(est_household: pd.DataFrame) -> pd.Series:
     Returns
     -------
     labels : pandas.Series
-        Household size labels.
+        Tenure labels.
     """
     filter_regex = "^txv_"
     scrub = "txv_|_no_|_01_|_02_|_03_|_04_|_GE05_|vehicle"
@@ -365,5 +666,26 @@ def vehicles_available(est_household: pd.DataFrame) -> pd.Series:
     labels = columns_to_labels(est_household, filter_regex=filter_regex, scrub=scrub)
     labels = labels.replace({"no": "none"})
     labels.name = "vehicles_available"
+
+    return labels
+
+
+def year_dwelling_built(est_household: pd.DataFrame) -> pd.Series:
+    """
+    Produces household-level labels for year dwelling built.
+
+    Parameters
+    ----------
+    est_household: pandas.DataFrame
+        Household-level PUMS constraints.
+
+    Returns
+    -------
+    labels : pandas.Series
+        year dwelling built labels.
+    """
+    filter_regex = "^year_built_"
+    labels = columns_to_labels(est_household, filter_regex=filter_regex, scrub=filter_regex)
+    labels.name = "year_dwelling_built"
 
     return labels
