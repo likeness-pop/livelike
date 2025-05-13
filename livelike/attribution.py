@@ -1,11 +1,11 @@
 import pandas as pd
 
-import livelike
-from livelike import _attribution
+from . import _attribution
+from .acs import puma
 
 
 def build_attributes(
-    puma: livelike.acs.puma,
+    puma: puma,
     level: str,
     variables: list,
 ) -> pd.DataFrame:

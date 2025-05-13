@@ -1,13 +1,13 @@
 import numpy as np
 import pandas as pd
 
-import livelike
+from .acs import puma
 
 
 def estimate(
-    pumas: livelike.acs.puma | dict[str, livelike.acs.puma],
+    pumas: puma | dict[str, puma],
     pmedms: dict[str, ...],
-    serial: pd.Index | pd.core.MultiIndex,
+    serial: pd.Index | pd.MultiIndex,
     normalize: bool = False,
 ) -> dict:
     """
@@ -43,7 +43,7 @@ def estimate(
 
     # If only the base PUMA/P-MEDM is passed
     # convert to dict to mimic replicates structure
-    if isinstance(pumas, livelike.acs.puma):
+    if isinstance(pumas, puma):
         pumas = {f"{pumas.fips}_0": pumas}
     fips = list(pumas.items())[0][1].fips
 
