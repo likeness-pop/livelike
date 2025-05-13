@@ -427,6 +427,7 @@ up_expanded_constraints_selection = {
 
 # UrbanPop base attributes
 up_base_attributes_person = [
+    "residence_type__person",
     "class_of_worker",
     "commute_time_m",
     "commute_mode",
@@ -439,11 +440,28 @@ up_base_attributes_person = [
     "school_type",
 ]
 
+up_expanded_attributes_person = up_base_attributes_person + [
+    "age",
+    "edu_attainment",
+    "hispanic_latino",
+    "income_to_poverty_ratio",
+    "race",
+    "sex",
+]
+
 up_base_attributes_household = [
+    "residence_type__household",
     "household_size",
     "household_type",
     "tenure",
     "vehicles_available",
+]
+
+up_expanded_attributes_household = up_base_attributes_household + [
+    "dwelling_type",
+    "household_income",
+    "living_arrangement",
+    "year_dwelling_built",
 ]
 
 # geographic levels for constraint selection
