@@ -9,7 +9,7 @@ def estimate(
     pmedms: dict[str, ...],
     serial: pd.Index | pd.MultiIndex,
     normalize: bool = False,
-) -> dict:
+) -> pd.DataFrame:
     """
     Estimates counts, and optionally proportions, of a population
     segment matching some condition of interest using a solved P-MEDM
@@ -35,10 +35,11 @@ def estimate(
 
     Returns
     -------
-    est : dict
-        A dictionary of pandas.DataFrame numpy.ndarray objects containing
-        the point estimates (``'est'``), standard errors (``'se'``), and
-        coefficients of variation (``'cv'``) for each area.
+    seg_est : pandas.DataFrame
+        A Pandas DataFrame with rows representing small areas 
+        and columns representing estimates, numbered as 
+        ``rep{0...80}`` where ``rep0`` is the base estimate
+        taken from a P-MEDM solution on the full PUMS weights.
     """
 
     # If only the base PUMA/P-MEDM is passed
@@ -89,8 +90,6 @@ def estimate(
             for r in range(len(pmedms))
         ]
     )
-    # count number of ests (1: base only, 2+: ensemble)
-    n_ests = seg_est_.shape[0]
 
     # normalize counts if specified
     if normalize:
@@ -110,19 +109,12 @@ def estimate(
             )
         seg_est_ = seg_est_ / totals_
 
-    # collate point estimates, standard errors, coeffs of variation
-    est = {}
-    if n_ests > 1:
-        est["est"] = np.apply_along_axis(func1d=np.mean, axis=0, arr=seg_est_)
-        est["se"] = np.apply_along_axis(func1d=np.std, axis=0, arr=seg_est_)
-        est["cv"] = est["se"] / est["est"]
-    elif n_ests == 1:
-        est["est"] = seg_est_.flatten()
-        est["se"] = np.nan
-        est["cv"] = np.nan
-    else:
-        raise RuntimeError(
-            f"Something went wrong. Estimates should be 1d or 2d but got{n_ests}d."
-        )
+    # format results
+    geoids = list(pumas.items())[0][1].est_g2.index.values
+    seg_est = pd.DataFrame(
+        seg_est_.T, 
+        index=geoids, 
+        columns=[f"rep{str(r)}" for r in range(len(seg_est_))],
+    )
 
-    return est
+    return seg_est
