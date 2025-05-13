@@ -1,14 +1,13 @@
 import numpy as np
 import pandas as pd
-import pymedm
 
-import livelike
+from .acs import puma
 
 
 def estimate(
-    pumas: livelike.acs.puma | dict,
-    pmedms: pymedm.pmedm.PMEDM | dict,
-    serial: pd.core.indexes.base.Index | pd.core.indexes.multi.MultiIndex,
+    pumas: puma | dict[str, puma],
+    pmedms: dict[str, ...],
+    serial: pd.Index | pd.MultiIndex,
     normalize: bool = False,
 ) -> dict:
     """
@@ -18,12 +17,11 @@ def estimate(
 
     Parameters
     ----------
-    pumas : livelike.acs.puma | dict
+    pumas : livelike.acs.puma | dict[str, livelike.acs.puma]
         Input PUMA data.
-    pmedms : pymedm.pmedm.PMEDM | dict
-        P-MEDM problems. Must have a solution including
-        an allocation matrix.
-    serial : pandas.core.indexes.base.Index | pandas.core.indexes.multi.MultiIndex
+    pmedms : pymedm.pmedm.PMEDM | dict[str, pymedm.pmedm.PMEDM]
+        P-MEDM problems. Must have a solution including an allocation matrix.
+    serial : pandas.Index | pandas.MultiIndex
         Index of person or residence IDs defining the population segment within
         the PUMA. Person or residence (``'household'``) level is inferred internally
         based on whether a single index described by PUMS serial number
@@ -31,7 +29,7 @@ def estimate(
         described by ``SERIALNO`` and household membership order (``SPORDER``).
         In the latter case, the number of household members by ``SERIALNO:SPODER``
         is tabulated to produce the person level estimates.
-    normalize : bool=False
+    normalize : bool = False
         Whether to normalize the estimate by total population
         (``'population'``) or total residences (``'household'``).
 
@@ -42,26 +40,27 @@ def estimate(
         the point estimates (``'est'``), standard errors (``'se'``), and
         coefficients of variation (``'cv'``) for each area.
     """
+
     # If only the base PUMA/P-MEDM is passed
     # convert to dict to mimic replicates structure
-    if isinstance(pumas, livelike.acs.puma):
+    if isinstance(pumas, puma):
         pumas = {f"{pumas.fips}_0": pumas}
     fips = list(pumas.items())[0][1].fips
 
-    if isinstance(pmedms, pymedm.pmedm.PMEDM):
+    if not isinstance(pmedms, dict):
         pmedms = {f"{fips}_0": pmedms}
 
     if len(pumas) != len(pmedms):
         raise ValueError("Inputs ``pumas`` and ``pmedms`` must have the same length.")
 
     # infer level from index type
-    if isinstance(serial, pd.core.indexes.multi.MultiIndex):
+    if isinstance(serial, pd.MultiIndex):
         level = "person"
         if serial.names != ["SERIALNO", "SPORDER"]:
             raise ValueError(
                 "Input ``serial`` must be named as ``['SERIALNO', 'SPORDER']``."
             )
-    elif isinstance(serial, pd.core.indexes.base.Index):
+    elif isinstance(serial, pd.core.Index):
         level = "household"
         if serial.name != "SERIALNO":
             raise ValueError("Input ``serial`` must be named as ``'SERIALNO'``.")
