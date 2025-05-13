@@ -34,6 +34,13 @@ def estimate(
     normalize : bool=False
         Whether to normalize the estimate by total population
         (``'population'``) or total residences (``'household'``).
+
+    Returns
+    -------
+    est : dict
+        A dictionary of pandas.DataFrame numpy.ndarray objects containing
+        the point estimates (``'est'``), standard errors (``'se'``), and
+        coefficients of variation (``'cv'``) for each area.
     """
     # If only the base PUMA/P-MEDM is passed
     # convert to dict to mimic replicates structure

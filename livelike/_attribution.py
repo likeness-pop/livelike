@@ -9,7 +9,7 @@ def columns_to_labels(
     filter_regex: str,
     scrub: None | str = None,
     keep_index: bool = True,
-) -> pd.DataFrame:
+) -> pd.Series:
     """
     Converts dummy columns to labels.
 
@@ -50,7 +50,7 @@ def columns_to_labels(
 ## Labeling Functions ##
 
 
-def age(est_person: pd.DataFrame):
+def age(est_person: pd.DataFrame) -> pd.Series:
     """
     Produces person-level labels for age cohort.
 
@@ -89,7 +89,7 @@ def age(est_person: pd.DataFrame):
     return labels
 
 
-def class_of_worker(est_person: pd.DataFrame):
+def class_of_worker(est_person: pd.DataFrame) -> pd.Series:
     """
     Produces person-level labels for class of worker.
 
@@ -135,7 +135,7 @@ def commute_drive_type(est_person: pd.DataFrame) -> pd.Series:
     return labels
 
 
-def commute_mode(est_person: pd.DataFrame):
+def commute_mode(est_person: pd.DataFrame) -> pd.Series:
     """
     Produces person-level labels for commute mode.
 
@@ -158,7 +158,7 @@ def commute_mode(est_person: pd.DataFrame):
     return labels
 
 
-def commute_time_m(est_person: pd.DataFrame):
+def commute_time_m(est_person: pd.DataFrame) -> pd.Series:
     """
     Produces person-level labels for commute time in minutes.
 
@@ -204,7 +204,7 @@ def dwelling_type(est_household: pd.DataFrame) -> pd.Series:
     return labels
 
 
-def edu_attainment(est_person: pd.DataFrame):
+def edu_attainment(est_person: pd.DataFrame) -> pd.Series:
     """
     Produces person-level labels for educational
     attainment for adults 25+.
@@ -423,7 +423,7 @@ def housing_costs_pct_income(est_household: pd.DataFrame) -> pd.Series:
     return labels
 
 
-def hispanic_latino(est_person: pd.DataFrame):
+def hispanic_latino(est_person: pd.DataFrame) -> pd.Series:
     """
     Produces person-level labels for Hispanic/Latino ethnicity.
 
@@ -446,7 +446,7 @@ def hispanic_latino(est_person: pd.DataFrame):
     return labels
 
 
-def income_to_poverty_ratio(est_person: pd.DataFrame):
+def income_to_poverty_ratio(est_person: pd.DataFrame) -> pd.Series:
     """
     Produces person-level labels for income to poverty ratio.
 
@@ -492,7 +492,7 @@ def industry(est_person: pd.DataFrame) -> pd.Series:
     return labels
 
 
-def living_arrangement(est_household: pd.DataFrame):
+def living_arrangement(est_household: pd.DataFrame) -> pd.Series:
     """
     Produces household-level labels for living arrangement.
 
@@ -569,7 +569,7 @@ def occupation(est_person: pd.DataFrame) -> pd.Series:
     return labels
 
 
-def race(est_person: pd.DataFrame):
+def race(est_person: pd.DataFrame) -> pd.Series:
     """
     Produces person-level labels for race.
 
@@ -592,7 +592,7 @@ def race(est_person: pd.DataFrame):
     return labels
 
 
-def residence_type__person(est_person):
+def residence_type__person(est_person) -> pd.Series:
     """
     Produces person-level labels for residence type.
 
@@ -615,7 +615,7 @@ def residence_type__person(est_person):
     return labels
 
 
-def residence_type__household(est_household):
+def residence_type__household(est_household) -> pd.Series:
     """
     Produces household-level labels for residence type.
 
@@ -664,7 +664,7 @@ def school_type(est_person: pd.DataFrame) -> pd.Series:
     return labels
 
 
-def sex(est_person: pd.DataFrame):
+def sex(est_person: pd.DataFrame) -> pd.Series:
     """
     Produces person-level labels for sex.
 
