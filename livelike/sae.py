@@ -116,5 +116,65 @@ def estimate(
         index=geoids, 
         columns=[f"rep{str(r)}" for r in range(len(seg_est_))],
     )
+    seg_est.index.name = "GEOID"
 
     return seg_est
+
+
+def summarize(est: pd.DataFrame) -> pd.DataFrame:
+    """
+    Summarizes small-area estimates made over an ensemble 
+    of P-MEDM solutions. 
+
+    Parameters
+    ----------
+    est : pd.DataFrame
+        Small-area estimates. Must consist of more than 
+        one column (base estimate + replicates).
+
+    Returns
+    -------
+    est_summarized : pd.DataFrame
+        DataFrame containing point estimates (``est``),
+        standard errors (``se``), lower and upper 90%
+        margins of error (``moe90_{limit}``), and 
+        coefficients of variation (``cv``) for the
+        ensemble.
+    """
+    if est.shape[1] <= 1:
+        raise ValueError(
+            "Input ``est`` must contain more than one " \
+            "column (base + replicates)."
+        )
+
+    # point estimates
+    point_est = est.agg("mean", axis=1)
+    point_est.name = "est"
+
+    # standard errors
+    se = est.agg("std", axis=1)
+    se.name = "se"
+
+    # 90% margins of error
+    moe90 = se * 1.645
+    moe90_lower = point_est - moe90
+    moe90_lower.name = "moe90_lower"
+    moe90_upper = point_est + moe90
+    moe90_upper.name = "moe90_upper"
+
+    # coefficients of variation
+    cv = se / point_est
+    cv.name = "cv"
+
+    est_summarized = pd.concat(
+        [
+            "point_est",
+            "se",
+            "moe90_lower",
+            "moe90_upper",
+            "cv"
+        ],
+        axis=1
+    )
+
+    return est_summarized
