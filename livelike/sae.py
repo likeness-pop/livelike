@@ -60,7 +60,7 @@ def estimate(
             raise ValueError(
                 "Input ``serial`` must be named as ``['SERIALNO', 'SPORDER']``."
             )
-    elif isinstance(serial, pd.core.Index):
+    elif isinstance(serial, pd.Index):
         level = "household"
         if serial.name != "SERIALNO":
             raise ValueError("Input ``serial`` must be named as ``'SERIALNO'``.")
