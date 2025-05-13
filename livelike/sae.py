@@ -168,11 +168,11 @@ def summarize(est: pd.DataFrame) -> pd.DataFrame:
 
     est_summarized = pd.concat(
         [
-            "point_est",
-            "se",
-            "moe90_lower",
-            "moe90_upper",
-            "cv"
+            point_est,
+            se,
+            moe90_lower,
+            moe90_upper,
+            cv
         ],
         axis=1
     )
