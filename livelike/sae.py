@@ -36,8 +36,8 @@ def estimate(
     Returns
     -------
     seg_est : pandas.DataFrame
-        A Pandas DataFrame with rows representing small areas 
-        and columns representing estimates, numbered as 
+        A Pandas DataFrame with rows representing small areas
+        and columns representing estimates, numbered as
         ``rep{0...80}`` where ``rep0`` is the base estimate
         taken from a P-MEDM solution on the full PUMS weights.
     """
@@ -112,8 +112,8 @@ def estimate(
     # format results
     geoids = list(pumas.items())[0][1].est_g2.index.values
     seg_est = pd.DataFrame(
-        seg_est_.T, 
-        index=geoids, 
+        seg_est_.T,
+        index=geoids,
         columns=[f"rep{str(r)}" for r in range(len(seg_est_))],
     )
     seg_est.index.name = "GEOID"
@@ -123,13 +123,13 @@ def estimate(
 
 def summarize(est: pd.DataFrame) -> pd.DataFrame:
     """
-    Summarizes small-area estimates made over an ensemble 
-    of P-MEDM solutions. 
+    Summarizes small-area estimates made over an ensemble
+    of P-MEDM solutions.
 
     Parameters
     ----------
     est : pd.DataFrame
-        Small-area estimates. Must consist of more than 
+        Small-area estimates. Must consist of more than
         one column (base estimate + replicates).
 
     Returns
@@ -137,14 +137,13 @@ def summarize(est: pd.DataFrame) -> pd.DataFrame:
     est_summarized : pd.DataFrame
         DataFrame containing point estimates (``est``),
         standard errors (``se``), lower and upper 90%
-        margins of error (``moe90_{limit}``), and 
+        margins of error (``moe90_{limit}``), and
         coefficients of variation (``cv``) for the
         ensemble.
     """
     if est.shape[1] <= 1:
         raise ValueError(
-            "Input ``est`` must contain more than one " \
-            "column (base + replicates)."
+            "Input ``est`` must contain more than one column (base + replicates)."
         )
 
     # point estimates
@@ -166,15 +165,6 @@ def summarize(est: pd.DataFrame) -> pd.DataFrame:
     cv = se / point_est
     cv.name = "cv"
 
-    est_summarized = pd.concat(
-        [
-            point_est,
-            se,
-            moe90_lower,
-            moe90_upper,
-            cv
-        ],
-        axis=1
-    )
+    est_summarized = pd.concat([point_est, se, moe90_lower, moe90_upper, cv], axis=1)
 
     return est_summarized
