@@ -442,7 +442,6 @@ up_base_attributes_person = [
 
 up_expanded_attributes_person = up_base_attributes_person + [
     "age",
-    "edu_attainment",
     "hispanic_latino",
     "income_to_poverty_ratio",
     "race",

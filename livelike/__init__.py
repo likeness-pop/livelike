@@ -45,6 +45,8 @@ from .config import (
     up_base_attributes_person,
     up_base_constraints_selection,
     up_constraints_theme_order,
+    up_expanded_attributes_household,
+    up_expanded_attributes_person,
     up_expanded_constraints_selection,
 )
 from .est import (

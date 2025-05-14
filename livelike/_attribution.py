@@ -291,7 +291,7 @@ def household_income(est_household: pd.DataFrame) -> pd.Series:
     labels = columns_to_labels(
         est_household, filter_regex=filter_regex, scrub=filter_regex
     )
-    labels.name = "hh_income"
+    labels.name = "household_income"
 
     return labels
 
