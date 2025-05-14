@@ -120,6 +120,7 @@ from .pums import (
 )
 from .sae import (
     estimate,
+    summarize,
 )
 from .utils import (
     clear_acs_cache,
