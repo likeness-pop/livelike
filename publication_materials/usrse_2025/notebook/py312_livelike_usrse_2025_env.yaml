@@ -8,6 +8,8 @@ dependencies:
   - dill
   - geopandas
   - git
+  - jupyterlab
+  - ipywidgets
   - libpysal
   - matplotlib
   - multiprocess
