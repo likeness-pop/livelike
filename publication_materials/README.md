@@ -14,16 +14,20 @@ Demonstating Synthetic Population Ensembles for Small-Area Estimation
 
 #### Instructions
 
-* **Confirmed* functional on Linux & macOS*
-* **Potentially* functional on Windows*
+  * **Confirmed* functional on Linux & macOS*
+  * **Potentially* functional on Windows*
 
-1. Ensure a working version of []() is installed.
+1. Ensure a working version of [Miniforge](https://github.com/conda-forge/miniforge) is installed.
 2. Create environment from [`py312_livelike_usrse_2025_env.yaml`](./usrse_2025/notebook/py312_livelike_usrse_2025_env.yaml).
    ```
    conda env create --file usrse_2025/notebook/py312_livelike_usrse_2025_env.yaml
    ```
 3. Activate environment.
    ```
-   cond activate py312_livelike_usrse_2025_env
+   conda activate py312_livelike_usrse_2025_env
    ```
-4. Run notebook.
+4. Launch Jupyterlab
+   ```
+   jupyter lab
+   ```
+5. Open and run notebook.
