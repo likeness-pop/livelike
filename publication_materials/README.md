@@ -1,7 +1,5 @@
 # Publication-related Materials
 
-[[_TOC_]]
-
 ## US-RSE 2025
 
 * https://us-rse.org/usrse25/
