@@ -1,0 +1,30 @@
+name: py312_livelike_usrse_2025_env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - awkward
+  - deprecation
+  - dill
+  - geopandas
+  - git
+  - libpysal
+  - matplotlib
+  - multiprocess
+  - networkx
+  - numpy
+  - pandas
+  - pip
+  - pyarrow
+  - scipy
+  - shapely
+  - watermark
+  # pip installations
+  - pip:
+    - pygris
+    - jax>=0.5.3
+    - jaxlib>=0.5.3
+    - jaxopt>=0.8.3
+    - git+https://github.com/likeness-pop/pymedm.git@develop
+    - git+https://git@github.com/likeness-pop/livelike.git@develop
+    - git+https://git@github.com/likeness-pop/likeness-vitals.git@develop
