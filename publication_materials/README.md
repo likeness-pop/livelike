@@ -25,17 +25,18 @@ This notebook demonstrates the application of `livelike` to produce SAEs related
   * **Confirmed* functional on Linux & macOS*
   * **Potentially* functional on Windows*
 
-1. Ensure a working version of [Miniforge](https://github.com/conda-forge/miniforge) is installed.
-2. Create environment from [`py312_livelike_usrse_2025_env.yaml`](./usrse_2025/notebook/py312_livelike_usrse_2025_env.yaml).
+1. (Optional) Request a [Census API key](https://api.census.gov/data/key_signup.html), save it as `censusapikey.txt`, and store it in the same directory as the notebook.
+2. Ensure a working version of [Miniforge](https://github.com/conda-forge/miniforge) is installed.
+3. Create environment from [`py312_livelike_usrse_2025_env.yaml`](./usrse_2025/notebook/py312_livelike_usrse_2025_env.yaml).
    ```
    conda env create --file usrse_2025/notebook/py312_livelike_usrse_2025_env.yaml
    ```
-3. Activate environment.
+4. Activate environment.
    ```
    conda activate py312_livelike_usrse_2025_env
    ```
-4. Launch Jupyterlab
+5. Launch Jupyterlab
    ```
    jupyter lab
    ```
-5. Open and run notebook.
+6. Open and run notebook.
