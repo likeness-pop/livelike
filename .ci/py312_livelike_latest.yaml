@@ -8,6 +8,7 @@ channels:
 dependencies:
   - python=3.12
   - awkward
+  - ca-certificates!=2025.4.26 # see gh#97
   - deprecation
   - dill
   - geopandas
