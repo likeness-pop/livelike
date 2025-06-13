@@ -687,7 +687,7 @@ def sex(est_person: pd.DataFrame) -> pd.Series:
         "80_84|85o"
     )
     labels = columns_to_labels(est_person, filter_regex=filter_regex, scrub=scrub)
-    labels.name = "age_cohort"
+    labels.name = "sex"
 
     return labels
 
