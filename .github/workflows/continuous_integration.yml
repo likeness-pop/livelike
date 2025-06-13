@@ -71,7 +71,7 @@ jobs:
           livelike/ \
           --verbose \
           -r a \
-          --numprocesses logical \
+          --numprocesses 1 \
           --color yes \
           --cov livelike \
           --cov-append \
