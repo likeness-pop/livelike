@@ -8,7 +8,7 @@ channels:
 dependencies:
   - python=3.12
   - awkward
-  - "ca-certificates<=2025.1.31,>2025.6.15" # see gh#97,#102
+  - ca-certificates # see gh#97,#102 -- EXPECTED TO FAIL compatible release of python-certifi
   - dill
   - cython
   - deprecation
