@@ -32,7 +32,7 @@ classifiers = [
 requires-python = ">=3.11"
 dependencies = [
     "awkward>=2.6",
-    "certifi!=2025.4.26", # see gh#97
+    "certifi<=2025.1.31", # see gh#97, #102
     "deprecation",
     "dill",
     "geopandas>=1.0",
