@@ -11,7 +11,7 @@ def test_get_vre_tables():
     # a simple smoke test that ensures results are returned
 
     if pytest.DEV_CI:
-        # NOTE: When this specific block starts ot fail
+        # NOTE: When this specific block starts to fail
         # NOTE: that's the cue that certifi/ca-certificates
         # NOTE: is fixed and we can remove the pin.
         # NOTE: See gh#105
