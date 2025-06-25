@@ -58,6 +58,9 @@ changes_2010 = dict(
     )
 )
 
+# updated puma-tract crosswalk for CT 2022+
+ct_rel = pandas.read_parquet(os.path.join(data_dir, "rel_ct_2020.parquet"))
+
 rel = pandas.DataFrame()
 for d in ["10", "20"]:
     fname = f"20{d}_Census_Tract_to_20{d}_PUMA.zip"
@@ -89,6 +92,12 @@ for d in ["10", "20"]:
         # changes to tract codes in 2010s
         for g in changes_2010:
             rel_part.loc[rel_part["geoid"] == g, "geoid"] = changes_2010[g]
+
+    if d == "20":
+        # update PUMA-tract data for CT
+        rel_part = rel_part[rel_part.STATEFP != "09"]
+        rel_part = pandas.concat([rel_part, ct_rel], axis=0)
+        rel_part = rel_part.sort_values("puma")
 
     rel = pandas.concat([rel, rel_part], axis=0)
 
