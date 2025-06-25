@@ -862,7 +862,7 @@ def extract_from_census_microdata_api(
     # use census API key if given
     if censusapikey is not None:
         request += "&key=" + censusapikey
-
+    
     # JSON to dataframe
     extract = pd.read_json(request)
 
