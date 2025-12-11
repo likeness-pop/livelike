@@ -20,6 +20,7 @@ dependencies:
   - pandas
   - pip
   - pyarrow
+  - pygris
   - scipy
   - shapely
   # tests
@@ -32,8 +33,6 @@ dependencies:
   - watermark
   # pip installations
   - pip:
-    - pygris
     - jax>=0.5.3
     - jaxlib>=0.5.3
     - jaxopt>=0.8.3
-
