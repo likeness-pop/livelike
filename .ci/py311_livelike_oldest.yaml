@@ -2,7 +2,7 @@
 # Install all versions from ** conda through micromamba where possible **
 #########################################################################
 
-name: py311_livelike_min
+name: py311_livelike_oldest
 channels:
   - conda-forge
 dependencies:
@@ -11,7 +11,7 @@ dependencies:
   - ca-certificates>=2025.10.5 # see gh#97
   - deprecation
   - dill
-  - geopandas=1.0.1
+  - geopandas=1.1
   - git
   - libpysal=4.12.1
   - multiprocess>=0.70.15
