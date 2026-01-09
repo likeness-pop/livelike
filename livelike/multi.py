@@ -3,9 +3,8 @@ import pathlib
 import numpy as np
 import pandas as pd
 
-from livelike import acs
-from livelike import homesim as hs
-
+from . import acs
+from . import homesim as hs
 from .config import constraints
 from .utils import _ensure_cache_folder_input
 

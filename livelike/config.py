@@ -58,6 +58,9 @@ changes_2010 = dict(
     )
 )
 
+# updated puma-tract crosswalk for CT 2022+
+ct_rel = pandas.read_parquet(os.path.join(data_dir, "rel_ct_2020.parquet"))
+
 rel = pandas.DataFrame()
 for d in ["10", "20"]:
     fname = f"20{d}_Census_Tract_to_20{d}_PUMA.zip"
@@ -89,6 +92,12 @@ for d in ["10", "20"]:
         # changes to tract codes in 2010s
         for g in changes_2010:
             rel_part.loc[rel_part["geoid"] == g, "geoid"] = changes_2010[g]
+
+    if d == "20":
+        # update PUMA-tract data for CT
+        rel_part = rel_part[rel_part.STATEFP != "09"]
+        rel_part = pandas.concat([rel_part, ct_rel], axis=0)
+        rel_part = rel_part.sort_values("puma")
 
     rel = pandas.concat([rel, rel_part], axis=0)
 
@@ -345,6 +354,7 @@ pums_dtypes = dict(  # noqa C418
         "YRBLT": "int",
         "ACCESS": "int",
         "ACCESSINET": "int",
+        "MIL": "int",
     }
 )
 
@@ -372,6 +382,7 @@ need_year = [
     "civ_noninst_pop",
     "year_built",
     "internet",
+    "health_ins",
 ]
 
 # P-MEDM constraints
@@ -422,6 +433,44 @@ up_expanded_constraints_selection = {
         "year_built",
     ],
 }
+
+# UrbanPop base attributes
+up_base_attributes_person = [
+    "residence_type__person",
+    "class_of_worker",
+    "commute_time_m",
+    "commute_mode",
+    "commute_drive_type",
+    "employment_status",
+    "grade",
+    "hours_worked",
+    "industry",
+    "occupation",
+    "school_type",
+]
+
+up_expanded_attributes_person = up_base_attributes_person + [
+    "age",
+    "hispanic_latino",
+    "income_to_poverty_ratio",
+    "race",
+    "sex",
+]
+
+up_base_attributes_household = [
+    "residence_type__household",
+    "household_size",
+    "household_type",
+    "tenure",
+    "vehicles_available",
+]
+
+up_expanded_attributes_household = up_base_attributes_household + [
+    "dwelling_type",
+    "household_income",
+    "living_arrangement",
+    "year_dwelling_built",
+]
 
 # geographic levels for constraint selection
 geo_levels = {
