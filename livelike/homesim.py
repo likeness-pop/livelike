@@ -233,4 +233,4 @@ def generate_random_states(n: int = 1, seed: int = 0) -> np.ndarray:
     """
 
     np.random.seed(seed)
-    return np.random.randint(low=0, high=2**32 - 1, size=n)
+    return np.random.randint(low=0, high=2**32 - 1, size=n, dtype="int64")

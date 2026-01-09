@@ -32,9 +32,10 @@ classifiers = [
 requires-python = ">=3.11"
 dependencies = [
     "awkward>=2.6",
+    "certifi>=2025.10.5", # see gh#97, #102
     "deprecation",
     "dill",
-    "geopandas>=1.0",
+    "geopandas>=1.1",
     "libpysal>=4.12",
     "multiprocess>=0.70",
     "networkx>=3.2",

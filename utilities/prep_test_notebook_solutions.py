@@ -155,7 +155,11 @@ t1 = time.time()
 tract_supertract_2023_puma = "4701501"
 
 pup_tract_supertract_2023 = acs.puma(
-    tract_supertract_2023_puma, year=2023, target_zone="trt", keep_geo=True, censusapikey=key
+    tract_supertract_2023_puma,
+    year=2023,
+    target_zone="trt",
+    keep_geo=True,
+    censusapikey=key,
 )
 
 pmd_tract_supertract_2023 = PMEDM(

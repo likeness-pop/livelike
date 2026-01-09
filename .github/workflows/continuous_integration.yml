@@ -27,7 +27,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         environment-file: [
-          py311_livelike_min,
+          py311_livelike_oldest,
           py311_livelike_latest,
           py312_livelike_latest,
           py312_livelike_dev,
@@ -44,7 +44,7 @@ jobs:
 
     steps:
       - name: checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0  # Fetch all history for all branches and tags.
 
@@ -60,7 +60,7 @@ jobs:
           pip install git+https://github.com/likeness-pop/pymedm.git@develop
 
       - name: install package
-        run: "pip install -e . "
+        run: "pip install -e . --no-cache-dir"
 
       - name: spatial versions
         run: 'python -c "import geopandas; geopandas.show_versions();"'
@@ -81,6 +81,6 @@ jobs:
           --local False
 
       - name: codecov
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
