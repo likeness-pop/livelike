@@ -62,7 +62,7 @@ def pytest_configure(config):
 
     # ``env`` from ``pytest_addoption()``
     pytest.ENV = config.getoption("env")
-    valid_env_suffix = ["min", "latest", "dev"]
+    valid_env_suffix = ["oldest", "latest", "dev"]
     assert pytest.ENV.split("_")[-1] in valid_env_suffix
     pytest.CI_ENV = "local_testing" if pytest.LOCAL else pytest.ENV
 

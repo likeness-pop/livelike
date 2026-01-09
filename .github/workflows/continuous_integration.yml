@@ -27,7 +27,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         environment-file: [
-          py311_livelike_min,
+          py311_livelike_oldest,
           py311_livelike_latest,
           py312_livelike_latest,
           py312_livelike_dev,
