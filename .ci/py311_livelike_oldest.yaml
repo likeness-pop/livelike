@@ -2,7 +2,7 @@
 # Install all versions from ** conda through micromamba where possible **
 #########################################################################
 
-name: py311_livelike_min
+name: py311_livelike_oldest
 channels:
   - conda-forge
 dependencies:
