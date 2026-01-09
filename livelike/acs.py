@@ -161,9 +161,14 @@ class puma:  # noqa N801
                 f"``fips`` argument must be 7 characters. Length: {fips_len}"
             )
 
-        if not ((2016 <= year <= 2019) or (year >= 2023)):
-            raise ValueError("Supported years are 2016 - 2019 and 2023+.")
-        census = "2010" if year < 2020 else "2020"
+        if not ((year == 2009) or (2016 <= year <= 2019) or (year >= 2023)):
+            raise ValueError("Supported years are 2009, 2016 - 2019, and 2023+.")
+        if year >= 2020:
+            census = "2020"
+        elif (year >= 2010) and (year < 2020):
+            census = "2010"
+        elif year < 2010:
+            census = "2000"
 
         # must have a valid target zone
         if target_zone not in ["bg", "trt"]:
