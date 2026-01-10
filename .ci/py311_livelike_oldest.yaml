@@ -22,7 +22,7 @@ dependencies:
   - pip
   - pyarrow
   - scipy=1.12.0
-  - shapely=2.0.1
+  - shapely=2.0
   # tests
   - pre-commit
   - pytest
