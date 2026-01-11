@@ -23,6 +23,7 @@ dependencies:
   - pyarrow
   - scipy=1.12.0
   - shapely=2.0
+  - tqdm
   # tests
   - pre-commit
   - pytest
