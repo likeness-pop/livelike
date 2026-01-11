@@ -23,6 +23,7 @@ dependencies:
   - pygris
   - scipy
   - shapely
+  - tqdm
   # tests
   - pre-commit
   - pytest

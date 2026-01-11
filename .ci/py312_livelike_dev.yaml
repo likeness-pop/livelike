@@ -24,6 +24,7 @@ dependencies:
   - pytest-xdist
   - ruff
   - setuptools_scm
+  - tqdm
   - watermark
   # pip installations
   - pip:

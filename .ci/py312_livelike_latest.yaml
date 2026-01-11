@@ -23,6 +23,7 @@ dependencies:
   - pyarrow
   - scipy
   - shapely
+  - tqdm
   # tests
   - pre-commit
   - pytest
