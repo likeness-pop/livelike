@@ -86,7 +86,7 @@ parametrize_pop_synthesis = pytest.mark.parametrize(
         ("tenure_vehicles", gpp, None),
         ("veh_occ", gpp, None),
         ("commute", gpp, None),
-        ("travel", gpp, None),
+        ("travel", gpp, 2019),
     ],
 )
 

@@ -305,6 +305,7 @@ pums_dtypes = dict(  # noqa C418
         "JWMNP": "int",
         "JWRIP": "int",
         "JWTRNS": "int",
+        "JWTR": "int",
         "HINCP": "int",
         "FINCP": "int",
         "OIP": "int",
