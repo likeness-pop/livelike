@@ -164,7 +164,7 @@ def bedrooms(gph: pd.DataFrame) -> pd.DataFrame:
     return bdsp
 
 
-def civ_noninst_pop(gpp: pd.DataFrame, year: str) -> pd.Series:
+def civ_noninst_pop(gpp: pd.DataFrame, year: int | str) -> pd.Series:
     """Generates a person-level flag for civilian non-institutionalized population
     that harmonizes ACS PUMS questionnaire items TYPE (2015 - 2019) and TYPEHUGQ
     (2020+) with ACS SF variable B27010001.
@@ -173,7 +173,7 @@ def civ_noninst_pop(gpp: pd.DataFrame, year: str) -> pd.Series:
     ----------
     gpp : pandas.DataFrame
         Person-level PUMS responses containing TYPE or TYPEHUGQ column.
-    year : int
+    year : int | str
         ACS 5-Year Estimates vintage. Not optional, here, but defaults
         as ``2019`` passed in from ``acs.build_acs_pums_inputs()``).
 
@@ -184,7 +184,7 @@ def civ_noninst_pop(gpp: pd.DataFrame, year: str) -> pd.Series:
         population based on ACS SF variable B27010001.
     """
 
-    hh_type_var = "TYPE" if year < 2020 else "TYPEHUGQ"
+    hh_type_var = "TYPE" if int(year) < 2020 else "TYPEHUGQ"
 
     cni = (gpp.loc[:, hh_type_var] != 2).astype("int")
 
@@ -404,7 +404,7 @@ def grade(gpp: pd.DataFrame) -> pd.DataFrame:
     return grade
 
 
-def group_quarters(gpp: pd.DataFrame, year: str) -> pd.Series:
+def group_quarters(gpp: pd.DataFrame, year: int | str) -> pd.Series:
     """Generates a person-level flag for group
     quarters population that harmonizes ACS PUMS
     questionnaire items TYPE (2016 - 2019) and TYPEHUGQ
@@ -414,6 +414,9 @@ def group_quarters(gpp: pd.DataFrame, year: str) -> pd.Series:
     ----------
     gpp : pandas.DataFrame
         Person-level PUMS responses containing a TYPE or TYPEHUGQ column.
+    year : int | str
+        ACS 5-Year Estimates vintage. Not optional, here, but defaults
+        as ``2019`` passed in from ``acs.build_acs_pums_inputs()``.
 
     Returns
     -------
@@ -421,7 +424,7 @@ def group_quarters(gpp: pd.DataFrame, year: str) -> pd.Series:
         One-hot encoded group quarters flag based on ACS SF variable B26001001.
     """
 
-    hh_type_var = "TYPE" if year < 2020 else "TYPEHUGQ"
+    hh_type_var = "TYPE" if int(year) < 2020 else "TYPEHUGQ"
 
     ## Group quarters population
     gq = (gpp.loc[:, hh_type_var] > 1).astype("int")
@@ -429,7 +432,7 @@ def group_quarters(gpp: pd.DataFrame, year: str) -> pd.Series:
     return gq.rename("group_quarters")
 
 
-def group_quarters_pop(gpp: pd.DataFrame, year: str) -> pd.Series:
+def group_quarters_pop(gpp: pd.DataFrame, year: str | int) -> pd.Series:
     """Generates a person-level flag for group
     quarters population that harmonizes ACS PUMS
     questionnaire items RELP (2016 - 2018) and RELSHIPP
@@ -439,9 +442,9 @@ def group_quarters_pop(gpp: pd.DataFrame, year: str) -> pd.Series:
     ----------
     gpp : pandas.DataFrame
         Person-level PUMS responses containing a RELP or RELSHIPP column.
-    year : int
+    year : int | str
         ACS 5-Year Estimates vintage. Not optional, here, but defaults
-        as ``2019`` passed in from ``acs.build_acs_pums_inputs()``).
+        as ``2019`` passed in from ``acs.build_acs_pums_inputs()``.
 
     Returns
     -------
@@ -449,7 +452,7 @@ def group_quarters_pop(gpp: pd.DataFrame, year: str) -> pd.Series:
         One-hot encoded group quarters flag based on ACS SF variable B26001001.
     """
 
-    if year <= 2018:
+    if int(year) <= 2018:
         gq = (gpp["RELP"] >= 16).astype("int")
 
     else:
@@ -460,7 +463,7 @@ def group_quarters_pop(gpp: pd.DataFrame, year: str) -> pd.Series:
     return gq
 
 
-def health_ins(gpp: pd.DataFrame, year: str) -> pd.DataFrame:
+def health_ins(gpp: pd.DataFrame, year: int | str) -> pd.DataFrame:
     """Generates a person-level flag for health insurance
     coverage by age that harmonizes ACS PUMS questionnaire
     items AGEP and HINS1-7 with ACS SF table B27010.
@@ -469,6 +472,9 @@ def health_ins(gpp: pd.DataFrame, year: str) -> pd.DataFrame:
     ----------
     gpp : pandas.DataFrame
         Person-level PUMS responses containing AGEP, HICOV, and HINS1-7 columns.
+    year : int | str
+        ACS 5-Year Estimates vintage. Not optional, here, but defaults
+        as ``2019`` passed in from ``acs.build_acs_pums_inputs()``.
 
     Returns
     -------
@@ -677,7 +683,7 @@ def health_ins(gpp: pd.DataFrame, year: str) -> pd.DataFrame:
 
     # limit to civilian noninst pop
     # to match b27010 universe
-    cnp = civ_noninst_pop(gpp, year)
+    cnp = civ_noninst_pop(gpp, int(year))
     hxa = hxa * cnp.values[:, None]
 
     return hxa
@@ -967,7 +973,7 @@ def hsplat(gpp: pd.DataFrame) -> pd.DataFrame:
     return hisp
 
 
-def internet(gph: pd.DataFrame, year: str) -> pd.DataFrame:
+def internet(gph: pd.DataFrame, year: int | str) -> pd.DataFrame:
     """Generates a household-level representation of household internet access
     that harmonizes ACS PUMS questionnaire item ACCESS/ACCESSINET
     with ACS SF table B28002.
@@ -976,6 +982,9 @@ def internet(gph: pd.DataFrame, year: str) -> pd.DataFrame:
     ----------
     gph : pandas.DataFrame
         Household-level PUMS responses containing an ACCESS/ACCESINET column.
+    year : int | str
+        ACS 5-Year Estimates vintage. Not optional, here, but defaults
+        as ``2019`` passed in from ``acs.build_acs_pums_inputs()``.
 
     Returns
     -------
@@ -983,6 +992,7 @@ def internet(gph: pd.DataFrame, year: str) -> pd.DataFrame:
         One-hot encoded DataFrame of ACS PUMS household
         internet access categories based on ACS SF table B28002.
     """
+
     access = "ACCESS" if int(year) <= 2019 else "ACCESSINET"
 
     inet_desc = ["subscription", "no_subscription", "none"]
@@ -1148,7 +1158,7 @@ def minors(gph: pd.DataFrame) -> pd.DataFrame:
     return r18
 
 
-def occhu(gph: pd.DataFrame, year: int) -> pd.Series:
+def occhu(gph: pd.DataFrame, year: int | str) -> pd.Series:
     """Generates a household-level flag for occupied housing units
     that harmonizes ACS PUMS questionnaire items TYPE (2016 - 2019)
     and TYPEHUGQ (2020+) with ACS SF table B25003.
@@ -1159,7 +1169,7 @@ def occhu(gph: pd.DataFrame, year: int) -> pd.Series:
         Household-level PUMS responses containing a TYPE or TYPEHUGQ column.
     year : int
         ACS 5-Year Estimates vintage. Not optional, here, but defaults
-        as ``2019`` passed in from ``acs.build_acs_pums_inputs()``).
+        as ``2019`` passed in from ``acs.build_acs_pums_inputs()``.
 
     Returns
     -------
@@ -1168,7 +1178,7 @@ def occhu(gph: pd.DataFrame, year: int) -> pd.Series:
         defined by ACS SF table B25003.
     """
 
-    hh_type_var = "TYPE" if year < 2020 else "TYPEHUGQ"
+    hh_type_var = "TYPE" if int(year) < 2020 else "TYPEHUGQ"
 
     ohu = ((gph["VACS"] == 0) & (gph.loc[:, hh_type_var] == 1)).astype("int")
 
@@ -1853,21 +1863,28 @@ def tenure_vehicles(gph: pd.DataFrame) -> pd.DataFrame:
     return txv
 
 
-def travel(gpp: pd.DataFrame) -> pd.DataFrame:
+def travel(gpp: pd.DataFrame, year: int | str) -> pd.DataFrame:
     """Generates a person-level representation of means of travel to work that
-    harmonizes ACS PUMS questionnaire item JWTRNS with ACS SF table B08301.
+    harmonizes ACS PUMS questionnaire item JWTR/JWTRNS with ACS SF table B08301.
+        * JWTR < 2019
+        * JWTRNS >= 2019
 
     Parameters
     ----------
     gpp : pandas.DataFrame
-        Person-level PUMS responses containing a JWTRNS column.
+        Person-level PUMS responses containing a JWTR or JWTRNS column.
+    year : int | str
+        ACS 5-Year Estimates vintage. Not optional, here, but defaults
+        as ``2019`` passed in from ``acs.build_acs_pums_inputs()``.
 
     Returns
     -------
-    jwtrns : pandas.DataFrame
+    job_work_travel : pandas.DataFrame
         One-hot encoded DataFrame of ACS PUMS means of travel
         to work categories based on ACS SF table B08301.
     """
+
+    travel_var = "JWTR" if int(year) < 2019 else "JWTRNS"
 
     lv = [
         "car_truck_van",
@@ -1880,13 +1897,16 @@ def travel(gpp: pd.DataFrame) -> pd.DataFrame:
         "other",
     ]
 
-    jwtrns = pd.cut(
-        gpp["JWTRNS"], bins=(1, 2, 7, 8, 9, 10, 11, 12, np.inf), labels=lv, right=False
+    job_work_travel = pd.cut(
+        gpp[travel_var],
+        bins=(1, 2, 7, 8, 9, 10, 11, 12, np.inf),
+        labels=lv,
+        right=False,
     )
 
-    jwtrns = pd.get_dummies(jwtrns, prefix="travel")
+    job_work_travel = pd.get_dummies(job_work_travel, prefix="travel")
 
-    return jwtrns
+    return job_work_travel
 
 
 def units(gph: pd.DataFrame) -> pd.DataFrame:
@@ -2052,7 +2072,7 @@ def worked(gpp: pd.DataFrame) -> pd.DataFrame:
     return sex_wkhp
 
 
-def year_built(gph: pd.DataFrame, year: str) -> pd.DataFrame:
+def year_built(gph: pd.DataFrame, year: int | str) -> pd.DataFrame:
     """Generates a household-level representation of year of dwelling construction
     that harmonizes ACS PUMS  questionnaire item YBL with ACS SF table B25034.
 
@@ -2060,6 +2080,9 @@ def year_built(gph: pd.DataFrame, year: str) -> pd.DataFrame:
     ----------
     gph : pandas.DataFrame
        Household-level PUMS responses containing a YBL column.
+    year : int | str
+        ACS 5-Year Estimates vintage. Not optional, here, but defaults
+        as ``2019`` passed in from ``acs.build_acs_pums_inputs()``.
 
     Returns
     -------
@@ -2068,7 +2091,7 @@ def year_built(gph: pd.DataFrame, year: str) -> pd.DataFrame:
         construction categories based on ACS SF table B25034.
     """
 
-    if year < 2022:
+    if int(year) < 2022:
         ybl_lv = [
             "L1939",
             "40_49",
@@ -2083,7 +2106,7 @@ def year_built(gph: pd.DataFrame, year: str) -> pd.DataFrame:
         ]
 
         ybl_ = pd.cut(
-            gph.YBL,
+            gph["YBL"],
             bins=(1, 2, 3, 4, 5, 6, 7, 8, 14, 18, np.inf),
             labels=ybl_lv,
             right=False,
@@ -2104,7 +2127,7 @@ def year_built(gph: pd.DataFrame, year: str) -> pd.DataFrame:
         ]
 
         ybl_ = pd.cut(
-            gph.YRBLT,
+            gph["YRBLT"],
             bins=(1939, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010, 2020, np.inf),
             labels=ybl_lv,
             right=False,

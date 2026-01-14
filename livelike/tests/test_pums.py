@@ -620,15 +620,16 @@ def test_tenure_vehicles():
     pandas.testing.assert_frame_equal(observed, known)
 
 
-def test_travel():
-    gpp = pandas.DataFrame({"JWTRNS": [1, 5, 11, 13]})
+@pytest.mark.parametrize("column, year", [("JWTR", 2016), ("JWTRNS", 2019)])
+def test_travel(column, year):
+    gpp = pandas.DataFrame({column: [1, 5, 11, 13]})
 
     known = pandas.read_csv(
         io.StringIO(
             "travel_car_truck_van,travel_public_transportation,travel_taxicab,travel_motorcycle,travel_bicycle,travel_walked,travel_wfh,travel_other\nTrue,False,False,False,False,False,False,False\nFalse,True,False,False,False,False,False,False\nFalse,False,False,False,False,False,True,False\nFalse,False,False,False,False,False,False,True\n"  # noqa: E501
         )
     )
-    observed = livelike.pums.travel(gpp)
+    observed = livelike.pums.travel(gpp, year)
     pandas.testing.assert_frame_equal(observed, known)
 
 
