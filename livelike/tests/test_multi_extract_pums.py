@@ -51,14 +51,14 @@ class TestMultiExtractPumsSegmentIds:
         assert (observed["NAICSP"].unique() == self.known_naicsp).all()
         assert (
             self.known_occp_low
-            <= observed["OCCP"].unique().min()
-            <= observed["OCCP"].unique().max()
+            <= observed["OCCP"].min()
+            <= observed["OCCP"].max()
             <= self.known_occp_high
         )
         assert (
             self.known_wkhp_low
-            <= observed["WKHP"].unique().min()
-            <= observed["WKHP"].unique().max()
+            <= observed["WKHP"].min()
+            <= observed["WKHP"].max()
             <= self.known_wkhp_high
         )
 
@@ -82,14 +82,14 @@ class TestMultiExtractPumsSegmentIds:
         assert (observed["NAICSP"].unique() == self.known_naicsp).all()
         assert (
             self.known_occp_low
-            <= observed["OCCP"].unique().min()
-            <= observed["OCCP"].unique().max()
+            <= observed["OCCP"].min()
+            <= observed["OCCP"].max()
             <= self.known_occp_high
         )
         assert (
             self.known_wkhp_low
-            <= observed["WKHP"].unique().min()
-            <= observed["WKHP"].unique().max()
+            <= observed["WKHP"].min()
+            <= observed["WKHP"].max()
             <= self.known_wkhp_high
         )
         assert (observed["year"].unique() == self.known_year).all()
