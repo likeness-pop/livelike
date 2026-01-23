@@ -1,0 +1,39 @@
+#########################################################################
+# Install all versions from ** conda through micromamba where possible **
+#########################################################################
+
+name: py314_livelike_latest
+channels:
+  - conda-forge
+dependencies:
+  - python=3.14
+  - awkward
+  - ca-certificates
+  - deprecation
+  - dill
+  - geopandas
+  - git
+  - libpysal
+  - multiprocess
+  - networkx
+  - numpy
+  - pandas
+  - pygris
+  - pip
+  - pyarrow
+  - scipy
+  - shapely
+  - tqdm
+  # tests
+  - pre-commit
+  - pytest
+  - pytest-cov
+  - pytest-xdist
+  - ruff
+  - setuptools_scm
+  - watermark
+  # pip installations
+  - pip:
+    - jax>=0.5.3
+    - jaxlib>=0.5.3
+    - jaxopt>=0.8.3
