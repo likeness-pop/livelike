@@ -100,7 +100,7 @@ def tabulate_by_count(
     syp = syp.copy()
     syp[count.name] = match(x1=syp, x2=count)
 
-    return syp.groupby(grouping).sum(count.name)[count.name]
+    return syp.groupby(grouping)[count.name].sum()
 
 
 def to_prop(tab: pd.Series, total: pd.Series) -> pd.Series:
