@@ -553,6 +553,10 @@ class puma:  # noqa N801
             self.ext_trt, self.ext_trt_se, super_trt_labels
         )
 
+        # defragment frames prior merging
+        self.ext_trt = self.ext_trt.copy()
+        self.geo_extract = self.geo_extract.copy()
+
         topo = self.ext_trt.merge(self.geo_extract.loc[:, ["super_trt"]], on="GEOID")
         topo = topo["super_trt"].sort_values()
         topo = topo.reset_index()
