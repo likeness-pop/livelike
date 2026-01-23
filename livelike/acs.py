@@ -1586,7 +1586,8 @@ def parse_bg_fips_by_tract(
     url = base + params
 
     rj = requests.get(url).json()
-    geoids = pd.json_normalize(rj["features"]).values.flatten().sort()
+
+    geoids = np.sort(pd.json_normalize(rj["features"]).values.flatten())
 
     return geoids
 
