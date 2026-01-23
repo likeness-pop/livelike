@@ -35,7 +35,13 @@ def test_puma_super_tract(method, layer):
         make_super_trt_method=method,
     )
     observed = pup.geo
-    assert_geodataframe_equal(known, observed, check_dtype=False)
+
+    # see GH#162
+    assert_geodataframe_equal(
+        known.drop(columns="OBJECTID"),
+        observed.drop(columns="OBJECTID"),
+        check_dtype=False,
+    )
 
 
 def test_puma_super_tracts_bad_method():

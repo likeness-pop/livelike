@@ -163,15 +163,10 @@ def test_invalid_geo():
 
 @pytest.skip_if_no_censusapikey
 def test_extract_bg():
-
-    print(f"\n\n{trt_geoids=}\n\n") ########################################################################
-
     _bg_geoids = parse_bg_fips_by_tract(
         year=year,
         targets=trt_geoids,
     )
-
-    print(f"\n\n{_bg_geoids=}\n\n") ########################################################################
 
     bg = extract_geographies(year, _bg_geoids, geo="bg")
     observed = {"dims": bg.shape, "bbox": bg.total_bounds}
