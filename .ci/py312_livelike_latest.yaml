@@ -12,6 +12,9 @@ dependencies:
   - deprecation
   - dill
   - geopandas
+  - jax>=0.5.3
+  - jaxlib>=0.5.3
+  - jaxopt>=0.8.3
   - git
   - libpysal
   - multiprocess
@@ -32,8 +35,3 @@ dependencies:
   - ruff
   - setuptools_scm
   - watermark
-  # pip installations
-  - pip:
-    - jax>=0.5.3
-    - jaxlib>=0.5.3
-    - jaxopt>=0.8.3
