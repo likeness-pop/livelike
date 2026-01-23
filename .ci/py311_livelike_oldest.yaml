@@ -13,6 +13,9 @@ dependencies:
   - dill
   - geopandas=1.1
   - git
+  - jax>=0.4.31
+  - jaxlib>=0.4.31
+  - jaxopt>=0.8.3
   - libpysal=4.12.1
   - multiprocess>=0.70.15
   - networkx=3.2.1
@@ -32,8 +35,3 @@ dependencies:
   - ruff
   - setuptools_scm
   - watermark
-  # pip installations
-  - pip:
-    - jax>=0.4.31
-    - jaxlib>=0.4.31
-    - jaxopt>=0.8.3
