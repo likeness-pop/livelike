@@ -30,12 +30,16 @@ jobs:
           py311_livelike_oldest,
           py311_livelike_latest,
           py312_livelike_latest,
+          py312_pandas2_livelike_latest,
           py313_livelike_latest,
           py314_livelike_latest,
+          py314_pandas2_livelike_latest,
           py314_livelike_dev,
         ]
         include:
           - environment-file: py314_livelike_latest
+            os: macos-latest  # Apple Silicon
+          - environment-file: py314_pandas2_livelike_latest
             os: macos-latest  # Apple Silicon
       fail-fast: false
       
