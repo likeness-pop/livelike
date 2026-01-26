@@ -1,0 +1,37 @@
+#########################################################################
+# Install all versions from ** conda through micromamba where possible **
+#########################################################################
+
+name: py312_pandas2_livelike_latest
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - awkward
+  - ca-certificates
+  - deprecation
+  - dill
+  - geopandas
+  - jax>=0.5.3
+  - jaxlib>=0.5.3
+  - jaxopt>=0.8.3
+  - git
+  - libpysal
+  - multiprocess
+  - networkx
+  - numpy
+  - pandas=2
+  - pygris
+  - pip
+  - pyarrow
+  - scipy
+  - shapely
+  - tqdm
+  # tests
+  - pre-commit
+  - pytest
+  - pytest-cov
+  - pytest-xdist
+  - ruff
+  - setuptools_scm
+  - watermark
