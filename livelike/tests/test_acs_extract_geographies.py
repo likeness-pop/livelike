@@ -149,7 +149,7 @@ def test_parse_bg_fips_by_tract():
         year=year,
         targets=trt_geoids,
     )
-    known = bg_geoids.sort()
+    known = numpy.sort(bg_geoids)
     numpy.testing.assert_array_equal(observed, known)
 
 
@@ -167,6 +167,7 @@ def test_extract_bg():
         year=year,
         targets=trt_geoids,
     )
+
     bg = extract_geographies(year, _bg_geoids, geo="bg")
     observed = {"dims": bg.shape, "bbox": bg.total_bounds}
 
