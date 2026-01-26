@@ -30,10 +30,16 @@ jobs:
           py311_livelike_oldest,
           py311_livelike_latest,
           py312_livelike_latest,
-          py312_livelike_dev,
+          py312_pandas2_livelike_latest,
+          py313_livelike_latest,
+          py314_livelike_latest,
+          py314_pandas2_livelike_latest,
+          py314_livelike_dev,
         ]
         include:
-          - environment-file: py312_livelike_latest
+          - environment-file: py314_livelike_latest
+            os: macos-latest  # Apple Silicon
+          - environment-file: py314_pandas2_livelike_latest
             os: macos-latest  # Apple Silicon
       fail-fast: false
       
@@ -56,11 +62,11 @@ jobs:
 
       - name: install ecosystem
         run: |
-          pip install git+https://github.com/likeness-pop/likeness-vitals.git@develop
-          pip install git+https://github.com/likeness-pop/pymedm.git@develop
+          pip install git+https://github.com/likeness-pop/likeness-vitals.git@develop --no-deps --no-cache-dir
+          pip install git+https://github.com/likeness-pop/pymedm.git@develop --no-deps --no-cache-dir
 
       - name: install package
-        run: "pip install -e . --no-cache-dir"
+        run: "pip install -e . --no-cache-dir --no-deps"
 
       - name: spatial versions
         run: 'python -c "import geopandas; geopandas.show_versions();"'

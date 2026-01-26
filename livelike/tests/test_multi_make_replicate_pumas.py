@@ -18,11 +18,13 @@ def assert_leading_zero(observed: dict, nreps: int):
         "se_g1",
         "se_g2",
     ]
+
     for rep in range(1, nreps + 1):
         for df_name in dataframes_names:
             df = getattr(observed[f"{PUMA_FIPS}_{rep}"], df_name)
-            # "O" == object == string
-            assert df.index.dtype == "O"
+            # pandas < 3  --> "O" == object == str
+            # pandas >= 3 --> "string[pyarrow]" == string == str
+            assert df.index.dtype.name == "str"
             assert df.index.str.startswith(STATE_FIPS).all()
 
 

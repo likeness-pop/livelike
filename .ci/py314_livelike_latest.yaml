@@ -2,30 +2,30 @@
 # Install all versions from ** conda through micromamba where possible **
 #########################################################################
 
-name: py311_livelike_oldest
+name: py314_livelike_latest
 channels:
   - conda-forge
 dependencies:
-  - python=3.11
-  - awkward=2.6.2
-  - ca-certificates>=2025.10.5 # see gh#97
+  - python=3.14
+  - awkward
+  - ca-certificates
   - deprecation
   - dill
-  - geopandas=1.1
+  - geopandas
   - git
-  - jax>=0.4.31
-  - jaxlib>=0.4.31
+  - jax>=0.5.3
+  - jaxlib>=0.5.3
   - jaxopt>=0.8.3
-  - libpysal=4.12.1
-  - multiprocess>=0.70.15
-  - networkx=3.2.1
-  - numpy=1.26.4
-  - pandas=2.2.1
+  - libpysal
+  - multiprocess
+  - networkx
+  - numpy
+  - pandas
   - pygris
   - pip
   - pyarrow
-  - scipy=1.12.0
-  - shapely=2.0
+  - scipy
+  - shapely
   - tqdm
   # tests
   - pre-commit

@@ -13,6 +13,9 @@ dependencies:
   - dill
   - geopandas
   - git
+  - jax>=0.4.31
+  - jaxlib>=0.4.31
+  - jaxopt>=0.8.3
   - libpysal
   - multiprocess
   - networkx
@@ -23,6 +26,7 @@ dependencies:
   - pygris
   - scipy
   - shapely
+  - tqdm
   # tests
   - pre-commit
   - pytest
@@ -31,8 +35,3 @@ dependencies:
   - ruff
   - setuptools_scm
   - watermark
-  # pip installations
-  - pip:
-    - jax>=0.5.3
-    - jaxlib>=0.5.3
-    - jaxopt>=0.8.3
