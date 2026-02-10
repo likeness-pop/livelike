@@ -35,3 +35,7 @@ dependencies:
   - ruff
   - setuptools_scm
   - watermark
+  - pip:
+    # Likeness ecosystem <<< move to above conda section once pymedm available there
+    - likeness_vitals
+    - pymedm
