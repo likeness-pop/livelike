@@ -60,11 +60,6 @@ jobs:
           environment-file: .ci/${{ matrix.environment-file }}.yaml
           micromamba-version: "latest"
 
-      - name: install ecosystem
-        run: |
-          pip install git+https://github.com/likeness-pop/likeness-vitals.git@develop --no-deps --no-cache-dir
-          pip install git+https://github.com/likeness-pop/pymedm.git@develop --no-deps --no-cache-dir
-
       - name: install package
         run: "pip install -e . --no-cache-dir --no-deps"
 
