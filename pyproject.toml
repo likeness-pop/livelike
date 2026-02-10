@@ -46,7 +46,7 @@ dependencies = [
     "scipy>=1.12",
     "shapely>=2.0",
     # External Ecosystem
-    "likeness_vitals @ git+https://github.com/likeness-pop/likeness-vitals.git@develop",
+    "likeness_vitals",
 ]
 
 [project.urls]
@@ -55,7 +55,7 @@ Repository = "https://github.com/likeness-pop/livelike"
 
 [project.optional-dependencies]
 jax_cpu = [
-   "jax>=0.5.3", 
+   "jax>=0.5.3",
    "jaxlib>=0.5.3",
    "jaxopt>=0.8.3",
 ]
@@ -79,7 +79,7 @@ notebooks = [
     "ipywidgets",
     "jupyterlab",
     # External Ecosystem
-    "pymedm @ git+https://github.com/likeness-pop/pymedm.git@develop",
+    "pymedm",
 ]
 all_cpu = ["livelike[jax_cpu,notebooks,tests]"]
 all_gpu = ["livelike[jax_gpu,notebooks,tests]"]

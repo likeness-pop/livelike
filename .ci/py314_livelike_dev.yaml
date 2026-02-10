@@ -46,3 +46,6 @@ dependencies:
     - git+https://github.com/geopandas/geopandas.git@main
     - git+https://github.com/pysal/libpysal.git@main
     - git+https://github.com/walkerke/pygris.git@main
+    # bleeding Likeness ecosystem
+    - git+https://github.com/likeness-pop/likeness-vitals.git@develop
+    - git+https://github.com/likeness-pop/pymedm.git@develop
