@@ -7,6 +7,10 @@ channels:
   - conda-forge
 dependencies:
   - python=3.14
+  # Likeness ecosystem
+  - likeness_vitals
+  - pymedm
+  # core deps
   - awkward
   - ca-certificates
   - deprecation
@@ -35,7 +39,3 @@ dependencies:
   - ruff
   - setuptools_scm
   - watermark
-  - pip:
-    # Likeness ecosystem <<< move to above conda section once pymedm available there
-    - likeness_vitals
-    - pymedm
