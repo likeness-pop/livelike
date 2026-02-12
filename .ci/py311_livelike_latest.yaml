@@ -7,6 +7,10 @@ channels:
   - conda-forge
 dependencies:
   - python=3.11
+  # Likeness ecosystem
+  - likeness_vitals
+  - pymedm
+  # core deps
   - awkward
   - ca-certificates
   - deprecation
