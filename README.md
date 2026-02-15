@@ -237,3 +237,9 @@ To run the testing suite locally, enter:
 ```
 bash run_tests.sh
 ```
+
+## Citation
+
+If you find this package useful or use it an academic publication, please cite as:
+
+* **Tuccillo, J.V., Gaboardi, J.D., and Buck, W.** (2025) *livelike*. Computer Software. URL: https://github.com/likeness-pop/livelike. DOI: [10.11578/dc.20250320.2](https://doi.org/10.11578/dc.20250320.2)
