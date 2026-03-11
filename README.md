@@ -3,6 +3,7 @@
 ![tag](https://img.shields.io/github/v/release/likeness-pop/livelike?include_prereleases&sort=semver)
 [![PyPI version](https://badge.fury.io/py/livelike.svg)](https://badge.fury.io/py/livelike)
 [![Conda Version](https://img.shields.io/conda/vn/conda-forge/livelike.svg)](https://anaconda.org/conda-forge/livelike)
+[![link-to-notebooks](https://img.shields.io/badge/Livelike-notebooks-cadetblue.svg)](https://github.com/likeness-pop/livelike/tree/develop/notebooks)
 
 [![Continuous Integration](https://github.com/likeness-pop/livelike/actions/workflows/continuous_integration.yml/badge.svg)](https://github.com/likeness-pop/livelike/actions/workflows/continuous_integration.yml)
 [![codecov](https://codecov.io/gh/likeness-pop/livelike/branch/develop/graph/badge.svg?token=KTFJ10C1S3)](https://codecov.io/gh/likeness-pop/livelike)
