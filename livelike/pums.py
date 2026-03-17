@@ -1886,10 +1886,14 @@ def travel(gpp: pd.DataFrame, year: int | str) -> pd.DataFrame:
 
     travel_var = "JWTR" if int(year) < 2019 else "JWTRNS"
 
+    # label for 'taxicab' travel is broadened to
+    # 'taxi or ride hailing services' in 2024
+    taxi_var = "taxicab" if year < 2024 else "taxi_ride_hailing"
+
     lv = [
         "car_truck_van",
         "public_transportation",
-        "taxicab",
+        taxi_var,
         "motorcycle",
         "bicycle",
         "walked",
