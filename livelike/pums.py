@@ -2088,8 +2088,6 @@ def vet_psrv(gpp: pd.DataFrame, year: int | str) -> pd.DataFrame:
     vps = pd.cut(gpp["VPS"], bins=bk, labels=vps_desc, right=False)
     vps = 1 * pd.get_dummies(vps, prefix="vps")
 
-    print(f"vps : {vps} {vps.sum()}\n")
-
     return vps 
 
 
