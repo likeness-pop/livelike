@@ -684,7 +684,7 @@ def test_vet_edu():
     pandas.testing.assert_frame_equal(observed, known)
 
 
-def test_vet_psrv_2010s():
+def test_vet_psrv():
     gpp = pandas.DataFrame(
         {"VPS" : list(range(1, 16))}
     )
@@ -712,7 +712,7 @@ def test_vet_psrv_2010s():
             "0,0,0,0,0,0,0,0,0,0,0,0,0,0,1\n"
         )
     )
-    observed = livelike.pums.vet_psrv(gpp)
+    observed = livelike.pums.vet_psrv(gpp, 2019)
     pandas.testing.assert_frame_equal(observed, known)
 
 
