@@ -684,6 +684,38 @@ def test_vet_edu():
     pandas.testing.assert_frame_equal(observed, known)
 
 
+def test_vet_psrv_2010s():
+    gpp = pandas.DataFrame(
+        {"VPS" : list(range(1, 16))}
+    )
+
+    known = pandas.read_csv(
+        io.StringIO(
+            "vps_gulf_0901_later,vps_gulf_0890_0801__gulf_0901_later,vps_gulf_0890_0801__gulf_0901_later__vietnam,"
+            "vps_gulf_0890_0801,vps_gulf_0890_0801__vietnam,vps_vietnam,vps_vietnam__korea,vps_vietnam__korea__ww2,"
+            "vps_korea,vps_korea__ww2,vps_ww2,vps_bw_gulf_vietnam_only,vps_bw_vietnam_korea_only,vps_bw_korea_ww2_only,"
+            "vps_pre_ww2_only\n"
+            "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
+            "0,1,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
+            "0,0,1,0,0,0,0,0,0,0,0,0,0,0,0\n"
+            "0,0,0,1,0,0,0,0,0,0,0,0,0,0,0\n"
+            "0,0,0,0,1,0,0,0,0,0,0,0,0,0,0\n"
+            "0,0,0,0,0,1,0,0,0,0,0,0,0,0,0\n"
+            "0,0,0,0,0,0,1,0,0,0,0,0,0,0,0\n"
+            "0,0,0,0,0,0,0,1,0,0,0,0,0,0,0\n"
+            "0,0,0,0,0,0,0,0,1,0,0,0,0,0,0\n"
+            "0,0,0,0,0,0,0,0,0,1,0,0,0,0,0\n"
+            "0,0,0,0,0,0,0,0,0,0,1,0,0,0,0\n"
+            "0,0,0,0,0,0,0,0,0,0,0,1,0,0,0\n"
+            "0,0,0,0,0,0,0,0,0,0,0,0,1,0,0\n"
+            "0,0,0,0,0,0,0,0,0,0,0,0,0,1,0\n"
+            "0,0,0,0,0,0,0,0,0,0,0,0,0,0,1\n"
+        )
+    )
+    observed = livelike.pums.vet_psrv(gpp)
+    pandas.testing.assert_frame_equal(observed, known)
+
+
 def test_worked():
     gpp = pandas.DataFrame({"SEX": [2, 1, 2, 1], "WKHP": [9, 20, 50, 34]})
 
