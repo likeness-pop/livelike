@@ -385,6 +385,7 @@ need_year = [
     "internet",
     "health_ins",
     "travel",
+    "vet_psrv",
 ]
 
 # P-MEDM constraints
