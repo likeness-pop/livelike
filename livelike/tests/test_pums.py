@@ -685,9 +685,7 @@ def test_vet_edu():
 
 
 def test_vet_psrv():
-    gpp = pandas.DataFrame(
-        {"VPS" : list(range(1, 16))}
-    )
+    gpp = pandas.DataFrame({"VPS": list(range(1, 16))})
 
     known = pandas.read_csv(
         io.StringIO(

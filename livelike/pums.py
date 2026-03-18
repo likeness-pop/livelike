@@ -2044,9 +2044,9 @@ def vet_edu(gpp: pd.DataFrame) -> pd.DataFrame:
 
 
 def vet_psrv(gpp: pd.DataFrame, year: int | str) -> pd.DataFrame:
-    """Generates a person-level representation of veteran 
-    period of service for the civilian population age 18 years and 
-    over that harmonizes ACS PUMS questionnaire item VPS with ACS 
+    """Generates a person-level representation of veteran
+    period of service for the civilian population age 18 years and
+    over that harmonizes ACS PUMS questionnaire item VPS with ACS
     SF table B21002.
 
     Parameters
@@ -2057,7 +2057,7 @@ def vet_psrv(gpp: pd.DataFrame, year: int | str) -> pd.DataFrame:
     Returns
     -------
     vps : pandas.DataFrame
-        One-hot encoded DataFrame of ACS PUMS veteran period of 
+        One-hot encoded DataFrame of ACS PUMS veteran period of
         service based on ACS SF table B21002.
     """
     vps_desc = [
@@ -2075,7 +2075,7 @@ def vet_psrv(gpp: pd.DataFrame, year: int | str) -> pd.DataFrame:
         "bw_gulf_vietnam_only",
         "bw_vietnam_korea_only",
         "bw_korea_ww2_only",
-        "pre_ww2_only",          
+        "pre_ww2_only",
     ]
 
     if year <= 2020:
@@ -2088,7 +2088,7 @@ def vet_psrv(gpp: pd.DataFrame, year: int | str) -> pd.DataFrame:
     vps = pd.cut(gpp["VPS"], bins=bk, labels=vps_desc, right=False)
     vps = 1 * pd.get_dummies(vps, prefix="vps")
 
-    return vps 
+    return vps
 
 
 def worked(gpp: pd.DataFrame) -> pd.DataFrame:
