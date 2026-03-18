@@ -2043,6 +2043,54 @@ def vet_edu(gpp: pd.DataFrame) -> pd.DataFrame:
     return vxe
 
 
+def vet_psrv(gpp: pd.DataFrame, year: int | str) -> pd.DataFrame:
+    """Generates a person-level representation of veteran 
+    period of service for the civilian population age 18 years and 
+    over that harmonizes ACS PUMS questionnaire item VPS with ACS 
+    SF table B21002.
+
+    Parameters
+    ----------
+    gpp : pandas.DataFrame
+        Person-level PUMS responses containing VPS column.
+
+    Returns
+    -------
+    vps : pandas.DataFrame
+        One-hot encoded DataFrame of ACS PUMS veteran period of 
+        service based on ACS SF table B21002.
+    """
+    vps_desc = [
+        "gulf_0901_later",
+        "gulf_0890_0801__0901_later",
+        "vietnam__gulf_0890_later",
+        "gulf_0890_0801_only",
+        "vietnam__gulf_0890_0801_only",
+        "vietnam_only",
+        "vietnam__korea",
+        "vietnam__korea__ww2",
+        "korea_only",
+        "korea__ww2",
+        "ww2_only",
+        "bw_gulf_vietnam_only",
+        "bw_vietnam_korea_only",
+        "bw_korea_ww2_only",
+        "pre_ww2",            
+    ]
+
+    if year <= 2020:
+        bk = list(range(1, 16)) + [np.inf]
+    else:
+        # 2023 or later
+        bk = list(range(1, 14)) + [np.inf]
+        vps_desc = vps_desc[:-2]
+
+    vps = pd.cut(gpp["VPS"], bins=bk, labels=vps_desc, right=False)
+    pd.get_dummies(vps, prefix="vps")
+
+    return vps 
+
+
 def worked(gpp: pd.DataFrame) -> pd.DataFrame:
     """Generates a person-level representation of sex by hours
     worked per week that harmonizes ACS PUMS questionnaire items
