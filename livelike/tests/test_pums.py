@@ -715,9 +715,7 @@ def test_vet_psrv():
 
 
 def test_vet_srvcon():
-    gpp = pandas.DataFrame(
-        {"DRAT" : list(range(1, 7))}
-    )
+    gpp = pandas.DataFrame({"DRAT": list(range(1, 7))})
     known = pandas.read_csv(
         io.StringIO(
             "srvcon_00_10pct,srvcon_10_20pct,srvcon_30_40pct,"

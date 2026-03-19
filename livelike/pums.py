@@ -2090,10 +2090,11 @@ def vet_psrv(gpp: pd.DataFrame, year: int | str) -> pd.DataFrame:
 
     return vps
 
+
 def vet_srvcon(gpp: pd.DataFrame) -> pd.DataFrame:
     """Generates a person-level representation of veteran
-    service-connected disability rating for the civilian population 
-    age 18 years and over that harmonizes ACS PUMS questionnaire 
+    service-connected disability rating for the civilian population
+    age 18 years and over that harmonizes ACS PUMS questionnaire
     item DRAT with ACSSF table B21100.
 
     Parameters
