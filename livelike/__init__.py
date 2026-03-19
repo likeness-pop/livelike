@@ -116,6 +116,8 @@ from .pums import (
     units,
     veh_occ,
     vet_edu,
+    vet_psrv,
+    vet_srvcon,
     veteran,
     worked,
     year_built,

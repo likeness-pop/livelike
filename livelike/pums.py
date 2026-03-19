@@ -2043,6 +2043,87 @@ def vet_edu(gpp: pd.DataFrame) -> pd.DataFrame:
     return vxe
 
 
+def vet_psrv(gpp: pd.DataFrame, year: int | str) -> pd.DataFrame:
+    """Generates a person-level representation of veteran
+    period of service for the civilian population age 18 years and
+    over that harmonizes ACS PUMS questionnaire item VPS with ACS
+    SF table B21002.
+
+    Parameters
+    ----------
+    gpp : pandas.DataFrame
+        Person-level PUMS responses containing VPS column.
+
+    Returns
+    -------
+    vps : pandas.DataFrame
+        One-hot encoded DataFrame of ACS PUMS veteran period of
+        service based on ACS SF table B21002.
+    """
+    vps_desc = [
+        "gulf_0901_later",
+        "gulf_0890_0801__gulf_0901_later",
+        "gulf_0890_0801__gulf_0901_later__vietnam",
+        "gulf_0890_0801",
+        "gulf_0890_0801__vietnam",
+        "vietnam",
+        "vietnam__korea",
+        "vietnam__korea__ww2",
+        "korea",
+        "korea__ww2",
+        "ww2",
+        "bw_gulf_vietnam_only",
+        "bw_vietnam_korea_only",
+        "bw_korea_ww2_only",
+        "pre_ww2_only",
+    ]
+
+    if year <= 2020:
+        bk = list(range(1, 16)) + [np.inf]
+    else:
+        # 2023 or later
+        bk = list(range(1, 14)) + [np.inf]
+        vps_desc = vps_desc[:-2]
+
+    vps = pd.cut(gpp["VPS"], bins=bk, labels=vps_desc, right=False)
+    vps = 1 * pd.get_dummies(vps, prefix="vps")
+
+    return vps
+
+
+def vet_srvcon(gpp: pd.DataFrame) -> pd.DataFrame:
+    """Generates a person-level representation of veteran
+    service-connected disability rating for the civilian population
+    age 18 years and over that harmonizes ACS PUMS questionnaire
+    item DRAT with ACSSF table B21100.
+
+    Parameters
+    ----------
+    gpp : pandas.DataFrame
+        Person-level PUMS responses containing DRAT column.
+
+    Returns
+    -------
+    srvcon : pandas.DataFrame
+        One-hot encoded DataFrame of ACS PUMS veteran period of
+        service based on ACS SF table B21100.
+    """
+    srvcon_desc = [
+        "00_10pct",
+        "10_20pct",
+        "30_40pct",
+        "50_60pct",
+        "70_100pct",
+        "not_reported",
+    ]
+    bk = list(range(1, 7)) + [np.inf]
+
+    srvcon = pd.cut(gpp["DRAT"], bins=bk, labels=srvcon_desc, right=False)
+    srvcon = 1 * pd.get_dummies(srvcon, prefix="srvcon")
+
+    return srvcon
+
+
 def worked(gpp: pd.DataFrame) -> pd.DataFrame:
     """Generates a person-level representation of sex by hours
     worked per week that harmonizes ACS PUMS questionnaire items

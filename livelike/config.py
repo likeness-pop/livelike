@@ -356,6 +356,7 @@ pums_dtypes = dict(  # noqa C418
         "ACCESS": "int",
         "ACCESSINET": "int",
         "MIL": "int",
+        "DRAT": "int",
     }
 )
 
@@ -385,6 +386,7 @@ need_year = [
     "internet",
     "health_ins",
     "travel",
+    "vet_psrv",
 ]
 
 # P-MEDM constraints
