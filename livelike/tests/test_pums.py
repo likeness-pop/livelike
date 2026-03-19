@@ -714,6 +714,26 @@ def test_vet_psrv():
     pandas.testing.assert_frame_equal(observed, known)
 
 
+def test_vet_srvcon():
+    gpp = pandas.DataFrame(
+        {"DRAT" : list(range(1, 7))}
+    )
+    known = pandas.read_csv(
+        io.StringIO(
+            "srvcon_00_10pct,srvcon_10_20pct,srvcon_30_40pct,"
+            "srvcon_50_60pct,srvcon_70_100pct,srvcon_not_reported\n"
+            "1,0,0,0,0,0\n"
+            "0,1,0,0,0,0\n"
+            "0,0,1,0,0,0\n"
+            "0,0,0,1,0,0\n"
+            "0,0,0,0,1,0\n"
+            "0,0,0,0,0,1\n"
+        )
+    )
+    observed = livelike.pums.vet_srvcon(gpp)
+    pandas.testing.assert_frame_equal(observed, known)
+
+
 def test_worked():
     gpp = pandas.DataFrame({"SEX": [2, 1, 2, 1], "WKHP": [9, 20, 50, 34]})
 
