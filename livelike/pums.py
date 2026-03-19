@@ -2120,6 +2120,8 @@ def vet_srvcon(gpp: pd.DataFrame) -> pd.DataFrame:
     srvcon = pd.cut(gpp["DRAT"], bins=bk, labels=srvcon_desc, right=False)
     srvcon = 1 * pd.get_dummies(srvcon, prefix="srvcon")
 
+    print(f"srvcon : {srvcon}\n")
+
     return srvcon
 
 
