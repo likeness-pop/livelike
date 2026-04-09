@@ -1983,7 +1983,7 @@ def veh_occ(gpp: pd.DataFrame) -> pd.DataFrame:
     return jwrip
 
 
-def veteran(gpp: pd.DataFrame) -> pd.DataFrame:
+def veteran(gpp: pd.DataFrame, year: int | str) -> pd.DataFrame:
     """Generates a person-level representation of veteran status for the
     civilian population age 18 years and over that harmonizes ACS PUMS
     questionnaire items VPS, MIL, and AGEP with ACS SF table B21001.
@@ -1999,9 +1999,10 @@ def veteran(gpp: pd.DataFrame) -> pd.DataFrame:
         One-hot encoded DataFrame of ACS PUMS veteran status based on
         ACS SF table B21001.
     """
+    vps_code = "VPS" if year < 2024 else "VPSP"
 
     vet = pd.get_dummies(
-        np.where((gpp["VPS"] > 0) & (gpp["MIL"] != 1), "vet", "nonvet")
+        np.where((gpp[vps_code] > 0) & (gpp["MIL"] != 1), "vet", "nonvet")
     )
     vet = vet * ((gpp["AGEP"] >= 18).values[:, None] * 1)
     vet.columns = vet.columns.astype("str")
@@ -2060,6 +2061,8 @@ def vet_psrv(gpp: pd.DataFrame, year: int | str) -> pd.DataFrame:
         One-hot encoded DataFrame of ACS PUMS veteran period of
         service based on ACS SF table B21002.
     """
+    vps_code = "VPS" if year < 2024 else "VPSP"
+
     vps_desc = [
         "gulf_0901_later",
         "gulf_0890_0801__gulf_0901_later",
@@ -2085,7 +2088,7 @@ def vet_psrv(gpp: pd.DataFrame, year: int | str) -> pd.DataFrame:
         bk = list(range(1, 14)) + [np.inf]
         vps_desc = vps_desc[:-2]
 
-    vps = pd.cut(gpp["VPS"], bins=bk, labels=vps_desc, right=False)
+    vps = pd.cut(gpp[vps_code], bins=bk, labels=vps_desc, right=False)
     vps = 1 * pd.get_dummies(vps, prefix="vps")
 
     return vps

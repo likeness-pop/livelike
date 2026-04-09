@@ -332,6 +332,7 @@ pums_dtypes = dict(  # noqa C418
         "HHL": "int",
         "POBP": "int",
         "VPS": "int",
+        "VPSP" : "int",
         "SCHL": "int",
         "DIS": "int",
         "BDSP": "int",
@@ -387,6 +388,7 @@ need_year = [
     "health_ins",
     "travel",
     "vet_psrv",
+    "veteran",
 ]
 
 # P-MEDM constraints
