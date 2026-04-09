@@ -387,6 +387,7 @@ need_year = [
     "internet",
     "health_ins",
     "travel",
+    "vet_edu",
     "vet_psrv",
     "veteran",
 ]

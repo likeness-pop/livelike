@@ -1987,11 +1987,16 @@ def veteran(gpp: pd.DataFrame, year: int | str) -> pd.DataFrame:
     """Generates a person-level representation of veteran status for the
     civilian population age 18 years and over that harmonizes ACS PUMS
     questionnaire items VPS, MIL, and AGEP with ACS SF table B21001.
+        * VPS < 2024
+        * VPSP >= 2024
 
     Parameters
     ----------
     gpp : pandas.DataFrame
         Person-level PUMS responses containing MIL, VPS, and AGEP columns.
+    year : int | str
+        ACS 5-Year Estimates vintage. Not optional, here, but defaults
+        as ``2019`` passed in from ``acs.build_acs_pums_inputs()``.
 
     Returns
     -------
@@ -2010,7 +2015,7 @@ def veteran(gpp: pd.DataFrame, year: int | str) -> pd.DataFrame:
     return vet
 
 
-def vet_edu(gpp: pd.DataFrame) -> pd.DataFrame:
+def vet_edu(gpp: pd.DataFrame, year: int | str) -> pd.DataFrame:
     """Generates a person-level representation of veteran status
     by educational attainment that harmonizes ACS PUMS questionnaire
     items SCHL and VPS with ACS SF table B21003.
@@ -2019,6 +2024,10 @@ def vet_edu(gpp: pd.DataFrame) -> pd.DataFrame:
     ----------
     gpp : pandas.DataFrame
         Person-level PUMS responses containing MIL, VPS, AGEP, and SCHL columns.
+    year : int | str
+        ACS 5-Year Estimates vintage. Not optional, here, but defaults
+        as ``2019`` passed in from ``acs.build_acs_pums_inputs()``.
+        Needed for call to ``veteran()``.
 
     Returns
     -------
@@ -2029,7 +2038,7 @@ def vet_edu(gpp: pd.DataFrame) -> pd.DataFrame:
 
     aGE25 = np.where(gpp["AGEP"] >= 25, 1, 0)  # noqa N806
 
-    vet_ = veteran(gpp)
+    vet_ = veteran(gpp, year)
 
     edu_desc = ["less_hs", "hs", "some_clg", "bach_higher"]
     edu = pd.cut(
@@ -2049,11 +2058,16 @@ def vet_psrv(gpp: pd.DataFrame, year: int | str) -> pd.DataFrame:
     period of service for the civilian population age 18 years and
     over that harmonizes ACS PUMS questionnaire item VPS with ACS
     SF table B21002.
+        * VPS < 2024
+        * VPSP >= 2024
 
     Parameters
     ----------
     gpp : pandas.DataFrame
         Person-level PUMS responses containing VPS column.
+    year : int | str
+        ACS 5-Year Estimates vintage. Not optional, here, but defaults
+        as ``2019`` passed in from ``acs.build_acs_pums_inputs()``.
 
     Returns
     -------
