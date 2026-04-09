@@ -332,7 +332,7 @@ pums_dtypes = dict(  # noqa C418
         "HHL": "int",
         "POBP": "int",
         "VPS": "int",
-        "VPSP" : "int",
+        "VPSP": "int",
         "SCHL": "int",
         "DIS": "int",
         "BDSP": "int",
