@@ -657,18 +657,20 @@ def test_veh_occ():
     pandas.testing.assert_frame_equal(observed, known)
 
 
-def test_veteran():
-    gpp = pandas.DataFrame({"VPS": [0, 1, 1], "MIL": [0, 1, 2], "AGEP": [17, 18, 30]})
+@pytest.mark.parametrize("column, year", [("VPS", 2019), ("VPSP", 2024)])
+def test_veteran(column, year):
+    gpp = pandas.DataFrame({column: [0, 1, 1], "MIL": [0, 1, 2], "AGEP": [17, 18, 30]})
 
     known = pandas.read_csv(io.StringIO("nonvet,vet\n0,0\n1,0\n0,1\n\n"))
-    observed = livelike.pums.veteran(gpp)
+    observed = livelike.pums.veteran(gpp, year)
     pandas.testing.assert_frame_equal(observed, known)
 
 
-def test_vet_edu():
+@pytest.mark.parametrize("column, year", [("VPS", 2019), ("VPSP", 2024)])
+def test_vet_edu(column, year):
     gpp = pandas.DataFrame(
         {
-            "VPS": [0, 1, 1],
+            column: [0, 1, 1],
             "MIL": [0, 1, 2],
             "AGEP": [17, 25, 30],
             "SCHL": [15, 17, 22],
@@ -680,15 +682,16 @@ def test_vet_edu():
             "nonvet_less_hs,nonvet_hs,nonvet_some_clg,nonvet_bach_higher,vet_less_hs,vet_hs,vet_some_clg,vet_bach_higher\n0,0,0,0,0,0,0,0\n0,1,0,0,0,0,0,0\n0,0,0,0,0,0,0,1\n"  # noqa: E501
         )
     )
-    observed = livelike.pums.vet_edu(gpp)
+    observed = livelike.pums.vet_edu(gpp, year)
     pandas.testing.assert_frame_equal(observed, known)
 
 
-def test_vet_psrv():
-    gpp = pandas.DataFrame({"VPS": list(range(1, 16))})
+@pytest.mark.parametrize("column, year", [("VPS", 2019), ("VPSP", 2024)])
+def test_vet_psrv(column, year):
+    gpp = pandas.DataFrame({column: list(range(1, 16))})
 
-    known = pandas.read_csv(
-        io.StringIO(
+    if year < 2024:
+        _values = (
             "vps_gulf_0901_later,vps_gulf_0890_0801__gulf_0901_later,vps_gulf_0890_0801__gulf_0901_later__vietnam,"
             "vps_gulf_0890_0801,vps_gulf_0890_0801__vietnam,vps_vietnam,vps_vietnam__korea,vps_vietnam__korea__ww2,"
             "vps_korea,vps_korea__ww2,vps_ww2,vps_bw_gulf_vietnam_only,vps_bw_vietnam_korea_only,vps_bw_korea_ww2_only,"
@@ -709,8 +712,30 @@ def test_vet_psrv():
             "0,0,0,0,0,0,0,0,0,0,0,0,0,1,0\n"
             "0,0,0,0,0,0,0,0,0,0,0,0,0,0,1\n"
         )
-    )
-    observed = livelike.pums.vet_psrv(gpp, 2019)
+    else:
+        _values = (
+            "vps_gulf_0901_later,vps_gulf_0890_0801__gulf_0901_later,vps_gulf_0890_0801__gulf_0901_later__vietnam,"
+            "vps_gulf_0890_0801,vps_gulf_0890_0801__vietnam,vps_vietnam,vps_vietnam__korea,vps_vietnam__korea__ww2,"
+            "vps_korea,vps_korea__ww2,vps_ww2,vps_bw_gulf_vietnam_only,vps_bw_vietnam_korea_only\n"
+            "1,0,0,0,0,0,0,0,0,0,0,0,0\n"
+            "0,1,0,0,0,0,0,0,0,0,0,0,0\n"
+            "0,0,1,0,0,0,0,0,0,0,0,0,0\n"
+            "0,0,0,1,0,0,0,0,0,0,0,0,0\n"
+            "0,0,0,0,1,0,0,0,0,0,0,0,0\n"
+            "0,0,0,0,0,1,0,0,0,0,0,0,0\n"
+            "0,0,0,0,0,0,1,0,0,0,0,0,0\n"
+            "0,0,0,0,0,0,0,1,0,0,0,0,0\n"
+            "0,0,0,0,0,0,0,0,1,0,0,0,0\n"
+            "0,0,0,0,0,0,0,0,0,1,0,0,0\n"
+            "0,0,0,0,0,0,0,0,0,0,1,0,0\n"
+            "0,0,0,0,0,0,0,0,0,0,0,1,0\n"
+            "0,0,0,0,0,0,0,0,0,0,0,0,1\n"
+            "0,0,0,0,0,0,0,0,0,0,0,0,1\n"
+            "0,0,0,0,0,0,0,0,0,0,0,0,1\n"
+        )
+
+    known = pandas.read_csv(io.StringIO(_values))
+    observed = livelike.pums.vet_psrv(gpp, year)
     pandas.testing.assert_frame_equal(observed, known)
 
 
