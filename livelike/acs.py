@@ -624,13 +624,14 @@ class puma:  # noqa N801
             fips=self.est_g1.index.tolist(),
             puma=self.fips,
             populated=True,
-            year=2023,
+            year=self.year,
             level="bg",
             censusapikey=self.censusapikey,
         )
+
         gq_pop = pd.concat(
             [self.est_g2.population, -pop_in_households.B11002_001E], axis=1
-        ).apply(sum, axis=1)
+        ).fillna(0).apply(sum, axis=1)
 
         # Approximate standard errors #
         rpop = get_vre_tables(
