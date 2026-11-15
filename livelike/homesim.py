@@ -105,7 +105,7 @@ def synthesize(
         Disaggregation level. One of ``residence`` (residence-level,
         including housing units and group quarters) or ``person``
         (person-level, excluding vacant housing units). Ignored if
-        ``longform == False``. 
+        ``longform == False``.
 
     Returns
     -------
@@ -208,35 +208,33 @@ def synthesize(
             sims_disagg_rsd["pums_id"] = sims_disagg_rsd.index
             sims_disagg_rsd = sims_disagg_rsd.reset_index().groupby("sim")
             sims_disagg_rsd = sims_disagg_rsd.apply(
-                lambda x: disaggregate(
-                    x, 
-                    cnt_col="count", 
-                    id_col="h_id"
-                ).drop("count", axis=1)
+                lambda x: disaggregate(x, cnt_col="count", id_col="h_id").drop(
+                    "count", axis=1
+                )
             )
-            sims_disagg_rsd = (
-                sims_disagg_rsd
-                .reset_index()
-                .drop("level_1", axis=1)
-            )
+            sims_disagg_rsd = sims_disagg_rsd.reset_index().drop("level_1", axis=1)
 
             if disaggregate_level == "person":
                 # proceed to disaggregate residences -> people
                 sims_disagg_prs = pd.merge(
-                    sims_disagg_rsd, 
-                    sporder.rename_axis(index="pums_id").reset_index(), 
-                    on="pums_id"
+                    sims_disagg_rsd,
+                    sporder.rename_axis(index="pums_id").reset_index(),
+                    on="pums_id",
                 )
-                sims_disagg_prs["SPORDER"] = sims_disagg_prs["SPORDER"].astype("str").str.zfill(2)
-                sims_disagg_prs["p_id"] = sims_disagg_prs["h_id"] + sims_disagg_prs["SPORDER"]
+                sims_disagg_prs["SPORDER"] = (
+                    sims_disagg_prs["SPORDER"].astype("str").str.zfill(2)
+                )
+                sims_disagg_prs["p_id"] = (
+                    sims_disagg_prs["h_id"] + sims_disagg_prs["SPORDER"]
+                )
 
                 if max(sims_disagg_prs["sim"]) > 0:
                     sim_res = sims_disagg_prs.set_index(["sim", "p_id"])
 
                 else:
-                    sim_res= sims_disagg_prs.set_index("p_id").drop("sim", axis=1)
+                    sim_res = sims_disagg_prs.set_index("p_id").drop("sim", axis=1)
 
-                sim_res = sim_res.loc[:,["pums_id", "h_id", "SPORDER", "geoid"]]
+                sim_res = sim_res.loc[:, ["pums_id", "h_id", "SPORDER", "geoid"]]
 
             elif disaggregate_level == "residence":
                 if max(sims_disagg_rsd["sim"]) > 0:
@@ -245,13 +243,13 @@ def synthesize(
                 else:
                     sim_res = sims_disagg_rsd.set_index(["h_id"]).drop("sim", axis=1)
 
-                sim_res = sim_res.loc[:,["pums_id", "geoid"]]
+                sim_res = sim_res.loc[:, ["pums_id", "geoid"]]
 
             else:
                 raise ValueError(
                     f"Argument ``disaggregate_level`` must be one of: ``'residence'``, ``'person'``."
                 )
-            
+
     else:
         if disaggregate_level is not None:
             warnings.warn(
