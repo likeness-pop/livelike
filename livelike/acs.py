@@ -629,9 +629,11 @@ class puma:  # noqa N801
             censusapikey=self.censusapikey,
         )
 
-        gq_pop = pd.concat(
-            [self.est_g2.population, -pop_in_households.B11002_001E], axis=1
-        ).fillna(0).apply(sum, axis=1)
+        gq_pop = (
+            pd.concat([self.est_g2.population, -pop_in_households.B11002_001E], axis=1)
+            .fillna(0)
+            .apply(sum, axis=1)
+        )
 
         # Approximate standard errors #
         rpop = get_vre_tables(
