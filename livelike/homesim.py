@@ -1,8 +1,9 @@
+import warnings
+
 import awkward as ak
-from likeness_vitals.sg_ops import disaggregate
 import numpy as np
 import pandas as pd
-import warnings
+from likeness_vitals.sg_ops import disaggregate
 
 
 def _sum_rnd_sub_frc_remainders(_sub_frac: np.ndarray | pd.Series) -> int | np.int64:
@@ -247,13 +248,17 @@ def synthesize(
 
             else:
                 raise ValueError(
-                    f"Argument ``disaggregate_level`` must be one of: ``'residence'``, ``'person'``."
+                        "Argument ``disaggregate_level`` must be one of: "
+                        "``'residence'``, ``'person'``."
                 )
 
     else:
         if disaggregate_level is not None:
             warnings.warn(
-                "Ignoring argument ``disaggregate_level`` because ``longform == False``.",
+                (
+                    "Ignoring argument ``disaggregate_level`` "
+                    "because ``longform == False``.",
+                ),
                 stacklevel=2,
             )
 
