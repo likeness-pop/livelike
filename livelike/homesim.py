@@ -1,6 +1,9 @@
+import warnings
+
 import awkward as ak
 import numpy as np
 import pandas as pd
+from likeness_vitals.sg_ops import disaggregate
 
 
 def _sum_rnd_sub_frc_remainders(_sub_frac: np.ndarray | pd.Series) -> int | np.int64:
@@ -76,6 +79,7 @@ def synthesize(
     nsim: int = 30,
     random_state: int = 0,
     longform: bool = True,
+    disaggregate_level: str = None,
 ) -> pd.DataFrame | list[pd.DataFrame, ...]:
     """
     Synthesizes the baseline residential population by household ID.
@@ -98,6 +102,11 @@ def synthesize(
         Random state value to generate starting seeds for sims.
     longform : bool = True
         Use longform format.
+    disaggregate_level : str
+        Disaggregation level. One of ``residence`` (residence-level,
+        including housing units and group quarters) or ``person``
+        (person-level, excluding vacant housing units). Ignored if
+        ``longform == False``.
 
     Returns
     -------
@@ -191,7 +200,69 @@ def synthesize(
 
         sims += [syp]
 
-    sim_res = _make_longform(sims) if longform else sims if nsim > 1 else sims[0]
+    if longform:
+        sim_res = _make_longform(sims)
+
+        if disaggregate_level is not None:
+            # first disaggregate residences
+            sims_disagg_rsd = sim_res.copy()
+            sims_disagg_rsd["pums_id"] = sims_disagg_rsd.index
+            sims_disagg_rsd = sims_disagg_rsd.reset_index().groupby("sim")
+            sims_disagg_rsd = sims_disagg_rsd.apply(
+                lambda x: disaggregate(x, cnt_col="count", id_col="h_id").drop(
+                    "count", axis=1
+                )
+            )
+            sims_disagg_rsd = sims_disagg_rsd.reset_index().drop("level_1", axis=1)
+
+            if disaggregate_level == "person":
+                # proceed to disaggregate residences -> people
+                sims_disagg_prs = pd.merge(
+                    sims_disagg_rsd,
+                    sporder.rename_axis(index="pums_id").reset_index(),
+                    on="pums_id",
+                )
+                sims_disagg_prs["SPORDER"] = (
+                    sims_disagg_prs["SPORDER"].astype("str").str.zfill(2)
+                )
+                sims_disagg_prs["p_id"] = (
+                    sims_disagg_prs["h_id"] + sims_disagg_prs["SPORDER"]
+                )
+
+                if max(sims_disagg_prs["sim"]) > 0:
+                    sim_res = sims_disagg_prs.set_index(["sim", "p_id"])
+
+                else:
+                    sim_res = sims_disagg_prs.set_index("p_id").drop("sim", axis=1)
+
+                sim_res = sim_res.loc[:, ["pums_id", "h_id", "SPORDER", "geoid"]]
+
+            elif disaggregate_level == "residence":
+                if max(sims_disagg_rsd["sim"]) > 0:
+                    sim_res = sims_disagg_rsd.set_index(["sim", "h_id"])
+
+                else:
+                    sim_res = sims_disagg_rsd.set_index(["h_id"]).drop("sim", axis=1)
+
+                sim_res = sim_res.loc[:, ["pums_id", "geoid"]]
+
+            else:
+                raise ValueError(
+                        "Argument ``disaggregate_level`` must be one of: "
+                        "``'residence'``, ``'person'``."
+                )
+
+    else:
+        if disaggregate_level is not None:
+            warnings.warn(
+                (
+                    "Ignoring argument ``disaggregate_level`` "
+                    "because ``longform == False``.",
+                ),
+                stacklevel=2,
+            )
+
+        sim_res = sims if nsim > 1 else sims[0]
 
     return sim_res
 
